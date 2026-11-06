@@ -1,0 +1,29 @@
+Dengue in Rio de Janeiro state, Brazil, 2024
+============================================
+
+Data:     Sánchez-Marqués R, Sánchez JS. DATASET_MULTIMODAL_V8: A Nationwide
+          Multimodal Dataset for Dengue Surveillance, Nowcasting and
+          Forecasting in Brazil (2010–2025). Zenodo, 2026.
+          doi:10.5281/zenodo.22029053
+          Its case counts come from InfoDengue (https://info.dengue.mat.br/).
+
+Terms:    Creative Commons Attribution 4.0 International, as stated on the
+          Zenodo record. https://creativecommons.org/licenses/by/4.0/
+          The licence text is in LICENSE-data.
+
+Changes:  data/dengue-rj-2024.csv keeps the rows of dataset_multimodal_v8.parquet
+          with estado RJ and anio 2024, and 18 of its 87 columns, as published:
+          nothing renamed, recoded, deduplicated or filled. data_iniSE is
+          written as a date. Rows are sorted by municipality and week.
+
+Boundaries: geoBoundaries gbOpen BRA ADM2, release 9469f09, from IBGE via
+          OCHA ROLAC, 2020. Runfola D, et al. (2020) geoBoundaries: A global
+          database of political administrative boundaries. PLoS ONE 15(4):
+          e0231866. https://doi.org/10.1371/journal.pone.0231866
+          Creative Commons Attribution 3.0 IGO.
+          https://creativecommons.org/licenses/by/3.0/igo/
+          Changes: the 92 municipalities of Rio de Janeiro state, matched to the
+          dataset's IBGE codes by name; coordinates rounded to 6 decimals.
+
+The authors and their institutions are not associated with this example and
+have not endorsed it.
