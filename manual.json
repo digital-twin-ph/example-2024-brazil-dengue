@@ -752,6 +752,200 @@
      "check": "per 100,000"
     }
    ]
+  },
+  {
+   "name": "How hot was the ground in each municipality?",
+   "steps": [
+    {
+     "click": "#add-workflow",
+     "label": "Add workflow"
+    },
+    {
+     "fill": "workflow-name-edit",
+     "view": "project",
+     "label": "This workflow’s name — the question it answers",
+     "value": "How hot was the ground in each municipality?"
+    },
+    {
+     "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
+    },
+    {
+     "add": "study_area",
+     "as": "state"
+    },
+    {
+     "select": "state"
+    },
+    {
+     "click": "#edit-study-area",
+     "label": "Select area on map",
+     "opens": "Choose your study area"
+    },
+    {
+     "click": "#area-project-source summary",
+     "label": "Use a study area from this project",
+     "dialog": "Choose your study area"
+    },
+    {
+     "choose": "area-project-pick",
+     "label": "Study area",
+     "value": "0",
+     "shown": "Where was incidence highest?",
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-project-use",
+     "label": "Use this study area",
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-apply",
+     "label": "Apply study area",
+     "dialog": "Choose your study area"
+    },
+    {
+     "note": "The satellite: MODIS land surface temperature, 8-day composites at 1 km, on Planetary Computer with no account. It is the temperature of the ground's surface where the sky was clear, not the air's."
+    },
+    {
+     "add": "find_satellite_products",
+     "as": "product"
+    },
+    {
+     "select": "product"
+    },
+    {
+     "click": "#satellite-find",
+     "label": "Find satellite products",
+     "opens": "Find satellite products"
+    },
+    {
+     "fill": "sat-question",
+     "label": "Research topic or measurement",
+     "value": "land surface temperature",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "#sat-find",
+     "label": "Find data pathways",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
+     "label": "Choose this product",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "#sat-close",
+     "label": "Done",
+     "dialog": "Find satellite products"
+    },
+    {
+     "note": "The files: every 8-day period of 2024 over the state, from both MODIS satellites. The search takes the state's extent from the study area."
+    },
+    {
+     "add": "search_satellite_catalog",
+     "as": "search"
+    },
+    {
+     "connect": {
+      "from": "product",
+      "to": "search",
+      "port": "product"
+     }
+    },
+    {
+     "connect": {
+      "from": "state",
+      "to": "search",
+      "port": "area"
+     }
+    },
+    {
+     "select": "search"
+    },
+    {
+     "click": "#catalog-search-open",
+     "label": "Search the catalog",
+     "opens": "Search a satellite catalog"
+    },
+    {
+     "fill": "cat-from",
+     "label": "From",
+     "value": "2024-01-01",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "fill": "cat-until",
+     "label": "Until",
+     "value": "2024-12-31",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "click": "#cat-search",
+     "label": "Search",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "click": "#cat-close",
+     "label": "Done",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
+    },
+    {
+     "add": "sample_satellite_files_at_points",
+     "as": "sample"
+    },
+    {
+     "connect": {
+      "from": "state",
+      "to": "sample",
+      "port": "area"
+     }
+    },
+    {
+     "connect": {
+      "from": "search",
+      "to": "sample",
+      "port": "files"
+     }
+    },
+    {
+     "select": "sample"
+    },
+    {
+     "fill": "satellite-place-column",
+     "label": "Name of the place column",
+     "value": "municipio"
+    },
+    {
+     "add": "table_output",
+     "as": "shown"
+    },
+    {
+     "connect": {
+      "from": "sample",
+      "to": "shown",
+      "port": "table"
+     }
+    },
+    {
+     "select": "shown"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Land surface temperature by municipality, 8-day, 2024"
+    },
+    {
+     "run": true
+    },
+    {
+     "see": "one row per municipality per 8-day period per satellite: the mean of the cells that passed, how many cells it rests on, how many days were clear, and the gap where there is no value",
+     "check": "municipio"
+    }
+   ]
   }
  ]
 }

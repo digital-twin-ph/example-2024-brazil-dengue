@@ -5,9 +5,9 @@ the 92 municipalities of Rio de Janeiro state in 2024, Brazil's largest dengue e
 measures of temperature and vegetation published beside them.
 
 The question, from the practitioner's research note: do satellite-derived temperature and vegetation measures improve
-prediction of municipal dengue incidence beyond seasonal patterns and past notifications? This repository starts with
-the outcome: the epidemic curve and where incidence was highest. The satellite half comes next. Fieldwork experiment
-180.
+prediction of municipal dengue incidence beyond seasonal patterns and past notifications? It has the outcome, the epidemic curve and where incidence was highest, and the
+satellite measurement, land surface temperature per municipality. Relating the two, with lags, comes next. Fieldwork
+experiment 180.
 
 ## The questions
 
@@ -15,10 +15,16 @@ the outcome: the epidemic curve and where incidence was highest. The satellite h
 | --- | --- | --- |
 | How did the 2024 epidemic unfold across the state? | 4 | Notified cases summed over the 92 municipalities, week by week: 51 weeks, the peak in the week starting 18 February |
 | Where was incidence highest? | 10 | Notified cases per 100,000 residents in 2024, by municipality, on a map: from 54.6 in Nilópolis to 15,081 in Resende; 2,551 for the state as a whole |
+| How hot was the ground in each municipality? | 5 | MODIS land surface temperature over each municipality, every 8-day period of 2024 from Terra and Aqua: the mean of the 1 km cells whose centre is in it that passed the quality rule, how many cells it rests on and how many days were clear. 8,188 rows from 180 files, read in about 4 minutes in a browser |
 
 Both keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
 incidence is a ratio, not a proportion: a notification is an event, and one person can be notified twice. Cases are
 summed over the weeks; population, the same every week for a municipality, is taken once.
+
+**Land surface temperature is the ground's, where the sky was clear, not the air's.** Each 8-day value is the mean
+of its clear days, often only one or two in the wet season, and each row says how many cells and days it rests on.
+Terra passes mid-morning and Aqua early afternoon, so their values are kept apart. MODIS documents its quality bits
+and recommends no rule; the one used is stated on every row.
 
 Each step is in `manual.json`, which Fieldwork shows as this example's Manual tab and plays back as a test.
 
@@ -46,5 +52,7 @@ Each step is in `manual.json`, which Fieldwork shows as this example's Manual ta
 ## Sources
 
 Data from Sánchez-Marqués R, Sánchez JS, DATASET_MULTIMODAL_V8, Zenodo 2026, doi:10.5281/zenodo.22029053, CC BY 4.0;
-counts from InfoDengue. Boundaries from geoBoundaries (Runfola et al. 2020), from IBGE, CC BY 3.0 IGO. See
+counts from InfoDengue. Boundaries from geoBoundaries (Runfola et al. 2020), from IBGE, CC BY 3.0 IGO. Land surface temperature from
+MODIS MOD11A2 and MYD11A2 v061 (Wan, Hook and Hulley 2021, doi:10.5067/MODIS/MOD11A2.061 and
+doi:10.5067/MODIS/MYD11A2.061), NASA LP DAAC, read from Microsoft Planetary Computer; open without restriction. See
 `NOTICE.txt`.
