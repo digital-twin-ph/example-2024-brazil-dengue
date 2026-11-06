@@ -6,7 +6,7 @@ measures of temperature and vegetation published beside them.
 
 The question, from the practitioner's research note: do satellite-derived temperature and vegetation measures improve
 prediction of municipal dengue incidence beyond seasonal patterns and past notifications? It has the outcome, the epidemic curve and where incidence was highest, and the
-satellite measurement, land surface temperature per municipality. Relating the two, with lags, comes next. Fieldwork
+satellite measurement, land surface temperature per municipality. The fourth workflow relates the two, with lags. Fieldwork
 experiment 180.
 
 ## The questions
@@ -16,6 +16,7 @@ experiment 180.
 | How did the 2024 epidemic unfold across the state? | 4 | Notified cases summed over the 92 municipalities, week by week: 51 weeks, the peak in the week starting 18 February |
 | Where was incidence highest? | 10 | Notified cases per 100,000 residents in 2024, by municipality, on a map: from 54.6 in Nilópolis to 15,081 in Resende; 2,551 for the state as a whole |
 | How hot was the ground in each municipality? | 5 | MODIS land surface temperature over each municipality, every 8-day period of 2024 from Terra and Aqua: the mean of the 1 km cells whose centre is in it that passed the quality rule, how many cells it rests on and how many days were clear. 8,188 rows from 180 files, read in about 4 minutes in a browser |
+| Did warmer ground weeks earlier go with more cases? | 24 | Weekly cases beside Terra's land surface temperature 0, 2, 4, 6 and 8 weeks earlier, matched to the 8-day period containing each week's Wednesday, and five Poisson models with municipality and month: rate ratios per 1 °C from 0.963 (4 weeks) to 1.063 (8 weeks). Not an effect: see below |
 
 Both keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
 incidence is a ratio, not a proportion: a notification is an event, and one person can be notified twice. Cases are
@@ -25,6 +26,11 @@ summed over the weeks; population, the same every week for a municipality, is ta
 of its clear days, often only one or two in the wet season, and each row says how many cells and days it rests on.
 Terra passes mid-morning and Aqua early afternoon, so their values are kept apart. MODIS documents its quality bits
 and recommends no rule; the one used is stated on every row.
+
+**The lag models are a demonstration, not a finding.** The counts vary 18 to 28 times more than Poisson allows; the
+intervals are scaled for that but not for week-to-week correlation, so they are too narrow. With one year and one
+epidemic wave, lag and season are hard to tell apart; rainfall and humidity are not in the model; and the ground's
+temperature is not the air's.
 
 Each step is in `manual.json`, which Fieldwork shows as this example's Manual tab and plays back as a test.
 
