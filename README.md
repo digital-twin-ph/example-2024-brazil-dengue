@@ -6,7 +6,21 @@ measures of temperature and vegetation published beside them.
 
 The question, from the practitioner's research note: do satellite-derived temperature and vegetation measures improve
 prediction of municipal dengue incidence beyond seasonal patterns and past notifications? This repository starts with
-the outcome: the epidemic curve and where incidence was highest. Fieldwork experiment 180.
+the outcome: the epidemic curve and where incidence was highest. The satellite half comes next. Fieldwork experiment
+180.
+
+## The questions
+
+| Workflow | Nodes | What it shows |
+| --- | --- | --- |
+| How did the 2024 epidemic unfold across the state? | 4 | Notified cases summed over the 92 municipalities, week by week: 51 weeks, the peak in the week starting 18 February |
+| Where was incidence highest? | 10 | Notified cases per 100,000 residents in 2024, by municipality, on a map: from 54.6 in Nilópolis to 15,081 in Resende; 2,551 for the state as a whole |
+
+Both keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
+incidence is a ratio, not a proportion: a notification is an event, and one person can be notified twice. Cases are
+summed over the weeks; population, the same every week for a municipality, is taken once.
+
+Each step is in `manual.json`, which Fieldwork shows as this example's Manual tab and plays back as a test.
 
 ## Files
 
@@ -15,6 +29,8 @@ the outcome: the epidemic curve and where incidence was highest. Fieldwork exper
 | `data/dengue-rj-2024.csv` | 4,876 rows: 92 municipalities × 53 weeks, 18 columns as published in DATASET_MULTIMODAL_V8 |
 | `geo/rj-municipalities.geojson` | The 92 municipalities from geoBoundaries, with the dataset's IBGE codes |
 | `provenance.json` | Where each came from, the digests, and what was found in them |
+| `manual.json` | The steps that build both workflows from an empty canvas |
+| `fieldwork-project.json.gz` | The Fieldwork project |
 
 ## Reading the data
 

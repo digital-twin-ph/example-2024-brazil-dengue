@@ -1,0 +1,757 @@
+{
+ "schema": "fieldwork/worked-example-manual/1",
+ "example": "urn:fieldwork:example:brazil-dengue-rj-2024",
+ "intro": "Each workflow reads the weekly table from this example's repository, at a fixed commit. Start from an empty canvas: Project, then New project.",
+ "workflows": [
+  {
+   "name": "How did the 2024 epidemic unfold across the state?",
+   "steps": [
+    {
+     "click": "#new-project",
+     "label": "New project",
+     "opens": "New project"
+    },
+    {
+     "fill": "project-name-input",
+     "label": "Name",
+     "value": "Dengue in Rio de Janeiro state, 2024",
+     "dialog": "New project"
+    },
+    {
+     "fill": "project-subject-input",
+     "label": "Subject",
+     "value": "Weekly notified cases, 92 municipalities",
+     "dialog": "New project"
+    },
+    {
+     "click": "#project-create",
+     "label": "Create project",
+     "dialog": "New project"
+    },
+    {
+     "fill": "workflow-name-edit",
+     "view": "project",
+     "label": "This workflow’s name — the question it answers",
+     "value": "How did the 2024 epidemic unfold across the state?"
+    },
+    {
+     "note": "The table: weekly notified cases per municipality, from this example's repository, an extract of DATASET_MULTIMODAL_V8 (CC BY 4.0). The project keeps where it came from and its digest."
+    },
+    {
+     "add": "table_input",
+     "as": "weekly"
+    },
+    {
+     "select": "weekly"
+    },
+    {
+     "click": "#open-table",
+     "label": "Import tabular data",
+     "opens": "Import tabular data"
+    },
+    {
+     "click": "#table-remote summary",
+     "label": "Or fetch from a URL",
+     "dialog": "Import tabular data"
+    },
+    {
+     "fill": "table-url",
+     "label": "URL of a CSV, Stata file or zip",
+     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/e155dc81ba76d6ad175c9d14421aaa47390e92d1/data/dengue-rj-2024.csv",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-fetch",
+     "label": "Fetch",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-shape",
+     "label": "Shape of the file",
+     "value": "long",
+     "shown": "Long · one row per observation, one value column",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-value",
+     "label": "Value column",
+     "value": "casos",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-keys-choose",
+     "label": "Choose key columns…",
+     "dialog": "Import tabular data",
+     "opens": "Key columns"
+    },
+    {
+     "fill": "table-keys-paste",
+     "label": "Columns to keep, pasted or typed",
+     "value": "data_iniSE, SE, codigo_ibge, municipio",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-keep",
+     "label": "Keep these",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-done",
+     "label": "Done",
+     "dialog": "Key columns"
+    },
+    {
+     "fill": "table-unit",
+     "label": "Unit of the value (entered by you)",
+     "value": "notified cases/week",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-save",
+     "label": "Save table",
+     "dialog": "Import tabular data"
+    },
+    {
+     "note": "The file has the week starting 29 December 2024 twice for every municipality. It is week 1 of 2025, so the next step leaves it out."
+    },
+    {
+     "note": "Epidemiological year 2024 runs from Sunday 31 December 2023 to Saturday 28 December 2024. Week 1, starting 31 December 2023, is not in the file."
+    },
+    {
+     "add": "select_rows",
+     "as": "year"
+    },
+    {
+     "connect": {
+      "from": "weekly",
+      "to": "year",
+      "port": "records"
+     }
+    },
+    {
+     "select": "year"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "select-mode",
+     "label": "Keep",
+     "value": "range",
+     "shown": "A range of dates"
+    },
+    {
+     "fill": "select-from",
+     "label": "From",
+     "value": "2023-12-31"
+    },
+    {
+     "fill": "select-to",
+     "label": "To",
+     "value": "2024-12-28"
+    },
+    {
+     "note": "One number a week: the state's cases, totalled over its municipalities."
+    },
+    {
+     "add": "group_table",
+     "as": "state"
+    },
+    {
+     "connect": {
+      "from": "year",
+      "to": "state",
+      "port": "records"
+     }
+    },
+    {
+     "select": "state"
+    },
+    {
+     "tick": "group-keep",
+     "label": "Key columns to keep",
+     "values": [
+      "data_iniSE"
+     ]
+    },
+    {
+     "add": "chart_output",
+     "as": "curve"
+    },
+    {
+     "connect": {
+      "from": "state",
+      "to": "curve",
+      "port": "records"
+     }
+    },
+    {
+     "select": "curve"
+    },
+    {
+     "fill": "output-label",
+     "label": "Results tab name",
+     "value": "The 2024 epidemic curve"
+    },
+    {
+     "fill": "chart-title",
+     "label": "Chart title",
+     "value": "Notified dengue cases by week, Rio de Janeiro state, 2024"
+    },
+    {
+     "fill": "chart-subtitle",
+     "label": "Subtitle / context",
+     "value": "Epidemiological weeks 2 to 52, by the Sunday each week starts; week 1 is not in the source. Notified cases as InfoDengue reports them, not confirmed infections."
+    },
+    {
+     "fill": "chart-x-axis",
+     "label": "Horizontal axis label",
+     "value": "Week starting"
+    },
+    {
+     "fill": "chart-source-note",
+     "label": "Source / method note",
+     "value": "InfoDengue counts via DATASET_MULTIMODAL_V8 (Sánchez-Marqués and Sánchez, Zenodo, doi:10.5281/zenodo.22029053, CC BY 4.0), summed over the 92 municipalities."
+    },
+    {
+     "run": true
+    },
+    {
+     "see": "51 weekly bars, rising from January to a peak in the first months of the year",
+     "check": "Rio de Janeiro state"
+    }
+   ]
+  },
+  {
+   "name": "Where was incidence highest?",
+   "steps": [
+    {
+     "click": "#add-workflow",
+     "label": "Add workflow"
+    },
+    {
+     "fill": "workflow-name-edit",
+     "view": "project",
+     "label": "This workflow’s name — the question it answers",
+     "value": "Where was incidence highest?"
+    },
+    {
+     "note": "The same file, read wide: cases and population become rows of one variable column, so a rate can divide one by the other. The dialog notes that 92 rows repeat a municipality and week, the doubled week; read as wide they are kept, and reported in Data quality as duplicate records."
+    },
+    {
+     "add": "table_input",
+     "as": "wide"
+    },
+    {
+     "select": "wide"
+    },
+    {
+     "click": "#open-table",
+     "label": "Import tabular data",
+     "opens": "Import tabular data"
+    },
+    {
+     "click": "#table-remote summary",
+     "label": "Or fetch from a URL",
+     "dialog": "Import tabular data"
+    },
+    {
+     "fill": "table-url",
+     "label": "URL of a CSV, Stata file or zip",
+     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/e155dc81ba76d6ad175c9d14421aaa47390e92d1/data/dengue-rj-2024.csv",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-fetch",
+     "label": "Fetch",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-shape",
+     "label": "Shape of the file",
+     "value": "wide",
+     "shown": "Wide · one row per subject, a column per variable",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-keys-choose",
+     "label": "Choose key columns…",
+     "dialog": "Import tabular data",
+     "opens": "Key columns"
+    },
+    {
+     "fill": "table-keys-paste",
+     "label": "Columns to keep, pasted or typed",
+     "value": "data_iniSE, municipio",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-keep",
+     "label": "Keep these",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-done",
+     "label": "Done",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-values-choose",
+     "label": "Choose value columns…",
+     "dialog": "Import tabular data",
+     "opens": "Value columns"
+    },
+    {
+     "fill": "table-values-paste",
+     "label": "Columns to keep, pasted or typed",
+     "value": "casos, pop",
+     "dialog": "Value columns"
+    },
+    {
+     "click": "#table-values-keep",
+     "label": "Keep these",
+     "dialog": "Value columns"
+    },
+    {
+     "click": "#table-values-done",
+     "label": "Done",
+     "dialog": "Value columns"
+    },
+    {
+     "fill": "table-measure-key",
+     "label": "Name for the column holding the variable names",
+     "value": "variable",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-save",
+     "label": "Save table",
+     "dialog": "Import tabular data"
+    },
+    {
+     "note": "Epidemiological year 2024 again, which leaves out the doubled week."
+    },
+    {
+     "add": "select_rows",
+     "as": "year"
+    },
+    {
+     "connect": {
+      "from": "wide",
+      "to": "year",
+      "port": "records"
+     }
+    },
+    {
+     "select": "year"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "select-mode",
+     "label": "Keep",
+     "value": "range",
+     "shown": "A range of dates"
+    },
+    {
+     "fill": "select-from",
+     "label": "From",
+     "value": "2023-12-31"
+    },
+    {
+     "fill": "select-to",
+     "label": "To",
+     "value": "2024-12-28"
+    },
+    {
+     "note": "Cases add up over the weeks; population does not. So each is totalled separately, cases summed and each municipality's population, the same every week, taken once as its maximum, and the two stacked again."
+    },
+    {
+     "add": "select_rows",
+     "as": "cases"
+    },
+    {
+     "connect": {
+      "from": "year",
+      "to": "cases",
+      "port": "records"
+     }
+    },
+    {
+     "select": "cases"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "variable"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"casos\"])",
+     "label": "casos"
+    },
+    {
+     "add": "group_table",
+     "as": "casesTotal"
+    },
+    {
+     "connect": {
+      "from": "cases",
+      "to": "casesTotal",
+      "port": "records"
+     }
+    },
+    {
+     "select": "casesTotal"
+    },
+    {
+     "tick": "group-keep",
+     "label": "Key columns to keep",
+     "values": [
+      "municipio",
+      "variable"
+     ]
+    },
+    {
+     "add": "select_rows",
+     "as": "people"
+    },
+    {
+     "connect": {
+      "from": "year",
+      "to": "people",
+      "port": "records"
+     }
+    },
+    {
+     "select": "people"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "variable"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"pop\"])",
+     "label": "pop"
+    },
+    {
+     "add": "group_table",
+     "as": "population"
+    },
+    {
+     "connect": {
+      "from": "people",
+      "to": "population",
+      "port": "records"
+     }
+    },
+    {
+     "select": "population"
+    },
+    {
+     "tick": "group-keep",
+     "label": "Key columns to keep",
+     "values": [
+      "municipio",
+      "variable"
+     ]
+    },
+    {
+     "choose": "group-aggregate",
+     "label": "Aggregate",
+     "value": "maximum",
+     "shown": "Maximum"
+    },
+    {
+     "add": "append_rows",
+     "as": "both"
+    },
+    {
+     "connect": {
+      "from": "casesTotal",
+      "to": "both",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "population",
+      "to": "both",
+      "port": "records_2"
+     }
+    },
+    {
+     "note": "Notified cases per 100,000 residents in 2024. A ratio, not a proportion: a notification is an event, and one person can be notified twice."
+    },
+    {
+     "add": "rate",
+     "as": "incidence"
+    },
+    {
+     "select": "incidence"
+    },
+    {
+     "choose": "rate-source",
+     "label": "Records arrive as",
+     "value": "table",
+     "shown": "a table, one row per measure"
+    },
+    {
+     "connect": {
+      "from": "both",
+      "to": "incidence",
+      "port": "records"
+     }
+    },
+    {
+     "fill": "rate-measure",
+     "label": "Key column holding the measure names",
+     "value": "variable"
+    },
+    {
+     "fill": "rate-numerator",
+     "label": "Numerator attribute (what is counted)",
+     "value": "casos"
+    },
+    {
+     "fill": "rate-denominator",
+     "label": "Denominator attribute (units at risk)",
+     "value": "pop"
+    },
+    {
+     "choose": "rate-unit",
+     "label": "The denominator counts",
+     "value": "people"
+    },
+    {
+     "choose": "rate-kind",
+     "label": "Kind",
+     "value": "ratio",
+     "shown": "ratio — events per unit, may exceed one"
+    },
+    {
+     "choose": "rate-multiplier",
+     "label": "Per",
+     "value": "100000",
+     "shown": "100,000"
+    },
+    {
+     "fill": "rate-group",
+     "label": "Group by attribute (optional)",
+     "value": "municipio"
+    },
+    {
+     "fill": "rate-period",
+     "label": "Period the numerator covers",
+     "value": "epidemiological year 2024, weeks 2 to 52"
+    },
+    {
+     "fill": "rate-vintage",
+     "label": "Vintage of the denominator",
+     "value": "pop as InfoDengue reports it for 2024; the year of the estimate is not stated in the dataset"
+    },
+    {
+     "note": "The 92 municipalities, from geoBoundaries (IBGE, CC BY 3.0 IGO). Seven of their names are also municipalities in other states, so those are listed with where they lie: choose the ones near 22° S."
+    },
+    {
+     "add": "study_area",
+     "as": "state"
+    },
+    {
+     "select": "state"
+    },
+    {
+     "click": "#edit-study-area",
+     "label": "Select area on map",
+     "opens": "Choose your study area"
+    },
+    {
+     "click": "#area-boundary-source summary",
+     "label": "Use an administrative boundary",
+     "dialog": "Choose your study area"
+    },
+    {
+     "fill": "area-iso",
+     "label": "Country",
+     "value": "Brazil",
+     "dialog": "Choose your study area"
+    },
+    {
+     "note": "Level stays at ADM2, the municipalities."
+    },
+    {
+     "click": "#area-boundary-check",
+     "label": "Check this level",
+     "dialog": "Choose your study area"
+    },
+    {
+     "pick": "area-boundary-pick",
+     "label": "Units",
+     "values": [
+      "Angra dos Reis",
+      "Aperibé",
+      "Araruama",
+      "Areal",
+      "Armação dos Búzios",
+      "Arraial do Cabo",
+      "Barra do Piraí",
+      "Barra Mansa",
+      "Belford Roxo",
+      "Bom Jardim · 22.19° S, 42.34° W",
+      "Bom Jesus do Itabapoana",
+      "Cabo Frio",
+      "Cachoeiras de Macacu",
+      "Cambuci",
+      "Carapebus",
+      "Comendador Levy Gasparian",
+      "Campos dos Goytacazes",
+      "Cantagalo · 21.87° S, 42.34° W",
+      "Cardoso Moreira",
+      "Carmo",
+      "Casimiro de Abreu",
+      "Conceição de Macabu",
+      "Cordeiro",
+      "Duas Barras",
+      "Duque de Caxias",
+      "Engenheiro Paulo de Frontin",
+      "Guapimirim",
+      "Iguaba Grande",
+      "Itaboraí",
+      "Itaguaí",
+      "Italva",
+      "Itaocara",
+      "Itaperuna",
+      "Itatiaia",
+      "Japeri",
+      "Laje do Muriaé",
+      "Macaé",
+      "Macuco",
+      "Magé",
+      "Mangaratiba",
+      "Maricá",
+      "Mendes",
+      "Mesquita · 22.80° S, 43.45° W",
+      "Miguel Pereira",
+      "Miracema",
+      "Natividade · 21.04° S, 41.94° W",
+      "Nilópolis",
+      "Niterói",
+      "Nova Friburgo",
+      "Nova Iguaçu",
+      "Paracambi",
+      "Paraíba do Sul",
+      "Paraty",
+      "Paty do Alferes",
+      "Petrópolis",
+      "Pinheiral",
+      "Piraí",
+      "Porciúncula",
+      "Porto Real",
+      "Quatis",
+      "Queimados",
+      "Quissamã",
+      "Resende",
+      "Rio Bonito",
+      "Rio Claro · 22.79° S, 44.08° W",
+      "Rio das Flores",
+      "Rio das Ostras",
+      "Rio de Janeiro",
+      "Santa Maria Madalena",
+      "Santo Antônio de Pádua",
+      "São Francisco de Itabapoana",
+      "São Fidélis",
+      "São Gonçalo",
+      "São João da Barra",
+      "São João de Meriti",
+      "São José de Ubá",
+      "São José do Vale do Rio Preto",
+      "São Pedro da Aldeia",
+      "São Sebastião do Alto",
+      "Sapucaia · 22.03° S, 42.82° W",
+      "Saquarema",
+      "Seropédica",
+      "Silva Jardim",
+      "Sumidouro",
+      "Tanguá",
+      "Teresópolis",
+      "Trajano de Moraes",
+      "Três Rios",
+      "Valença · 22.25° S, 43.88° W",
+      "Varre-Sai",
+      "Vassouras",
+      "Volta Redonda"
+     ],
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-boundary-use",
+     "label": "Use the selected units",
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-apply",
+     "label": "Apply study area",
+     "dialog": "Choose your study area"
+    },
+    {
+     "add": "join_table_to_area",
+     "as": "joined"
+    },
+    {
+     "connect": {
+      "from": "incidence",
+      "to": "joined",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "state",
+      "to": "joined",
+      "port": "area"
+     }
+    },
+    {
+     "select": "joined"
+    },
+    {
+     "note": "Rate names each row by its group, here the municipality, in a column called group: match on that."
+    },
+    {
+     "choose": "join-key",
+     "label": "Column naming each part",
+     "value": "group"
+    },
+    {
+     "add": "map_output",
+     "as": "map"
+    },
+    {
+     "select": "map"
+    },
+    {
+     "choose": "map-add-layer",
+     "label": "Add a layer",
+     "value": "Values on the study area · polygons"
+    },
+    {
+     "fill": "map-label",
+     "label": "Results tab name",
+     "value": "Dengue incidence by municipality, 2024"
+    },
+    {
+     "run": true
+    },
+    {
+     "see": "the 92 municipalities shaded by notified cases per 100,000 in 2024",
+     "check": "per 100,000"
+    }
+   ]
+  }
+ ]
+}
