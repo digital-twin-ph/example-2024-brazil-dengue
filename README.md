@@ -32,7 +32,7 @@ Each step is in `manual.json`, which Fieldwork shows as this example's Manual ta
 
 | File | What it holds |
 | --- | --- |
-| `data/dengue-rj-2024.csv` | 4,876 rows: 92 municipalities × 53 weeks, 18 columns as published in DATASET_MULTIMODAL_V8 |
+| `data/dengue-rj-2024.csv` | 4,876 rows: 92 municipalities × 53 weeks, 19 columns as published in DATASET_MULTIMODAL_V8 |
 | `geo/rj-municipalities.geojson` | The 92 municipalities from geoBoundaries, with the dataset's IBGE codes |
 | `provenance.json` | Where each came from, the digests, and what was found in them |
 | `manual.json` | The steps that build both workflows from an empty canvas |

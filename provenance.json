@@ -29,12 +29,12 @@
     "stated": "CC-BY-4.0",
     "note": "Stated on the Zenodo record. The boundaries are CC BY 3.0 IGO, stated by geoBoundaries. InfoDengue's own terms, the origin of the counts, were not found."
   },
-  "derivation": "Rows of dataset_multimodal_v8.parquet with estado RJ and anio 2024; 18 of 87 columns; read with hyparquet; values as published, data_iniSE written as a date. Boundaries: each of the dataset's 92 municipality names matched exactly to a geoBoundaries ADM2 name, the unit nearest the Rio de Janeiro state outline kept where 2 or 3 units share a name (7 names); coordinates rounded to 6 decimals.",
+  "derivation": "Rows of dataset_multimodal_v8.parquet with estado RJ and anio 2024; 19 of 87 columns; read with hyparquet; values as published, data_iniSE written as a date. Boundaries: each of the dataset's 92 municipality names matched exactly to a geoBoundaries ADM2 name, the unit nearest the Rio de Janeiro state outline kept where 2 or 3 units share a name (7 names); coordinates rounded to 6 decimals.",
   "files": [
     {
       "file": "data/dengue-rj-2024.csv",
       "rows": 4876,
-      "sha256": "ce3ff3230f320f23b1c11c57c16688235ca77606bf849baf95b3e82602898934"
+      "sha256": "d1c76ce3248003f08f93fcc5469daec6c90aba00341f23e4cda4634ec9ed4623"
     },
     {
       "file": "geo/rj-municipalities.geojson",

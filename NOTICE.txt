@@ -12,7 +12,7 @@ Terms:    Creative Commons Attribution 4.0 International, as stated on the
           The licence text is in LICENSE-data.
 
 Changes:  data/dengue-rj-2024.csv keeps the rows of dataset_multimodal_v8.parquet
-          with estado RJ and anio 2024, and 18 of its 87 columns, as published:
+          with estado RJ and anio 2024, and 19 of its 87 columns, as published:
           nothing renamed, recoded, deduplicated or filled. data_iniSE is
           written as a date. Rows are sorted by municipality and week.
 
