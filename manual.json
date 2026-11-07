@@ -2065,11 +2065,191 @@
      "value": "Rate ratio per °C, 8 weeks before"
     },
     {
+     "note": "The five estimates in one figure. Append rows stacks the five models' tables, one port each, and labels each table's rows with its lag. The labels are declared numbers, in weeks, so the figure places the lags at their distances."
+    },
+    {
+     "add": "append_rows",
+     "as": "lags"
+    },
+    {
+     "select": "lags"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "connect": {
+      "from": "model0",
+      "to": "lags",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "model2",
+      "to": "lags",
+      "port": "records_2"
+     }
+    },
+    {
+     "connect": {
+      "from": "model4",
+      "to": "lags",
+      "port": "records_3"
+     }
+    },
+    {
+     "connect": {
+      "from": "model6",
+      "to": "lags",
+      "port": "records_4"
+     }
+    },
+    {
+     "connect": {
+      "from": "model8",
+      "to": "lags",
+      "port": "records_5"
+     }
+    },
+    {
+     "select": "lags"
+    },
+    {
+     "click": "label:has(#append-name-source)",
+     "label": "Name the source of each row"
+    },
+    {
+     "fill": "append-source",
+     "label": "Column naming the source",
+     "value": "lag"
+    },
+    {
+     "fill": "append-first",
+     "label": "Label for rows of table 1",
+     "value": "0"
+    },
+    {
+     "fill": "append-second",
+     "label": "Label for rows of table 2",
+     "value": "2"
+    },
+    {
+     "fill": "append-label-3",
+     "label": "Label for rows of table 3",
+     "value": "4"
+    },
+    {
+     "fill": "append-label-4",
+     "label": "Label for rows of table 4",
+     "value": "6"
+    },
+    {
+     "fill": "append-label-5",
+     "label": "Label for rows of table 5",
+     "value": "8"
+    },
+    {
+     "click": "label:has(#append-numbers)",
+     "label": "The labels are numbers"
+    },
+    {
+     "fill": "append-numbers-unit",
+     "label": "Their unit",
+     "value": "weeks before"
+    },
+    {
+     "note": "Each model also reports the months; keep the temperature's rows."
+    },
+    {
+     "add": "select_rows",
+     "as": "exposureOnly"
+    },
+    {
+     "connect": {
+      "from": "lags",
+      "to": "exposureOnly",
+      "port": "records"
+     }
+    },
+    {
+     "select": "exposureOnly"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "term"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"LST_Day_1km\"])",
+     "label": "LST_Day_1km"
+    },
+    {
+     "note": "A lag-response plot: each lag's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. Both are on by default for a ratio, and the figure says why."
+    },
+    {
+     "add": "chart_output",
+     "as": "lagChart"
+    },
+    {
+     "connect": {
+      "from": "exposureOnly",
+      "to": "lagChart",
+      "port": "records"
+     }
+    },
+    {
+     "select": "lagChart"
+    },
+    {
+     "choose": "chart-key-column",
+     "label": "Category column",
+     "value": "lag"
+    },
+    {
+     "fill": "output-label",
+     "label": "Results tab name",
+     "value": "Rate ratio per °C at each lag"
+    },
+    {
+     "fill": "chart-title",
+     "label": "Chart title",
+     "value": "Dengue cases and land surface temperature weeks earlier, Rio de Janeiro state, 2024"
+    },
+    {
+     "fill": "chart-subtitle",
+     "label": "Subtitle / context",
+     "value": "Five Poisson models, one per lag, each adjusted for municipality and month; each point is its own model."
+    },
+    {
+     "fill": "chart-x-axis",
+     "label": "Horizontal axis label",
+     "value": "Weeks before the week of cases"
+    },
+    {
+     "fill": "chart-y-axis",
+     "label": "Vertical axis label",
+     "value": "Rate ratio per 1 °C"
+    },
+    {
      "run": true
     },
     {
      "see": "five models, one per lag: the rate ratio of weekly cases per 1 °C of land surface temperature that many weeks earlier, adjusted for the municipality and the calendar month",
      "check": "Rate ratio per °C, 0 weeks before"
+    },
+    {
+     "see": "the lag-response plot: five points with their 95% intervals, on a log scale, the dashed line at 1 marking no association",
+     "check": "Rate ratio per °C at each lag"
     }
    ]
   }
