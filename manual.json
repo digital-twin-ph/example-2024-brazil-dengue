@@ -2065,7 +2065,313 @@
      "value": "Rate ratio per °C, 8 weeks before"
     },
     {
-     "note": "The five estimates in one figure. Append rows stacks the five models' tables, one port each, and labels each table's rows with its lag. The labels are declared numbers, in weeks, so the figure places the lags at their distances."
+     "note": "Lead 2 weeks, a falsification test: the temperature 2 weeks AFTER each week, matched to the Terra period containing that later Wednesday, a shift of +17 days. Later weather cannot cause earlier cases, so an association here as strong as the lags' says the season, not the temperature, is behind them."
+    },
+    {
+     "add": "relate_table",
+     "as": "lead2"
+    },
+    {
+     "connect": {
+      "from": "year",
+      "to": "lead2",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra",
+      "to": "lead2",
+      "port": "related"
+     }
+    },
+    {
+     "select": "lead2"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "17"
+    },
+    {
+     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "modelLead2"
+    },
+    {
+     "connect": {
+      "from": "lead2",
+      "to": "modelLead2",
+      "port": "records"
+     }
+    },
+    {
+     "select": "modelLead2"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-kind-mes",
+     "label": "mes as",
+     "value": "categorical",
+     "shown": "Categorical"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "shownLead2"
+    },
+    {
+     "connect": {
+      "from": "modelLead2",
+      "to": "shownLead2",
+      "port": "table"
+     }
+    },
+    {
+     "select": "shownLead2"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Rate ratio per °C, 2 weeks after"
+    },
+    {
+     "note": "Lead 4 weeks, a falsification test: the temperature 4 weeks AFTER each week, matched to the Terra period containing that later Wednesday, a shift of +31 days. Later weather cannot cause earlier cases, so an association here as strong as the lags' says the season, not the temperature, is behind them. The satellite search ends with 2024, so the last weeks of the year have no later period and are dropped."
+    },
+    {
+     "add": "relate_table",
+     "as": "lead4"
+    },
+    {
+     "connect": {
+      "from": "year",
+      "to": "lead4",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra",
+      "to": "lead4",
+      "port": "related"
+     }
+    },
+    {
+     "select": "lead4"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "31"
+    },
+    {
+     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "modelLead4"
+    },
+    {
+     "connect": {
+      "from": "lead4",
+      "to": "modelLead4",
+      "port": "records"
+     }
+    },
+    {
+     "select": "modelLead4"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-kind-mes",
+     "label": "mes as",
+     "value": "categorical",
+     "shown": "Categorical"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "shownLead4"
+    },
+    {
+     "connect": {
+      "from": "modelLead4",
+      "to": "shownLead4",
+      "port": "table"
+     }
+    },
+    {
+     "select": "shownLead4"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Rate ratio per °C, 4 weeks after"
+    },
+    {
+     "note": "The seven estimates in one figure. Append rows stacks the seven models' tables, one port each, and labels each table's rows with its lag in weeks before the week of cases; the two leads are -2 and -4, weeks after. The labels are declared numbers, so the figure places them at their distances."
     },
     {
      "add": "append_rows",
@@ -2073,6 +2379,14 @@
     },
     {
      "select": "lags"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
     },
     {
      "click": "#append-add-table",
@@ -2122,6 +2436,20 @@
      }
     },
     {
+     "connect": {
+      "from": "modelLead2",
+      "to": "lags",
+      "port": "records_6"
+     }
+    },
+    {
+     "connect": {
+      "from": "modelLead4",
+      "to": "lags",
+      "port": "records_7"
+     }
+    },
+    {
      "select": "lags"
     },
     {
@@ -2157,6 +2485,16 @@
      "fill": "append-label-5",
      "label": "Label for rows of table 5",
      "value": "8"
+    },
+    {
+     "fill": "append-label-6",
+     "label": "Label for rows of table 6",
+     "value": "-2"
+    },
+    {
+     "fill": "append-label-7",
+     "label": "Label for rows of table 7",
+     "value": "-4"
     },
     {
      "click": "label:has(#append-numbers)",
@@ -2228,12 +2566,12 @@
     {
      "fill": "chart-subtitle",
      "label": "Subtitle / context",
-     "value": "Five Poisson models, one per lag, each adjusted for municipality and month; each point is its own model."
+     "value": "Seven Poisson models, one per lag, each adjusted for municipality and month; each point is its own model. Leads (negative) cannot be causal."
     },
     {
      "fill": "chart-x-axis",
      "label": "Horizontal axis label",
-     "value": "Weeks before the week of cases"
+     "value": "Weeks before the week of cases (negative: after, a falsification test)"
     },
     {
      "fill": "chart-y-axis",
@@ -2248,7 +2586,7 @@
      "check": "Rate ratio per °C, 0 weeks before"
     },
     {
-     "see": "the lag-response plot: five points with their 95% intervals, on a log scale, the dashed line at 1 marking no association",
+     "see": "the lag-response plot: seven points with their 95% intervals, the two leads left of zero, on a log scale, the dashed line at 1 marking no association",
      "check": "Rate ratio per °C at each lag"
     }
    ]

@@ -16,7 +16,7 @@ experiment 180.
 | How did the 2024 epidemic unfold across the state? | 4 | Notified cases summed over the 92 municipalities, week by week: 51 weeks, the peak in the week starting 18 February |
 | Where was incidence highest? | 10 | Notified cases per 100,000 residents in 2024, by municipality, on a map: from 54.6 in Nilópolis to 15,081 in Resende; 2,551 for the state as a whole |
 | How hot was the ground in each municipality? | 5 | MODIS land surface temperature over each municipality, every 8-day period of 2024 from Terra and Aqua: the mean of the 1 km cells whose centre is in it that passed the quality rule, how many cells it rests on and how many days were clear. 8,188 rows from 180 files, read in about 4 minutes in a browser |
-| Did warmer ground weeks earlier go with more cases? | 27 | Weekly cases beside Terra's land surface temperature 0, 2, 4, 6 and 8 weeks earlier, matched to the 8-day period containing each week's Wednesday, and five Poisson models with municipality and month: rate ratios per 1 °C from 0.963 (4 weeks) to 1.063 (8 weeks), drawn as a lag-response plot, each lag's ratio with its 95% interval on a log scale. Not an effect: see below |
+| Did warmer ground weeks earlier go with more cases? | 33 | Weekly cases beside Terra's land surface temperature 0, 2, 4, 6 and 8 weeks earlier, matched to the 8-day period containing each week's Wednesday, and Poisson models with municipality and month, drawn as a lag-response plot. Two leads, the temperature 2 and 4 weeks *after* each week, are a falsification test, and it fails: 1.061 per 1 °C 2 weeks after against 1.063 at 8 weeks before. Not an effect: see below |
 
 Both keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
 incidence is a ratio, not a proportion: a notification is an event, and one person can be notified twice. Cases are
@@ -27,7 +27,7 @@ of its clear days, often only one or two in the wet season, and each row says ho
 Terra passes mid-morning and Aqua early afternoon, so their values are kept apart. MODIS documents its quality bits
 and recommends no rule; the one used is stated on every row.
 
-**The lag models are a demonstration, not a finding.** The counts vary 18 to 28 times more than Poisson allows; the
+**The lag models are a demonstration, not a finding, and the leads show why.** Temperature after the cases cannot have caused them, yet it goes with them as strongly as temperature 8 weeks before: with one year and one epidemic wave, these models trace the season. The counts vary 18 to 28 times more than Poisson allows; the
 intervals are scaled for that but not for week-to-week correlation, so they are too narrow. With one year and one
 epidemic wave, lag and season are hard to tell apart; rainfall and humidity are not in the model; and the ground's
 temperature is not the air's. In the plot each point is its own model, not adjusted for the others.
