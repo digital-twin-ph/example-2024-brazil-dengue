@@ -51,8 +51,9 @@ Each step is in `manual.json`, which Fieldwork shows as this example's Manual ta
 | `data/dengue-rj-2024.csv` | 4,876 rows: 92 municipalities × 53 weeks, 19 columns as published in DATASET_MULTIMODAL_V8 |
 | `geo/rj-municipalities.geojson` | The 92 municipalities from geoBoundaries, with the dataset's IBGE codes |
 | `provenance.json` | Where each came from, the digests, and what was found in them |
-| `manual.json` | The steps that build both workflows from an empty canvas |
+| `manual.json` | The steps that build each workflow from an empty canvas |
 | `fieldwork-project.json.gz` | The Fieldwork project |
+| `notes/what-aedes-mosquitoes-meet.md` | A review of open literature on what the mosquito meets, set against the proxies in these models; the project's Notes tab carries its conclusions |
 
 ## Reading the data
 
@@ -61,6 +62,9 @@ Each step is in `manual.json`, which Fieldwork shows as this example's Manual ta
 - **Week 202401 is missing, and week 202501 is there twice.** The week starting 29 December 2024 appears twice for
   every municipality, labelled `semana` 1 and `anio` 2024. The two rows differ only in rainfall, one of them 0. They
   are kept as published.
+- **`tempmed` is InfoDengue's weekly air temperature**, from airport stations in its Rio pilot and ERA5 reanalysis
+  now; when that changed is not stated. **`precip_total_semana` is CHIRPS** at the cell nearest each municipality.
+  The lag workflows use neither as the exposure: they read MODIS daytime land-surface temperature themselves.
 - **The satellite columns are monthly.** `LST_Day_mean`, `LST_Night_mean`, `NDVI_mean` and `EVI_mean` take 11 or 12
   values per municipality over the year, repeated across the weeks of each month. How they were computed is not stated
   in the dataset.

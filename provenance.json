@@ -61,11 +61,12 @@
   "geoBoundaries' state file spells Rio de Janeiro \"Rio de Jeneiro\".",
   "In 2010–2025, twelve weeks appear twice for every municipality, each at a year's edge: 2010-12-26, 2011-12-25, 2012-12-30, 2013-12-29, 2015-01-04, 2016-12-25, 2018-12-30, 2019-12-29, 2020-12-27, 2021-12-26, 2022-12-25 and 2024-12-29; 1,104 rows. The two rows agree on cases and differ in precip_total_semana.",
   "The week starting 2014-12-28 has no row for any municipality.",
-  "precip_total_semana is CHIRPS v2.0 at the grid cell nearest each municipality's coordinates, summed over ISO weeks (Monday to Sunday), with a missing day counted as 0, as the dataset's repository code builds it (jssanchez-garreta/dataset-multimodal-dengue-brazil, scripts/data_construction/03_build_dataset_precipitacion_chirps_anual.py). That code also refuses a repeated municipality-week, which this file has; the file does not match it."
+  "precip_total_semana is CHIRPS v2.0 at the grid cell nearest each municipality's coordinates, summed over ISO weeks (Monday to Sunday), with a missing day counted as 0, as the dataset's repository code builds it (jssanchez-garreta/dataset-multimodal-dengue-brazil, scripts/data_construction/03_build_dataset_precipitacion_chirps_anual.py). That code also refuses a repeated municipality-week, which this file has; the file does not match it.",
+  "tempmed is InfoDengue's own column: the dataset's repository code requests it from InfoDengue's alertcity API, one municipality at a time (scripts/data_construction/01_download_infodengue_nacional.py, commit 5c4d30cd01fb17ea44dcbd416d162c272aa92257, read 2026-11-07). InfoDengue's 2015–2016 Rio pilot took temperature from airport weather stations (Codeço et al. 2016, bioRxiv 10.1101/046193); its repository now says climate comes through Mosqlimate from Copernicus ERA5 reanalysis, averaged over each municipality. When the source changed, and whether earlier weeks were recomputed, is not stated."
  ],
  "limits": [
   "Notified cases as InfoDengue reports them, not confirmed infections.",
-  "The exposure columns were computed by the dataset's authors by a method this file does not state."
+  "How the MODIS columns were computed was not read; tempmed and precip_total_semana are traced in the findings."
  ],
  "doi": "10.5281/zenodo.22029053",
  "authors": [
