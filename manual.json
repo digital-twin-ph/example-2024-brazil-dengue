@@ -1324,57 +1324,69 @@
      "select": "lag0"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "3"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "3",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -1477,57 +1489,69 @@
      "select": "lag2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-11"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-11",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -1630,57 +1654,69 @@
      "select": "lag4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-25"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-25",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -1783,57 +1819,69 @@
      "select": "lag6"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-39"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-39",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -1936,57 +1984,69 @@
      "select": "lag8"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-53"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-53",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -2089,57 +2149,69 @@
      "select": "lead2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "17"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "17",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -2242,57 +2314,69 @@
      "select": "lead4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "31"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "31",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -3169,54 +3253,66 @@
      "select": "t0"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "3"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "3",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "2 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -11 days."
@@ -3243,54 +3339,66 @@
      "select": "t2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-11"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-11",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "4 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -25 days."
@@ -3317,54 +3425,66 @@
      "select": "t4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-25"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-25",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "6 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -39 days."
@@ -3391,54 +3511,66 @@
      "select": "t6"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-39"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-39",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "8 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -53 days."
@@ -3465,54 +3597,66 @@
      "select": "t8"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-53"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-53",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "2 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +17 days. A lead: later weather cannot cause earlier cases, so it tests the design."
@@ -3539,54 +3683,66 @@
      "select": "tlead2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "17"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "17",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "4 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +31 days. A lead: later weather cannot cause earlier cases, so it tests the design."
@@ -3613,54 +3769,66 @@
      "select": "tlead4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "LST_Day_1km"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "LST_Day_1km",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "period_start"
+     "value": "period_start",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "period_end"
+     "value": "period_end",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "31"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "31",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Run again: each rainfall join below is decided against the table its temperature join makes. The satellite files are not read again."
@@ -3693,41 +3861,47 @@
      "select": "r0"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
-    },
-    {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "0"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "note": "Every week has its own rainfall, so nothing is left out and there is no decision to make."
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -3840,54 +4014,66 @@
      "select": "r2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-14"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-14",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -4000,54 +4186,66 @@
      "select": "r4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-28"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-28",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -4160,54 +4358,66 @@
      "select": "r6"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-42"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-42",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -4320,54 +4530,66 @@
      "select": "r8"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "-56"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "-56",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -4480,54 +4702,66 @@
      "select": "rlead2"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "14"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "14",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
@@ -4640,54 +4874,66 @@
      "select": "rlead4"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Relate a column from another table"
+    },
+    {
      "choose": "relate-on",
      "label": "Matched on",
-     "value": "municipio"
+     "value": "municipio",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-bring",
      "label": "Bring across",
-     "value": "precip_total_semana"
-    },
-    {
-     "click": "#relate-within-box summary",
-     "label": "Match a date within a period"
+     "value": "precip_total_semana",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-date",
      "label": "Date, in the first table",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-start",
      "label": "Period start, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
      "choose": "relate-within-end",
      "label": "Period end, in the second",
-     "value": "data_iniSE"
+     "value": "data_iniSE",
+     "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift",
-     "label": "Shift the date first, in days",
-     "value": "28"
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-open-join",
-     "label": "Open the join",
-     "opens": "the join"
+     "fill": "relate-shift-0",
+     "label": "Shift 1",
+     "value": "28",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-config label:has(> input[value=\"drop\"])",
+     "label": "Drop them",
+     "dialog": "Relate a column from another table"
     },
     {
      "fill": "relate-join-reason",
      "label": "Why (recorded in the evidence)",
      "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "the join"
+     "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-join-finalize",
-     "label": "Finalize",
-     "dialog": "the join"
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Relate a column from another table"
     },
     {
      "add": "regression",
