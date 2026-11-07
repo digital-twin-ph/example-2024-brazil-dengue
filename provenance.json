@@ -1,67 +1,75 @@
 {
-  "schema": "fieldwork/example-provenance/1",
-  "retrieved": "2026-11-06",
-  "title": "Weekly dengue cases and satellite exposures, municipalities of Rio de Janeiro state, 2024",
-  "source": "https://zenodo.org/records/22029053",
-  "publisher": "Zenodo",
-  "archives": [
-    {
-      "file": "dataset_multimodal_v8.parquet",
-      "url": "https://zenodo.org/api/records/22029053/files/dataset_multimodal_v8.parquet/content",
-      "bytes": 564861145,
-      "md5": "776662f065ea4580c91a255abe1d78f8",
-      "sha256": "9de15d8291e7d301f21641232e014110c8a31d89993dbfcd397897181925a3b8"
-    },
-    {
-      "file": "geoBoundaries-BRA-ADM2_simplified.geojson",
-      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BRA/ADM2/geoBoundaries-BRA-ADM2_simplified.geojson",
-      "bytes": 41459218,
-      "sha256": "96abf365ab2be5f620a1516bc555e6f7cfade6b43313c562ab1ab05d1039973f"
-    },
-    {
-      "file": "geoBoundaries-BRA-ADM1_simplified.geojson",
-      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BRA/ADM1/geoBoundaries-BRA-ADM1_simplified.geojson",
-      "bytes": 1483651,
-      "sha256": "cf4541da2f999915e27147c68e6220b00ee2d19daa42d6eed451bfd131fd843b"
-    }
-  ],
-  "licence": {
-    "stated": "CC-BY-4.0",
-    "note": "Stated on the Zenodo record. The boundaries are CC BY 3.0 IGO, stated by geoBoundaries. InfoDengue's own terms, the origin of the counts, were not found."
+ "schema": "fieldwork/example-provenance/1",
+ "retrieved": "2026-11-06",
+ "title": "Weekly dengue cases and satellite exposures, municipalities of Rio de Janeiro state, 2024",
+ "source": "https://zenodo.org/records/22029053",
+ "publisher": "Zenodo",
+ "archives": [
+  {
+   "file": "dataset_multimodal_v8.parquet",
+   "url": "https://zenodo.org/api/records/22029053/files/dataset_multimodal_v8.parquet/content",
+   "bytes": 564861145,
+   "md5": "776662f065ea4580c91a255abe1d78f8",
+   "sha256": "9de15d8291e7d301f21641232e014110c8a31d89993dbfcd397897181925a3b8"
   },
-  "derivation": "Rows of dataset_multimodal_v8.parquet with estado RJ and anio 2024; 19 of 87 columns; read with hyparquet; values as published, data_iniSE written as a date. Boundaries: each of the dataset's 92 municipality names matched exactly to a geoBoundaries ADM2 name, the unit nearest the Rio de Janeiro state outline kept where 2 or 3 units share a name (7 names); coordinates rounded to 6 decimals.",
-  "files": [
-    {
-      "file": "data/dengue-rj-2024.csv",
-      "rows": 4876,
-      "sha256": "d1c76ce3248003f08f93fcc5469daec6c90aba00341f23e4cda4634ec9ed4623"
-    },
-    {
-      "file": "geo/rj-municipalities.geojson",
-      "features": 92,
-      "sha256": "5fc0f65562ae883af8ffbd3503cbb177661e1e92cedcad4062566074a3f2b2f1"
-    }
-  ],
-  "verification": {
-    "coverage": "92 municipalities, 53 rows each, 4,876 rows",
-    "boundaryMatch": "92 of 92 names matched exactly",
-    "cases": "426,479 in all rows; 423,795 without the week starting 2024-12-29"
+  {
+   "file": "geoBoundaries-BRA-ADM2_simplified.geojson",
+   "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BRA/ADM2/geoBoundaries-BRA-ADM2_simplified.geojson",
+   "bytes": 41459218,
+   "sha256": "96abf365ab2be5f620a1516bc555e6f7cfade6b43313c562ab1ab05d1039973f"
   },
-  "findings": [
-    "Epidemiological week 202401 is absent.",
-    "SE 202501, the week starting 2024-12-29, appears twice for every municipality, labelled semana 1 and anio 2024; the two rows differ only in precip_total_semana, one of them 0.",
-    "LST_Day_mean, LST_Night_mean, NDVI_mean and EVI_mean take 11 or 12 distinct values per municipality over the year: monthly values repeated weekly.",
-    "n_pixels is about 438 m² a pixel over Rio de Janeiro city, not MODIS's 1 km; which layer it counts is not stated.",
-    "LST_Day_mean is empty in 20 rows and LST_Night_mean in 128.",
-    "geoBoundaries' state file spells Rio de Janeiro \"Rio de Jeneiro\"."
-  ],
-  "limits": [
-    "Notified cases as InfoDengue reports them, not confirmed infections.",
-    "The exposure columns were computed by the dataset's authors by a method this file does not state."
-  ],
-  "doi": "10.5281/zenodo.22029053",
-  "authors": [
-    "Sánchez-Marqués, Raquel",
-    "Sánchez, J. Salvador"
-  ]
+  {
+   "file": "geoBoundaries-BRA-ADM1_simplified.geojson",
+   "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BRA/ADM1/geoBoundaries-BRA-ADM1_simplified.geojson",
+   "bytes": 1483651,
+   "sha256": "cf4541da2f999915e27147c68e6220b00ee2d19daa42d6eed451bfd131fd843b"
+  }
+ ],
+ "licence": {
+  "stated": "CC-BY-4.0",
+  "note": "Stated on the Zenodo record. The boundaries are CC BY 3.0 IGO, stated by geoBoundaries. InfoDengue's own terms, the origin of the counts, were not found."
+ },
+ "derivation": "Rows of dataset_multimodal_v8.parquet with estado RJ and anio 2024; 19 of 87 columns; read with hyparquet; values as published, data_iniSE written as a date. Boundaries: each of the dataset's 92 municipality names matched exactly to a geoBoundaries ADM2 name, the unit nearest the Rio de Janeiro state outline kept where 2 or 3 units share a name (7 names); coordinates rounded to 6 decimals. The sixteen-year file, data/dengue-rj-2010-2025.csv: the same 19 columns, every row with estado RJ, anio 2010 to 2025, read the same way, ordered by municipality and week.",
+ "files": [
+  {
+   "file": "data/dengue-rj-2024.csv",
+   "rows": 4876,
+   "sha256": "d1c76ce3248003f08f93fcc5469daec6c90aba00341f23e4cda4634ec9ed4623"
+  },
+  {
+   "file": "data/dengue-rj-2010-2025.csv",
+   "rows": 77740,
+   "sha256": "a4fe143748ccdfb765f8e5872fc3683b5758065f5ca55d58a120fd162aa92802"
+  },
+  {
+   "file": "geo/rj-municipalities.geojson",
+   "features": 92,
+   "sha256": "5fc0f65562ae883af8ffbd3503cbb177661e1e92cedcad4062566074a3f2b2f1"
+  }
+ ],
+ "verification": {
+  "coverage": "92 municipalities, 53 rows each, 4,876 rows",
+  "boundaryMatch": "92 of 92 names matched exactly",
+  "cases": "426,479 in all rows; 423,795 without the week starting 2024-12-29"
+ },
+ "findings": [
+  "Epidemiological week 202401 is absent.",
+  "SE 202501, the week starting 2024-12-29, appears twice for every municipality, labelled semana 1 and anio 2024; the two rows differ only in precip_total_semana, one of them 0.",
+  "LST_Day_mean, LST_Night_mean, NDVI_mean and EVI_mean take 11 or 12 distinct values per municipality over the year: monthly values repeated weekly.",
+  "n_pixels is about 438 m² a pixel over Rio de Janeiro city, not MODIS's 1 km; which layer it counts is not stated.",
+  "LST_Day_mean is empty in 20 rows and LST_Night_mean in 128.",
+  "geoBoundaries' state file spells Rio de Janeiro \"Rio de Jeneiro\".",
+  "In 2010–2025, twelve weeks appear twice for every municipality, each at a year's edge: 2010-12-26, 2011-12-25, 2012-12-30, 2013-12-29, 2015-01-04, 2016-12-25, 2018-12-30, 2019-12-29, 2020-12-27, 2021-12-26, 2022-12-25 and 2024-12-29; 1,104 rows. The two rows agree on cases and differ in precip_total_semana.",
+  "The week starting 2014-12-28 has no row for any municipality.",
+  "precip_total_semana is CHIRPS v2.0 at the grid cell nearest each municipality's coordinates, summed over ISO weeks (Monday to Sunday), with a missing day counted as 0, as the dataset's repository code builds it (jssanchez-garreta/dataset-multimodal-dengue-brazil, scripts/data_construction/03_build_dataset_precipitacion_chirps_anual.py). That code also refuses a repeated municipality-week, which this file has; the file does not match it."
+ ],
+ "limits": [
+  "Notified cases as InfoDengue reports them, not confirmed infections.",
+  "The exposure columns were computed by the dataset's authors by a method this file does not state."
+ ],
+ "doi": "10.5281/zenodo.22029053",
+ "authors": [
+  "Sánchez-Marqués, Raquel",
+  "Sánchez, J. Salvador"
+ ]
 }
