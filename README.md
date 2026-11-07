@@ -53,7 +53,7 @@ Each step is in `manual.json`, which Fieldwork shows as this example's Manual ta
 | `provenance.json` | Where each came from, the digests, and what was found in them |
 | `manual.json` | The steps that build each workflow from an empty canvas |
 | `fieldwork-project.json.gz` | The Fieldwork project |
-| `notes/what-aedes-mosquitoes-meet.md` | A review of open literature on what the mosquito meets, set against the proxies in these models; the project's Notes tab carries its conclusions |
+| `notes/what-aedes-mosquitoes-meet.md` | A review of open literature on what the mosquito meets, set against the proxies in these models; the project's Notes tab carries its conclusions, fifteen notes |
 
 ## Reading the data
 
