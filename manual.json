@@ -2590,6 +2590,2401 @@
      "check": "Rate ratio per °C at each lag"
     }
    ]
+  },
+  {
+   "name": "Across sixteen years, did warmer ground weeks earlier go with more cases?",
+   "steps": [
+    {
+     "click": "#add-workflow",
+     "label": "Add workflow"
+    },
+    {
+     "fill": "workflow-name-edit",
+     "view": "project",
+     "label": "This workflow’s name — the question it answers",
+     "value": "Across sixteen years, did warmer ground weeks earlier go with more cases?"
+    },
+    {
+     "note": "Weekly cases per municipality, 2010 to 2025, with the month and the epidemiological year of each week: together with the municipality they are the strata, so weeks are compared only within one municipality, month and year."
+    },
+    {
+     "add": "table_input",
+     "as": "weekly16"
+    },
+    {
+     "select": "weekly16"
+    },
+    {
+     "click": "#open-table",
+     "label": "Import tabular data",
+     "opens": "Import tabular data"
+    },
+    {
+     "click": "#table-remote summary",
+     "label": "Or fetch from a URL",
+     "dialog": "Import tabular data"
+    },
+    {
+     "fill": "table-url",
+     "label": "URL of a CSV, Stata file or zip",
+     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-fetch",
+     "label": "Fetch",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-shape",
+     "label": "Shape of the file",
+     "value": "long",
+     "shown": "Long · one row per observation, one value column",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-value",
+     "label": "Value column",
+     "value": "casos",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-keys-choose",
+     "label": "Choose key columns…",
+     "dialog": "Import tabular data",
+     "opens": "Key columns"
+    },
+    {
+     "fill": "table-keys-paste",
+     "label": "Columns to keep, pasted or typed",
+     "value": "municipio, data_iniSE, mes, anio",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-keep",
+     "label": "Keep these",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-done",
+     "label": "Done",
+     "dialog": "Key columns"
+    },
+    {
+     "fill": "table-unit",
+     "label": "Unit of the value (entered by you)",
+     "value": "notified cases/week",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-save",
+     "label": "Save table",
+     "dialog": "Import tabular data"
+    },
+    {
+     "note": "Twelve weeks at years' edges appear twice for every municipality, the two rows disagreeing on rainfall; the file cannot say which is right. They are left out, here and from the rainfall below."
+    },
+    {
+     "add": "select_rows",
+     "as": "cases16"
+    },
+    {
+     "connect": {
+      "from": "weekly16",
+      "to": "cases16",
+      "port": "records"
+     }
+    },
+    {
+     "select": "cases16"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "select-mode",
+     "label": "Keep",
+     "value": "leave-out",
+     "shown": "Every value except those I tick"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
+     "label": "2010-12-26"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
+     "label": "2011-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
+     "label": "2012-12-30"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
+     "label": "2013-12-29"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
+     "label": "2015-01-04"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
+     "label": "2016-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
+     "label": "2018-12-30"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
+     "label": "2019-12-29"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
+     "label": "2020-12-27"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
+     "label": "2021-12-26"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
+     "label": "2022-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
+     "label": "2024-12-29"
+    },
+    {
+     "note": "Weekly rainfall, the dataset's own column: CHIRPS at the one grid cell nearest each municipality's point, summed Monday to Sunday, a missing day counted as 0. Not read over the municipality: CHIRPS's server does not let a web page read its files."
+    },
+    {
+     "add": "table_input",
+     "as": "rain16"
+    },
+    {
+     "select": "rain16"
+    },
+    {
+     "click": "#open-table",
+     "label": "Import tabular data",
+     "opens": "Import tabular data"
+    },
+    {
+     "click": "#table-remote summary",
+     "label": "Or fetch from a URL",
+     "dialog": "Import tabular data"
+    },
+    {
+     "fill": "table-url",
+     "label": "URL of a CSV, Stata file or zip",
+     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-fetch",
+     "label": "Fetch",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-shape",
+     "label": "Shape of the file",
+     "value": "long",
+     "shown": "Long · one row per observation, one value column",
+     "dialog": "Import tabular data"
+    },
+    {
+     "choose": "table-value",
+     "label": "Value column",
+     "value": "precip_total_semana",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-keys-choose",
+     "label": "Choose key columns…",
+     "dialog": "Import tabular data",
+     "opens": "Key columns"
+    },
+    {
+     "fill": "table-keys-paste",
+     "label": "Columns to keep, pasted or typed",
+     "value": "municipio, data_iniSE",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-keep",
+     "label": "Keep these",
+     "dialog": "Key columns"
+    },
+    {
+     "click": "#table-keys-done",
+     "label": "Done",
+     "dialog": "Key columns"
+    },
+    {
+     "fill": "table-unit",
+     "label": "Unit of the value (entered by you)",
+     "value": "mm/week",
+     "dialog": "Import tabular data"
+    },
+    {
+     "click": "#table-save",
+     "label": "Save table",
+     "dialog": "Import tabular data"
+    },
+    {
+     "note": "The same twelve weeks left out of the rainfall."
+    },
+    {
+     "add": "select_rows",
+     "as": "rainKept"
+    },
+    {
+     "connect": {
+      "from": "rain16",
+      "to": "rainKept",
+      "port": "records"
+     }
+    },
+    {
+     "select": "rainKept"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "select-mode",
+     "label": "Keep",
+     "value": "leave-out",
+     "shown": "Every value except those I tick"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
+     "label": "2010-12-26"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
+     "label": "2011-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
+     "label": "2012-12-30"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
+     "label": "2013-12-29"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
+     "label": "2015-01-04"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
+     "label": "2016-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
+     "label": "2018-12-30"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
+     "label": "2019-12-29"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
+     "label": "2020-12-27"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
+     "label": "2021-12-26"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
+     "label": "2022-12-25"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
+     "label": "2024-12-29"
+    },
+    {
+     "note": "The 92 municipalities, from this project's first study area."
+    },
+    {
+     "add": "study_area",
+     "as": "state16"
+    },
+    {
+     "select": "state16"
+    },
+    {
+     "click": "#edit-study-area",
+     "label": "Select area on map",
+     "opens": "Choose your study area"
+    },
+    {
+     "click": "#area-project-source summary",
+     "label": "Use a study area from this project",
+     "dialog": "Choose your study area"
+    },
+    {
+     "choose": "area-project-pick",
+     "label": "Study area",
+     "value": "0",
+     "shown": "Where was incidence highest?",
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-project-use",
+     "label": "Use this study area",
+     "dialog": "Choose your study area"
+    },
+    {
+     "click": "#area-apply",
+     "label": "Apply study area",
+     "dialog": "Choose your study area"
+    },
+    {
+     "note": "MODIS land surface temperature, every 8-day period from 2010 to 2025: about 2,900 files from both satellites."
+    },
+    {
+     "add": "find_satellite_products",
+     "as": "product16"
+    },
+    {
+     "select": "product16"
+    },
+    {
+     "click": "#satellite-find",
+     "label": "Find satellite products",
+     "opens": "Find satellite products"
+    },
+    {
+     "fill": "sat-question",
+     "label": "Research topic or measurement",
+     "value": "land surface temperature",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "#sat-find",
+     "label": "Find data pathways",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
+     "label": "Choose this product",
+     "dialog": "Find satellite products"
+    },
+    {
+     "click": "#sat-close",
+     "label": "Done",
+     "dialog": "Find satellite products"
+    },
+    {
+     "add": "search_satellite_catalog",
+     "as": "search16"
+    },
+    {
+     "connect": {
+      "from": "product16",
+      "to": "search16",
+      "port": "product"
+     }
+    },
+    {
+     "connect": {
+      "from": "state16",
+      "to": "search16",
+      "port": "area"
+     }
+    },
+    {
+     "select": "search16"
+    },
+    {
+     "click": "#catalog-search-open",
+     "label": "Search the catalog",
+     "opens": "Search a satellite catalog"
+    },
+    {
+     "fill": "cat-from",
+     "label": "From",
+     "value": "2010-01-01",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "fill": "cat-until",
+     "label": "Until",
+     "value": "2025-12-31",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "click": "#cat-search",
+     "label": "Search",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "click": "#cat-close",
+     "label": "Done",
+     "dialog": "Search a satellite catalog"
+    },
+    {
+     "add": "sample_satellite_files_at_points",
+     "as": "sample16"
+    },
+    {
+     "connect": {
+      "from": "state16",
+      "to": "sample16",
+      "port": "area"
+     }
+    },
+    {
+     "connect": {
+      "from": "search16",
+      "to": "sample16",
+      "port": "files"
+     }
+    },
+    {
+     "select": "sample16"
+    },
+    {
+     "fill": "satellite-place-column",
+     "label": "Name of the place column",
+     "value": "municipio"
+    },
+    {
+     "add": "select_rows",
+     "as": "terra16"
+    },
+    {
+     "connect": {
+      "from": "sample16",
+      "to": "terra16",
+      "port": "records"
+     }
+    },
+    {
+     "select": "terra16"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "platform"
+    },
+    {
+     "fill": "select-values",
+     "label": "Values to keep, one per line",
+     "value": "terra"
+    },
+    {
+     "add": "table_output",
+     "as": "rain16Shown"
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "rain16Shown",
+      "port": "table"
+     }
+    },
+    {
+     "select": "rain16Shown"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Weekly rainfall by municipality, 2010–2025 (dataset's CHIRPS column)"
+    },
+    {
+     "add": "table_output",
+     "as": "cases16Shown"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "cases16Shown",
+      "port": "table"
+     }
+    },
+    {
+     "select": "cases16Shown"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Weekly cases by municipality, 2010–2025"
+    },
+    {
+     "add": "table_output",
+     "as": "terra16Shown"
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "terra16Shown",
+      "port": "table"
+     }
+    },
+    {
+     "select": "terra16Shown"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "Terra daytime land surface temperature by municipality, 2010–2025"
+    },
+    {
+     "note": "Run once now: the joins below are decided against the tables this run makes. The satellite files are read once; the run after the joins does not read them again."
+    },
+    {
+     "run": true
+    },
+    {
+     "note": "0 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of +3 days."
+    },
+    {
+     "add": "relate_table",
+     "as": "t0"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "t0",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "t0",
+      "port": "related"
+     }
+    },
+    {
+     "select": "t0"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "3"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "2 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -11 days."
+    },
+    {
+     "add": "relate_table",
+     "as": "t2"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "t2",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "t2",
+      "port": "related"
+     }
+    },
+    {
+     "select": "t2"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-11"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "4 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -25 days."
+    },
+    {
+     "add": "relate_table",
+     "as": "t4"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "t4",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "t4",
+      "port": "related"
+     }
+    },
+    {
+     "select": "t4"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-25"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "6 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -39 days."
+    },
+    {
+     "add": "relate_table",
+     "as": "t6"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "t6",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "t6",
+      "port": "related"
+     }
+    },
+    {
+     "select": "t6"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-39"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "8 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -53 days."
+    },
+    {
+     "add": "relate_table",
+     "as": "t8"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "t8",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "t8",
+      "port": "related"
+     }
+    },
+    {
+     "select": "t8"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-53"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "2 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +17 days. A lead: later weather cannot cause earlier cases, so it tests the design."
+    },
+    {
+     "add": "relate_table",
+     "as": "tlead2"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "tlead2",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "tlead2",
+      "port": "related"
+     }
+    },
+    {
+     "select": "tlead2"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "17"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "4 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +31 days. A lead: later weather cannot cause earlier cases, so it tests the design."
+    },
+    {
+     "add": "relate_table",
+     "as": "tlead4"
+    },
+    {
+     "connect": {
+      "from": "cases16",
+      "to": "tlead4",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "terra16",
+      "to": "tlead4",
+      "port": "related"
+     }
+    },
+    {
+     "select": "tlead4"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "LST_Day_1km"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "period_start"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "period_end"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "31"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "note": "Run again: each rainfall join below is decided against the table its temperature join makes. The satellite files are not read again."
+    },
+    {
+     "run": true
+    },
+    {
+     "note": "Rainfall 0 weeks before: the dataset's weekly total for that week, a shift of +0 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "r0"
+    },
+    {
+     "connect": {
+      "from": "t0",
+      "to": "r0",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "r0",
+      "port": "related"
+     }
+    },
+    {
+     "select": "r0"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "0"
+    },
+    {
+     "note": "Every week has its own rainfall, so nothing is left out and there is no decision to make."
+    },
+    {
+     "add": "regression",
+     "as": "m0"
+    },
+    {
+     "connect": {
+      "from": "r0",
+      "to": "m0",
+      "port": "records"
+     }
+    },
+    {
+     "select": "m0"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "s0"
+    },
+    {
+     "connect": {
+      "from": "m0",
+      "to": "s0",
+      "port": "table"
+     }
+    },
+    {
+     "select": "s0"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 0 weeks before"
+    },
+    {
+     "note": "Rainfall 2 weeks before: the dataset's weekly total for that week, a shift of -14 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "r2"
+    },
+    {
+     "connect": {
+      "from": "t2",
+      "to": "r2",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "r2",
+      "port": "related"
+     }
+    },
+    {
+     "select": "r2"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-14"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "m2"
+    },
+    {
+     "connect": {
+      "from": "r2",
+      "to": "m2",
+      "port": "records"
+     }
+    },
+    {
+     "select": "m2"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "s2"
+    },
+    {
+     "connect": {
+      "from": "m2",
+      "to": "s2",
+      "port": "table"
+     }
+    },
+    {
+     "select": "s2"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 2 weeks before"
+    },
+    {
+     "note": "Rainfall 4 weeks before: the dataset's weekly total for that week, a shift of -28 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "r4"
+    },
+    {
+     "connect": {
+      "from": "t4",
+      "to": "r4",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "r4",
+      "port": "related"
+     }
+    },
+    {
+     "select": "r4"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-28"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "m4"
+    },
+    {
+     "connect": {
+      "from": "r4",
+      "to": "m4",
+      "port": "records"
+     }
+    },
+    {
+     "select": "m4"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "s4"
+    },
+    {
+     "connect": {
+      "from": "m4",
+      "to": "s4",
+      "port": "table"
+     }
+    },
+    {
+     "select": "s4"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 4 weeks before"
+    },
+    {
+     "note": "Rainfall 6 weeks before: the dataset's weekly total for that week, a shift of -42 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "r6"
+    },
+    {
+     "connect": {
+      "from": "t6",
+      "to": "r6",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "r6",
+      "port": "related"
+     }
+    },
+    {
+     "select": "r6"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-42"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "m6"
+    },
+    {
+     "connect": {
+      "from": "r6",
+      "to": "m6",
+      "port": "records"
+     }
+    },
+    {
+     "select": "m6"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "s6"
+    },
+    {
+     "connect": {
+      "from": "m6",
+      "to": "s6",
+      "port": "table"
+     }
+    },
+    {
+     "select": "s6"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 6 weeks before"
+    },
+    {
+     "note": "Rainfall 8 weeks before: the dataset's weekly total for that week, a shift of -56 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "r8"
+    },
+    {
+     "connect": {
+      "from": "t8",
+      "to": "r8",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "r8",
+      "port": "related"
+     }
+    },
+    {
+     "select": "r8"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "-56"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "m8"
+    },
+    {
+     "connect": {
+      "from": "r8",
+      "to": "m8",
+      "port": "records"
+     }
+    },
+    {
+     "select": "m8"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "s8"
+    },
+    {
+     "connect": {
+      "from": "m8",
+      "to": "s8",
+      "port": "table"
+     }
+    },
+    {
+     "select": "s8"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 8 weeks before"
+    },
+    {
+     "note": "Rainfall 2 weeks after: the dataset's weekly total for that week, a shift of +14 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "rlead2"
+    },
+    {
+     "connect": {
+      "from": "tlead2",
+      "to": "rlead2",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "rlead2",
+      "port": "related"
+     }
+    },
+    {
+     "select": "rlead2"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "14"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "mlead2"
+    },
+    {
+     "connect": {
+      "from": "rlead2",
+      "to": "mlead2",
+      "port": "records"
+     }
+    },
+    {
+     "select": "mlead2"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "slead2"
+    },
+    {
+     "connect": {
+      "from": "mlead2",
+      "to": "slead2",
+      "port": "table"
+     }
+    },
+    {
+     "select": "slead2"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 2 weeks after"
+    },
+    {
+     "note": "Rainfall 4 weeks after: the dataset's weekly total for that week, a shift of +28 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+    },
+    {
+     "add": "relate_table",
+     "as": "rlead4"
+    },
+    {
+     "connect": {
+      "from": "tlead4",
+      "to": "rlead4",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "rainKept",
+      "to": "rlead4",
+      "port": "related"
+     }
+    },
+    {
+     "select": "rlead4"
+    },
+    {
+     "choose": "relate-on",
+     "label": "Matched on",
+     "value": "municipio"
+    },
+    {
+     "choose": "relate-bring",
+     "label": "Bring across",
+     "value": "precip_total_semana"
+    },
+    {
+     "click": "#relate-within-box summary",
+     "label": "Match a date within a period"
+    },
+    {
+     "choose": "relate-within-date",
+     "label": "Date, in the first table",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-start",
+     "label": "Period start, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "choose": "relate-within-end",
+     "label": "Period end, in the second",
+     "value": "data_iniSE"
+    },
+    {
+     "fill": "relate-shift",
+     "label": "Shift the date first, in days",
+     "value": "28"
+    },
+    {
+     "click": "#relate-open-join",
+     "label": "Open the join",
+     "opens": "the join"
+    },
+    {
+     "fill": "relate-join-reason",
+     "label": "Why (recorded in the evidence)",
+     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
+     "dialog": "the join"
+    },
+    {
+     "click": "#relate-join-finalize",
+     "label": "Finalize",
+     "dialog": "the join"
+    },
+    {
+     "add": "regression",
+     "as": "mlead4"
+    },
+    {
+     "connect": {
+      "from": "rlead4",
+      "to": "mlead4",
+      "port": "records"
+     }
+    },
+    {
+     "select": "mlead4"
+    },
+    {
+     "choose": "reg-family",
+     "label": "Model",
+     "value": "poisson",
+     "shown": "Poisson regression · rate ratios"
+    },
+    {
+     "choose": "reg-outcome",
+     "label": "Outcome",
+     "value": "casos"
+    },
+    {
+     "choose": "reg-exposure",
+     "label": "Exposure",
+     "value": "LST_Day_1km"
+    },
+    {
+     "choose": "reg-exposure-as",
+     "label": "Exposure is",
+     "value": "numeric",
+     "shown": "Numeric"
+    },
+    {
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana",
+     "label": "precip_total_semana as",
+     "value": "spline",
+     "shown": "Spline, 4 df"
+    },
+    {
+     "choose": "reg-strata",
+     "label": "Strata, as fixed effects",
+     "value": "municipio"
+    },
+    {
+     "choose": "reg-strata-2",
+     "label": "Together with",
+     "value": "anio"
+    },
+    {
+     "choose": "reg-strata-3",
+     "label": "Together with",
+     "value": "mes"
+    },
+    {
+     "choose": "reg-errors",
+     "label": "Intervals",
+     "value": "overdispersed"
+    },
+    {
+     "add": "table_output",
+     "as": "slead4"
+    },
+    {
+     "connect": {
+      "from": "mlead4",
+      "to": "slead4",
+      "port": "table"
+     }
+    },
+    {
+     "select": "slead4"
+    },
+    {
+     "fill": "table-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C, 4 weeks after"
+    },
+    {
+     "note": "The seven estimates in one figure, as in the 2024 workflow."
+    },
+    {
+     "add": "append_rows",
+     "as": "lags16"
+    },
+    {
+     "select": "lags16"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "click": "#append-add-table",
+     "label": "Add a table"
+    },
+    {
+     "connect": {
+      "from": "m0",
+      "to": "lags16",
+      "port": "records"
+     }
+    },
+    {
+     "connect": {
+      "from": "m2",
+      "to": "lags16",
+      "port": "records_2"
+     }
+    },
+    {
+     "connect": {
+      "from": "m4",
+      "to": "lags16",
+      "port": "records_3"
+     }
+    },
+    {
+     "connect": {
+      "from": "m6",
+      "to": "lags16",
+      "port": "records_4"
+     }
+    },
+    {
+     "connect": {
+      "from": "m8",
+      "to": "lags16",
+      "port": "records_5"
+     }
+    },
+    {
+     "connect": {
+      "from": "mlead2",
+      "to": "lags16",
+      "port": "records_6"
+     }
+    },
+    {
+     "connect": {
+      "from": "mlead4",
+      "to": "lags16",
+      "port": "records_7"
+     }
+    },
+    {
+     "select": "lags16"
+    },
+    {
+     "click": "label:has(#append-name-source)",
+     "label": "Name the source of each row"
+    },
+    {
+     "fill": "append-source",
+     "label": "Column naming the source",
+     "value": "lag"
+    },
+    {
+     "fill": "append-first",
+     "label": "Label for rows of table 1",
+     "value": "0"
+    },
+    {
+     "fill": "append-second",
+     "label": "Label for rows of table 2",
+     "value": "2"
+    },
+    {
+     "fill": "append-label-3",
+     "label": "Label for rows of table 3",
+     "value": "4"
+    },
+    {
+     "fill": "append-label-4",
+     "label": "Label for rows of table 4",
+     "value": "6"
+    },
+    {
+     "fill": "append-label-5",
+     "label": "Label for rows of table 5",
+     "value": "8"
+    },
+    {
+     "fill": "append-label-6",
+     "label": "Label for rows of table 6",
+     "value": "-2"
+    },
+    {
+     "fill": "append-label-7",
+     "label": "Label for rows of table 7",
+     "value": "-4"
+    },
+    {
+     "click": "label:has(#append-numbers)",
+     "label": "The labels are numbers"
+    },
+    {
+     "fill": "append-numbers-unit",
+     "label": "Their unit",
+     "value": "weeks before"
+    },
+    {
+     "add": "select_rows",
+     "as": "exposure16"
+    },
+    {
+     "connect": {
+      "from": "lags16",
+      "to": "exposure16",
+      "port": "records"
+     }
+    },
+    {
+     "select": "exposure16"
+    },
+    {
+     "choose": "select-key",
+     "label": "Key column to choose by",
+     "value": "term"
+    },
+    {
+     "click": "label:has(> input[data-select-value=\"LST_Day_1km\"])",
+     "label": "LST_Day_1km"
+    },
+    {
+     "add": "chart_output",
+     "as": "chart16"
+    },
+    {
+     "connect": {
+      "from": "exposure16",
+      "to": "chart16",
+      "port": "records"
+     }
+    },
+    {
+     "select": "chart16"
+    },
+    {
+     "choose": "chart-key-column",
+     "label": "Category column",
+     "value": "lag"
+    },
+    {
+     "fill": "output-label",
+     "label": "Results tab name",
+     "value": "2010–2025: rate ratio per °C at each lag"
+    },
+    {
+     "fill": "chart-title",
+     "label": "Chart title",
+     "value": "Dengue cases and land surface temperature, Rio de Janeiro state, 2010–2025"
+    },
+    {
+     "fill": "chart-subtitle",
+     "label": "Subtitle / context",
+     "value": "Seven Poisson models, one per lag, each comparing weeks within a municipality, month and year, adjusted for that week's rainfall; each point is its own model. Leads (negative) cannot be causal."
+    },
+    {
+     "fill": "chart-x-axis",
+     "label": "Horizontal axis label",
+     "value": "Weeks before the week of cases (negative: after, a falsification test)"
+    },
+    {
+     "fill": "chart-y-axis",
+     "label": "Vertical axis label",
+     "value": "Rate ratio per 1 °C"
+    },
+    {
+     "run": true
+    },
+    {
+     "see": "seven models over sixteen years, weeks compared within a municipality, month and year, and the lag-response plot with its two leads",
+     "check": "2010–2025: rate ratio per °C at each lag"
+    }
+   ]
   }
  ]
 }

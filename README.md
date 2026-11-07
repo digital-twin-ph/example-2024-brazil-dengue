@@ -18,7 +18,8 @@ experiment 180.
 | How hot was the ground in each municipality? | 5 | MODIS land surface temperature over each municipality, every 8-day period of 2024 from Terra and Aqua: the mean of the 1 km cells whose centre is in it that passed the quality rule, how many cells it rests on and how many days were clear. 8,188 rows from 180 files, read in about 4 minutes in a browser |
 | Did warmer ground weeks earlier go with more cases? | 33 | Weekly cases beside Terra's land surface temperature 0, 2, 4, 6 and 8 weeks earlier, matched to the 8-day period containing each week's Wednesday, and Poisson models with municipality and month, drawn as a lag-response plot. Two leads, the temperature 2 and 4 weeks *after* each week, are a falsification test, and it fails: 1.061 per 1 °C 2 weeks after against 1.063 at 8 weeks before. Not an effect: see below |
 
-Both keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
+| Across sixteen years, did warmer ground weeks earlier go with more cases? | 43 | Weekly cases 2010–2025 beside Terra's land surface temperature at the same lags and leads, each week compared only with weeks of the same municipality, month and year, adjusted for that week's rainfall: 1.020 per 1 °C at 8 weeks before and 1.021 at 6, 0.989 at 4, 1.005 for both leads. The leads are a quarter the size of 2024's. Not an effect: see below |
+The first four keep to epidemiological year 2024, 31 December 2023 to 28 December 2024, which leaves out the doubled week. The
 incidence is a ratio, not a proportion: a notification is an event, and one person can be notified twice. Cases are
 summed over the weeks; population, the same every week for a municipality, is taken once.
 
@@ -31,6 +32,15 @@ and recommends no rule; the one used is stated on every row.
 intervals are scaled for that but not for week-to-week correlation, so they are too narrow. With one year and one
 epidemic wave, lag and season are hard to tell apart; rainfall and humidity are not in the model; and the ground's
 temperature is not the air's. In the plot each point is its own model, not adjusted for the others.
+
+**The sixteen-year models are a better test, and still not a finding.** Comparing weeks only within a municipality,
+month and year removes each year's epidemic timing, and the leads fall from 1.061 in 2024 alone to 1.005. They still
+do not reach 1, and the intervals allow nothing for correlation between neighbouring weeks, so they are too narrow.
+The dip at 4 weeks has no mechanism behind it. Rainfall is the dataset's: CHIRPS at one grid cell per municipality,
+summed Monday to Sunday, with a missing day counted as 0. Twelve weeks the file holds twice, at years' edges, are left
+out, 2,208 rows.
+
+The sixteen-year table is `data/dengue-rj-2010-2025.csv`, the same 19 columns for every year in the file.
 
 Each step is in `manual.json`, which Fieldwork shows as this example's Manual tab and plays back as a test.
 
