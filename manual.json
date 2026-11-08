@@ -454,12 +454,23 @@
      "select": "casesTotal"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Total within groups"
+    },
+    {
      "tick": "group-keep",
      "label": "Key columns to keep",
      "values": [
       "municipio",
       "variable"
-     ]
+     ],
+     "dialog": "Total within groups"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Total within groups"
     },
     {
      "add": "select_rows",
@@ -509,18 +520,30 @@
      "select": "population"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Total within groups"
+    },
+    {
      "tick": "group-keep",
      "label": "Key columns to keep",
      "values": [
       "municipio",
       "variable"
-     ]
+     ],
+     "dialog": "Total within groups"
     },
     {
      "choose": "group-aggregate",
      "label": "Aggregate",
      "value": "maximum",
-     "shown": "Maximum"
+     "shown": "Maximum",
+     "dialog": "Total within groups"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Total within groups"
     },
     {
      "add": "append_rows",
