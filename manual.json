@@ -132,6 +132,11 @@
      "select": "year"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "data_iniSE"
@@ -151,6 +156,11 @@
      "fill": "select-to",
      "label": "To",
      "value": "2024-12-28"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "note": "One number a week: the state's cases, counted over its municipalities by the Sunday each epidemiological week starts."
@@ -363,6 +373,11 @@
      "select": "year"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "data_iniSE"
@@ -384,6 +399,11 @@
      "value": "2024-12-28"
     },
     {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
+    },
+    {
      "note": "Cases add up over the weeks; population does not. So each is totalled separately, cases summed and each municipality's population, the same every week, taken once as its maximum, and the two stacked again."
     },
     {
@@ -401,6 +421,11 @@
      "select": "cases"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "variable"
@@ -408,6 +433,11 @@
     {
      "click": "label:has(> input[data-select-value=\"casos\"])",
      "label": "casos"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "add": "group_table",
@@ -446,6 +476,11 @@
      "select": "people"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "variable"
@@ -453,6 +488,11 @@
     {
      "click": "label:has(> input[data-select-value=\"pop\"])",
      "label": "pop"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "add": "group_table",
@@ -1070,6 +1110,11 @@
      "select": "year"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "data_iniSE"
@@ -1089,6 +1134,11 @@
      "fill": "select-to",
      "label": "To",
      "value": "2024-12-28"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
@@ -1261,6 +1311,11 @@
      "select": "terra"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "platform"
@@ -1269,6 +1324,11 @@
      "fill": "select-values",
      "label": "Values to keep, one per line",
      "value": "terra"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "add": "table_output",
@@ -1567,6 +1627,11 @@
      "select": "exposureOnly"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "role"
@@ -1574,6 +1639,11 @@
     {
      "click": "label:has(> input[data-select-value=\"exposure\"])",
      "label": "exposure"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "note": "A lag-response plot: each shift's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. The shift is a number of days, so the figure places each model at its distance."
@@ -1743,6 +1813,11 @@
      "select": "cases16"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "data_iniSE"
@@ -1800,6 +1875,11 @@
     {
      "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
      "label": "2024-12-29"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "note": "Weekly rainfall, the dataset's own column: CHIRPS at the one grid cell nearest each municipality's point, summed Monday to Sunday, a missing day counted as 0. Not read over the municipality: CHIRPS's server does not let a web page read its files."
@@ -1896,6 +1976,11 @@
      "select": "rainKept"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "data_iniSE"
@@ -1953,6 +2038,11 @@
     {
      "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
      "label": "2024-12-29"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "note": "The 92 municipalities, from this project's first study area."
@@ -2116,6 +2206,11 @@
      "select": "terra16"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "platform"
@@ -2124,6 +2219,11 @@
      "fill": "select-values",
      "label": "Values to keep, one per line",
      "value": "terra"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "add": "table_output",
@@ -2635,6 +2735,11 @@
      "select": "exposure16"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Select rows by value"
+    },
+    {
      "choose": "select-key",
      "label": "Key column to choose by",
      "value": "role"
@@ -2642,6 +2747,11 @@
     {
      "click": "label:has(> input[data-select-value=\"exposure\"])",
      "label": "exposure"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Select rows by value"
     },
     {
      "add": "chart_output",
