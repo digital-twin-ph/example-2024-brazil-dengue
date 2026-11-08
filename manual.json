@@ -46,42 +46,42 @@
     },
     {
      "click": "#open-table",
-     "label": "Import tabular data",
-     "opens": "Import tabular data"
+     "label": "Configure…",
+     "opens": "Tabular data"
     },
     {
      "click": "#table-remote summary",
      "label": "Or fetch from a URL",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "fill": "table-url",
      "label": "URL of a CSV, Stata file or zip",
      "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-fetch",
      "label": "Fetch",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-shape",
      "label": "Shape of the file",
      "value": "long",
      "shown": "Long · one row per observation, one value column",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-value",
      "label": "Value column",
      "value": "casos",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-keys-choose",
      "label": "Choose key columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Key columns"
     },
     {
@@ -104,12 +104,12 @@
      "fill": "table-unit",
      "label": "Unit of the value (entered by you)",
      "value": "notified cases/week",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-save",
-     "label": "Save table",
-     "dialog": "Import tabular data"
+     "label": "Apply",
+     "dialog": "Tabular data"
     },
     {
      "note": "The file has the week starting 29 December 2024 twice for every municipality. It is week 1 of 2025, so the next step leaves it out."
@@ -274,36 +274,36 @@
     },
     {
      "click": "#open-table",
-     "label": "Import tabular data",
-     "opens": "Import tabular data"
+     "label": "Configure…",
+     "opens": "Tabular data"
     },
     {
      "click": "#table-remote summary",
      "label": "Or fetch from a URL",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "fill": "table-url",
      "label": "URL of a CSV, Stata file or zip",
      "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-fetch",
      "label": "Fetch",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-shape",
      "label": "Shape of the file",
      "value": "wide",
      "shown": "Wide · one row per subject, a column per variable",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-keys-choose",
      "label": "Choose key columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Key columns"
     },
     {
@@ -325,7 +325,7 @@
     {
      "click": "#table-values-choose",
      "label": "Choose value columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Value columns"
     },
     {
@@ -348,12 +348,12 @@
      "fill": "table-measure-key",
      "label": "Name for the column holding the variable names",
      "value": "variable",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-save",
-     "label": "Save table",
-     "dialog": "Import tabular data"
+     "label": "Apply",
+     "dialog": "Tabular data"
     },
     {
      "note": "Epidemiological year 2024 again, which leaves out the doubled week."
@@ -1027,42 +1027,42 @@
     },
     {
      "click": "#open-table",
-     "label": "Import tabular data",
-     "opens": "Import tabular data"
+     "label": "Configure…",
+     "opens": "Tabular data"
     },
     {
      "click": "#table-remote summary",
      "label": "Or fetch from a URL",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "fill": "table-url",
      "label": "URL of a CSV, Stata file or zip",
      "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-fetch",
      "label": "Fetch",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-shape",
      "label": "Shape of the file",
      "value": "long",
      "shown": "Long · one row per observation, one value column",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-value",
      "label": "Value column",
      "value": "casos",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-keys-choose",
      "label": "Choose key columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Key columns"
     },
     {
@@ -1085,12 +1085,12 @@
      "fill": "table-unit",
      "label": "Unit of the value (entered by you)",
      "value": "notified cases/week",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-save",
-     "label": "Save table",
-     "dialog": "Import tabular data"
+     "label": "Apply",
+     "dialog": "Tabular data"
     },
     {
      "note": "Epidemiological year 2024, which leaves out the doubled week."
@@ -1730,42 +1730,42 @@
     },
     {
      "click": "#open-table",
-     "label": "Import tabular data",
-     "opens": "Import tabular data"
+     "label": "Configure…",
+     "opens": "Tabular data"
     },
     {
      "click": "#table-remote summary",
      "label": "Or fetch from a URL",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "fill": "table-url",
      "label": "URL of a CSV, Stata file or zip",
      "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-fetch",
      "label": "Fetch",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-shape",
      "label": "Shape of the file",
      "value": "long",
      "shown": "Long · one row per observation, one value column",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-value",
      "label": "Value column",
      "value": "casos",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-keys-choose",
      "label": "Choose key columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Key columns"
     },
     {
@@ -1788,12 +1788,12 @@
      "fill": "table-unit",
      "label": "Unit of the value (entered by you)",
      "value": "notified cases/week",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-save",
-     "label": "Save table",
-     "dialog": "Import tabular data"
+     "label": "Apply",
+     "dialog": "Tabular data"
     },
     {
      "note": "Twelve weeks at years' edges appear twice for every municipality, the two rows disagreeing on rainfall; the file cannot say which is right. They are left out, here and from the rainfall below."
@@ -1893,42 +1893,42 @@
     },
     {
      "click": "#open-table",
-     "label": "Import tabular data",
-     "opens": "Import tabular data"
+     "label": "Configure…",
+     "opens": "Tabular data"
     },
     {
      "click": "#table-remote summary",
      "label": "Or fetch from a URL",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "fill": "table-url",
      "label": "URL of a CSV, Stata file or zip",
      "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-fetch",
      "label": "Fetch",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-shape",
      "label": "Shape of the file",
      "value": "long",
      "shown": "Long · one row per observation, one value column",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "choose": "table-value",
      "label": "Value column",
      "value": "precip_total_semana",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-keys-choose",
      "label": "Choose key columns…",
-     "dialog": "Import tabular data",
+     "dialog": "Tabular data",
      "opens": "Key columns"
     },
     {
@@ -1951,12 +1951,12 @@
      "fill": "table-unit",
      "label": "Unit of the value (entered by you)",
      "value": "mm/week",
-     "dialog": "Import tabular data"
+     "dialog": "Tabular data"
     },
     {
      "click": "#table-save",
-     "label": "Save table",
-     "dialog": "Import tabular data"
+     "label": "Apply",
+     "dialog": "Tabular data"
     },
     {
      "note": "The same twelve weeks left out of the rainfall."
