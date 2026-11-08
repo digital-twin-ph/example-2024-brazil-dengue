@@ -1300,28 +1300,28 @@
      "run": true
     },
     {
-     "note": "Lag 0: each week's Wednesday, matched to the Terra period containing it. A shift of +3 days takes the week's Sunday to its Wednesday."
+     "note": "One Relate brings the temperature at every lag, one column per shift: each week's Wednesday, matched to the Terra period containing it. A shift of +3 days takes the week's Sunday to its Wednesday (0 weeks before); -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier. +17 and +31 days are 2 and 4 weeks AFTER, a falsification test: later weather cannot cause earlier cases, so an association there as strong as the lags' says the season, not the temperature, is behind them."
     },
     {
      "add": "relate_table",
-     "as": "lag0"
+     "as": "lags"
     },
     {
      "connect": {
       "from": "year",
-      "to": "lag0",
+      "to": "lags",
       "port": "records"
      }
     },
     {
      "connect": {
       "from": "terra",
-      "to": "lag0",
+      "to": "lags",
       "port": "related"
      }
     },
     {
-     "select": "lag0"
+     "select": "lags"
     },
     {
      "click": "#configure-step",
@@ -1370,1008 +1370,73 @@
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "model0"
-    },
-    {
-     "connect": {
-      "from": "lag0",
-      "to": "model0",
-      "port": "records"
-     }
-    },
-    {
-     "select": "model0"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown0"
-    },
-    {
-     "connect": {
-      "from": "model0",
-      "to": "shown0",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown0"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 0 weeks before"
-    },
-    {
-     "note": "Lag 2 weeks: each week's Wednesday, 2 weeks earlier, matched to the Terra period containing it, a shift of -11 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "lag2"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lag2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lag2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lag2"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-1",
+     "label": "Shift 2",
      "value": "-11",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "model2"
-    },
-    {
-     "connect": {
-      "from": "lag2",
-      "to": "model2",
-      "port": "records"
-     }
-    },
-    {
-     "select": "model2"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown2"
-    },
-    {
-     "connect": {
-      "from": "model2",
-      "to": "shown2",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown2"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 2 weeks before"
-    },
-    {
-     "note": "Lag 4 weeks: each week's Wednesday, 4 weeks earlier, matched to the Terra period containing it, a shift of -25 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "lag4"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lag4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lag4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lag4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-2",
+     "label": "Shift 3",
      "value": "-25",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "model4"
-    },
-    {
-     "connect": {
-      "from": "lag4",
-      "to": "model4",
-      "port": "records"
-     }
-    },
-    {
-     "select": "model4"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown4"
-    },
-    {
-     "connect": {
-      "from": "model4",
-      "to": "shown4",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown4"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 4 weeks before"
-    },
-    {
-     "note": "Lag 6 weeks: each week's Wednesday, 6 weeks earlier, matched to the Terra period containing it, a shift of -39 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "lag6"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lag6",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lag6",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lag6"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-3",
+     "label": "Shift 4",
      "value": "-39",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "model6"
-    },
-    {
-     "connect": {
-      "from": "lag6",
-      "to": "model6",
-      "port": "records"
-     }
-    },
-    {
-     "select": "model6"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown6"
-    },
-    {
-     "connect": {
-      "from": "model6",
-      "to": "shown6",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown6"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 6 weeks before"
-    },
-    {
-     "note": "Lag 8 weeks: each week's Wednesday, 8 weeks earlier, matched to the Terra period containing it, a shift of -53 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "lag8"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lag8",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lag8",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lag8"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-4",
+     "label": "Shift 5",
      "value": "-53",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "model8"
-    },
-    {
-     "connect": {
-      "from": "lag8",
-      "to": "model8",
-      "port": "records"
-     }
-    },
-    {
-     "select": "model8"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown8"
-    },
-    {
-     "connect": {
-      "from": "model8",
-      "to": "shown8",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown8"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 8 weeks before"
-    },
-    {
-     "note": "Lead 2 weeks, a falsification test: the temperature 2 weeks AFTER each week, matched to the Terra period containing that later Wednesday, a shift of +17 days. Later weather cannot cause earlier cases, so an association here as strong as the lags' says the season, not the temperature, is behind them."
-    },
-    {
-     "add": "relate_table",
-     "as": "lead2"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lead2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lead2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lead2"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-5",
+     "label": "Shift 6",
      "value": "17",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "modelLead2"
-    },
-    {
-     "connect": {
-      "from": "lead2",
-      "to": "modelLead2",
-      "port": "records"
-     }
-    },
-    {
-     "select": "modelLead2"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shownLead2"
-    },
-    {
-     "connect": {
-      "from": "modelLead2",
-      "to": "shownLead2",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shownLead2"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C, 2 weeks after"
-    },
-    {
-     "note": "Lead 4 weeks, a falsification test: the temperature 4 weeks AFTER each week, matched to the Terra period containing that later Wednesday, a shift of +31 days. Later weather cannot cause earlier cases, so an association here as strong as the lags' says the season, not the temperature, is behind them. The satellite search ends with 2024, so the last weeks of the year have no later period and are dropped."
-    },
-    {
-     "add": "relate_table",
-     "as": "lead4"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lead4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lead4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lead4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-6",
+     "label": "Shift 7",
      "value": "31",
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Weeks whose period has no clear-sky value have no exposure: dropped, and counted in the evidence."
-    },
-    {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value has no exposure to model.",
-     "dialog": "Relate a column from another table"
+     "note": "Every week is kept. A week whose period at a shift has no clear-sky value has that shift's column empty, counted in the evidence, and the model for that shift leaves it out. The satellite search ends with 2024, so the last weeks of the year have no value at the leads."
     },
     {
      "click": "#config-apply",
@@ -2379,18 +1444,21 @@
      "dialog": "Relate a column from another table"
     },
     {
+     "note": "One Regression fits the same model once per shift column: each on its own weeks, adjusted for the municipality and the calendar month."
+    },
+    {
      "add": "regression",
-     "as": "modelLead4"
+     "as": "models"
     },
     {
      "connect": {
-      "from": "lead4",
-      "to": "modelLead4",
+      "from": "lags",
+      "to": "models",
       "port": "records"
      }
     },
     {
-     "select": "modelLead4"
+     "select": "models"
     },
     {
      "choose": "reg-family",
@@ -2406,13 +1474,25 @@
     {
      "choose": "reg-exposure",
      "label": "Exposure",
-     "value": "LST_Day_1km"
+     "value": "LST_Day_1km_+3d"
     },
     {
      "choose": "reg-exposure-as",
      "label": "Exposure is",
      "value": "numeric",
      "shown": "Numeric"
+    },
+    {
+     "tick": "reg-exposures",
+     "label": "Also fit, one model each, with",
+     "values": [
+      "LST_Day_1km_-11d",
+      "LST_Day_1km_-25d",
+      "LST_Day_1km_-39d",
+      "LST_Day_1km_-53d",
+      "LST_Day_1km_+17d",
+      "LST_Day_1km_+31d"
+     ]
     },
     {
      "choose": "reg-adjust-add",
@@ -2437,160 +1517,25 @@
     },
     {
      "add": "table_output",
-     "as": "shownLead4"
+     "as": "shown"
     },
     {
      "connect": {
-      "from": "modelLead4",
-      "to": "shownLead4",
+      "from": "models",
+      "to": "shown",
       "port": "table"
      }
     },
     {
-     "select": "shownLead4"
+     "select": "shown"
     },
     {
      "fill": "table-label",
      "label": "Results tab name",
-     "value": "Rate ratio per °C, 4 weeks after"
+     "value": "Every model's estimates, by shift"
     },
     {
-     "note": "The seven estimates in one figure. Append rows stacks the seven models' tables, one port each, and labels each table's rows with its lag in weeks before the week of cases; the two leads are -2 and -4, weeks after. The labels are declared numbers, so the figure places them at their distances."
-    },
-    {
-     "add": "append_rows",
-     "as": "lags"
-    },
-    {
-     "select": "lags"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "connect": {
-      "from": "model0",
-      "to": "lags",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "model2",
-      "to": "lags",
-      "port": "records_2"
-     }
-    },
-    {
-     "connect": {
-      "from": "model4",
-      "to": "lags",
-      "port": "records_3"
-     }
-    },
-    {
-     "connect": {
-      "from": "model6",
-      "to": "lags",
-      "port": "records_4"
-     }
-    },
-    {
-     "connect": {
-      "from": "model8",
-      "to": "lags",
-      "port": "records_5"
-     }
-    },
-    {
-     "connect": {
-      "from": "modelLead2",
-      "to": "lags",
-      "port": "records_6"
-     }
-    },
-    {
-     "connect": {
-      "from": "modelLead4",
-      "to": "lags",
-      "port": "records_7"
-     }
-    },
-    {
-     "select": "lags"
-    },
-    {
-     "click": "label:has(#append-name-source)",
-     "label": "Name the source of each row"
-    },
-    {
-     "fill": "append-source",
-     "label": "Column naming the source",
-     "value": "lag"
-    },
-    {
-     "fill": "append-first",
-     "label": "Label for rows of table 1",
-     "value": "0"
-    },
-    {
-     "fill": "append-second",
-     "label": "Label for rows of table 2",
-     "value": "2"
-    },
-    {
-     "fill": "append-label-3",
-     "label": "Label for rows of table 3",
-     "value": "4"
-    },
-    {
-     "fill": "append-label-4",
-     "label": "Label for rows of table 4",
-     "value": "6"
-    },
-    {
-     "fill": "append-label-5",
-     "label": "Label for rows of table 5",
-     "value": "8"
-    },
-    {
-     "fill": "append-label-6",
-     "label": "Label for rows of table 6",
-     "value": "-2"
-    },
-    {
-     "fill": "append-label-7",
-     "label": "Label for rows of table 7",
-     "value": "-4"
-    },
-    {
-     "click": "label:has(#append-numbers)",
-     "label": "The labels are numbers"
-    },
-    {
-     "fill": "append-numbers-unit",
-     "label": "Their unit",
-     "value": "weeks before"
-    },
-    {
-     "note": "Each model also reports the months; keep the temperature's rows."
+     "note": "Each model also reports the months; keep the temperature's rows, whose role is exposure."
     },
     {
      "add": "select_rows",
@@ -2598,7 +1543,7 @@
     },
     {
      "connect": {
-      "from": "lags",
+      "from": "models",
       "to": "exposureOnly",
       "port": "records"
      }
@@ -2609,14 +1554,14 @@
     {
      "choose": "select-key",
      "label": "Key column to choose by",
-     "value": "term"
+     "value": "role"
     },
     {
-     "click": "label:has(> input[data-select-value=\"LST_Day_1km\"])",
-     "label": "LST_Day_1km"
+     "click": "label:has(> input[data-select-value=\"exposure\"])",
+     "label": "exposure"
     },
     {
-     "note": "A lag-response plot: each lag's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. Both are on by default for a ratio, and the figure says why."
+     "note": "A lag-response plot: each shift's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. The shift is a number of days, so the figure places each model at its distance."
     },
     {
      "add": "chart_output",
@@ -2635,7 +1580,7 @@
     {
      "choose": "chart-key-column",
      "label": "Category column",
-     "value": "lag"
+     "value": "shift_days"
     },
     {
      "fill": "output-label",
@@ -2650,12 +1595,12 @@
     {
      "fill": "chart-subtitle",
      "label": "Subtitle / context",
-     "value": "Seven Poisson models, one per lag, each adjusted for municipality and month; each point is its own model. Leads (negative) cannot be causal."
+     "value": "Seven Poisson models, one per shift, each adjusted for municipality and month; each point is its own model. Shifts after the week (positive) cannot be causal."
     },
     {
      "fill": "chart-x-axis",
      "label": "Horizontal axis label",
-     "value": "Weeks before the week of cases (negative: after, a falsification test)"
+     "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
     },
     {
      "fill": "chart-y-axis",
@@ -2666,11 +1611,11 @@
      "run": true
     },
     {
-     "see": "five models, one per lag: the rate ratio of weekly cases per 1 °C of land surface temperature that many weeks earlier, adjusted for the municipality and the calendar month",
-     "check": "Rate ratio per °C, 0 weeks before"
+     "see": "seven models in one table, one per shift: the rate ratio of weekly cases per 1 °C of land surface temperature at that shift, adjusted for the municipality and the calendar month",
+     "check": "Every model's estimates, by shift"
     },
     {
-     "see": "the lag-response plot: seven points with their 95% intervals, the two leads left of zero, on a log scale, the dashed line at 1 marking no association",
+     "see": "the lag-response plot: seven points with their 95% intervals, the two leads right of the others, on a log scale, the dashed line at 1 marking no association",
      "check": "Rate ratio per °C at each lag"
     }
    ]
@@ -3229,28 +2174,28 @@
      "run": true
     },
     {
-     "note": "0 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of +3 days."
+     "note": "One Relate brings the temperature at every lag, one column per shift: the Terra period containing each week's Wednesday. +3 days is 0 weeks before; -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier; +17 and +31 days are 2 and 4 weeks after, the leads: later weather cannot cause earlier cases, so they test the design."
     },
     {
      "add": "relate_table",
-     "as": "t0"
+     "as": "temps16"
     },
     {
      "connect": {
       "from": "cases16",
-      "to": "t0",
+      "to": "temps16",
       "port": "records"
      }
     },
     {
      "connect": {
       "from": "terra16",
-      "to": "t0",
+      "to": "temps16",
       "port": "related"
      }
     },
     {
-     "select": "t0"
+     "select": "temps16"
     },
     {
      "click": "#configure-step",
@@ -3299,531 +2244,73 @@
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "2 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -11 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "t2"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "t2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "t2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "t2"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-1",
+     "label": "Shift 2",
      "value": "-11",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "4 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -25 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "t4"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "t4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "t4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "t4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-2",
+     "label": "Shift 3",
      "value": "-25",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "6 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -39 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "t6"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "t6",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "t6",
-      "port": "related"
-     }
-    },
-    {
-     "select": "t6"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-3",
+     "label": "Shift 4",
      "value": "-39",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "8 weeks before: the temperature of the Terra period containing that week's Wednesday, a shift of -53 days."
-    },
-    {
-     "add": "relate_table",
-     "as": "t8"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "t8",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "t8",
-      "port": "related"
-     }
-    },
-    {
-     "select": "t8"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-4",
+     "label": "Shift 5",
      "value": "-53",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "2 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +17 days. A lead: later weather cannot cause earlier cases, so it tests the design."
-    },
-    {
-     "add": "relate_table",
-     "as": "tlead2"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "tlead2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "tlead2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "tlead2"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-5",
+     "label": "Shift 6",
      "value": "17",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "4 weeks after: the temperature of the Terra period containing that week's Wednesday, a shift of +31 days. A lead: later weather cannot cause earlier cases, so it tests the design."
-    },
-    {
-     "add": "relate_table",
-     "as": "tlead4"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "tlead4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "tlead4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "tlead4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-6",
+     "label": "Shift 7",
      "value": "31",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose satellite period has no clear-sky value, or lies outside 2010-2025, has no exposure to model.",
-     "dialog": "Relate a column from another table"
+     "note": "Every week is kept. A week whose period at a shift has no clear-sky value, or lies outside 2010-2025, has that shift's column empty, counted in the evidence, and the model for that shift leaves it out."
     },
     {
      "click": "#config-apply",
@@ -3831,187 +2318,34 @@
      "dialog": "Relate a column from another table"
     },
     {
-     "note": "Run again: each rainfall join below is decided against the table its temperature join makes. The satellite files are not read again."
+     "note": "Run again: the rainfall join below is decided against the table the temperature join makes. The satellite files are not read again."
     },
     {
      "run": true
     },
     {
-     "note": "Rainfall 0 weeks before: the dataset's weekly total for that week, a shift of +0 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
+     "note": "A second Relate brings the rainfall at the same lags, from the dataset's weekly totals: 0, -14, -28, -42 and -56 days, and +14 and +28 for the leads. The week's own start is both the date and the period."
     },
     {
      "add": "relate_table",
-     "as": "r0"
+     "as": "rain16"
     },
     {
      "connect": {
-      "from": "t0",
-      "to": "r0",
+      "from": "temps16",
+      "to": "rain16",
       "port": "records"
      }
     },
     {
      "connect": {
       "from": "rainKept",
-      "to": "r0",
+      "to": "rain16",
       "port": "related"
      }
     },
     {
-     "select": "r0"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "Every week has its own rainfall, so nothing is left out and there is no decision to make."
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "m0"
-    },
-    {
-     "connect": {
-      "from": "r0",
-      "to": "m0",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m0"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s0"
-    },
-    {
-     "connect": {
-      "from": "m0",
-      "to": "s0",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s0"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 0 weeks before"
-    },
-    {
-     "note": "Rainfall 2 weeks before: the dataset's weekly total for that week, a shift of -14 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "r2"
-    },
-    {
-     "connect": {
-      "from": "t2",
-      "to": "r2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "r2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "r2"
+     "select": "rain16"
     },
     {
      "click": "#configure-step",
@@ -4056,879 +2390,77 @@
     {
      "fill": "relate-shift-0",
      "label": "Shift 1",
+     "value": "0",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "click": "#relate-shift-add",
+     "label": "+ Add a shift",
+     "dialog": "Relate a column from another table"
+    },
+    {
+     "fill": "relate-shift-1",
+     "label": "Shift 2",
      "value": "-14",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "m2"
-    },
-    {
-     "connect": {
-      "from": "r2",
-      "to": "m2",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m2"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s2"
-    },
-    {
-     "connect": {
-      "from": "m2",
-      "to": "s2",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s2"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 2 weeks before"
-    },
-    {
-     "note": "Rainfall 4 weeks before: the dataset's weekly total for that week, a shift of -28 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "r4"
-    },
-    {
-     "connect": {
-      "from": "t4",
-      "to": "r4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "r4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "r4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-2",
+     "label": "Shift 3",
      "value": "-28",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "m4"
-    },
-    {
-     "connect": {
-      "from": "r4",
-      "to": "m4",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m4"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s4"
-    },
-    {
-     "connect": {
-      "from": "m4",
-      "to": "s4",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s4"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 4 weeks before"
-    },
-    {
-     "note": "Rainfall 6 weeks before: the dataset's weekly total for that week, a shift of -42 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "r6"
-    },
-    {
-     "connect": {
-      "from": "t6",
-      "to": "r6",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "r6",
-      "port": "related"
-     }
-    },
-    {
-     "select": "r6"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-3",
+     "label": "Shift 4",
      "value": "-42",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "m6"
-    },
-    {
-     "connect": {
-      "from": "r6",
-      "to": "m6",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m6"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s6"
-    },
-    {
-     "connect": {
-      "from": "m6",
-      "to": "s6",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s6"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 6 weeks before"
-    },
-    {
-     "note": "Rainfall 8 weeks before: the dataset's weekly total for that week, a shift of -56 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "r8"
-    },
-    {
-     "connect": {
-      "from": "t8",
-      "to": "r8",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "r8",
-      "port": "related"
-     }
-    },
-    {
-     "select": "r8"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-4",
+     "label": "Shift 5",
      "value": "-56",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "m8"
-    },
-    {
-     "connect": {
-      "from": "r8",
-      "to": "m8",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m8"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s8"
-    },
-    {
-     "connect": {
-      "from": "m8",
-      "to": "s8",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s8"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 8 weeks before"
-    },
-    {
-     "note": "Rainfall 2 weeks after: the dataset's weekly total for that week, a shift of +14 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "rlead2"
-    },
-    {
-     "connect": {
-      "from": "tlead2",
-      "to": "rlead2",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "rlead2",
-      "port": "related"
-     }
-    },
-    {
-     "select": "rlead2"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-5",
+     "label": "Shift 6",
      "value": "14",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "add": "regression",
-     "as": "mlead2"
-    },
-    {
-     "connect": {
-      "from": "rlead2",
-      "to": "mlead2",
-      "port": "records"
-     }
-    },
-    {
-     "select": "mlead2"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "slead2"
-    },
-    {
-     "connect": {
-      "from": "mlead2",
-      "to": "slead2",
-      "port": "table"
-     }
-    },
-    {
-     "select": "slead2"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 2 weeks after"
-    },
-    {
-     "note": "Rainfall 4 weeks after: the dataset's weekly total for that week, a shift of +28 days. The week's own start is both the date and the period, so the match is written as data_iniSE_matched."
-    },
-    {
-     "add": "relate_table",
-     "as": "rlead4"
-    },
-    {
-     "connect": {
-      "from": "tlead4",
-      "to": "rlead4",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "rlead4",
-      "port": "related"
-     }
-    },
-    {
-     "select": "rlead4"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
      "click": "#relate-shift-add",
      "label": "+ Add a shift",
      "dialog": "Relate a column from another table"
     },
     {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
+     "fill": "relate-shift-6",
+     "label": "Shift 7",
      "value": "28",
      "dialog": "Relate a column from another table"
     },
     {
-     "click": "#relate-config label:has(> input[value=\"drop\"])",
-     "label": "Drop them",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-join-reason",
-     "label": "Why (recorded in the evidence)",
-     "value": "A week whose rainfall week was left out, or lies outside the file, has no rainfall to adjust for.",
-     "dialog": "Relate a column from another table"
+     "note": "Every week has its own rainfall, so nothing is empty at a shift inside 2010-2025."
     },
     {
      "click": "#config-apply",
@@ -4936,18 +2468,21 @@
      "dialog": "Relate a column from another table"
     },
     {
+     "note": "One Regression fits the same model once per temperature column, each on its own weeks, comparing weeks within a municipality, month and year, and each adjusted for the rainfall at its own lag."
+    },
+    {
      "add": "regression",
-     "as": "mlead4"
+     "as": "m16"
     },
     {
      "connect": {
-      "from": "rlead4",
-      "to": "mlead4",
+      "from": "rain16",
+      "to": "m16",
       "port": "records"
      }
     },
     {
-     "select": "mlead4"
+     "select": "m16"
     },
     {
      "choose": "reg-family",
@@ -4963,7 +2498,7 @@
     {
      "choose": "reg-exposure",
      "label": "Exposure",
-     "value": "LST_Day_1km"
+     "value": "LST_Day_1km_+3d"
     },
     {
      "choose": "reg-exposure-as",
@@ -4972,15 +2507,61 @@
      "shown": "Numeric"
     },
     {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana"
+     "tick": "reg-exposures",
+     "label": "Also fit, one model each, with",
+     "values": [
+      "LST_Day_1km_-11d",
+      "LST_Day_1km_-25d",
+      "LST_Day_1km_-39d",
+      "LST_Day_1km_-53d",
+      "LST_Day_1km_+17d",
+      "LST_Day_1km_+31d"
+     ]
     },
     {
-     "choose": "reg-kind-precip_total_semana",
-     "label": "precip_total_semana as",
+     "choose": "reg-adjust-add",
+     "label": "Add a variable",
+     "value": "precip_total_semana_0d"
+    },
+    {
+     "choose": "reg-kind-precip_total_semana_0d",
+     "label": "precip_total_semana_0d as",
      "value": "spline",
      "shown": "Spline, 4 df"
+    },
+    {
+     "click": "label:has(> input[data-reg-follow=\"precip_total_semana_0d\"])",
+     "label": "precip_total_semana_0d follows the shift: each model is adjusted for its own column"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-1",
+     "label": "For the model of LST_Day_1km_-11d",
+     "value": "precip_total_semana_-14d"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-2",
+     "label": "For the model of LST_Day_1km_-25d",
+     "value": "precip_total_semana_-28d"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-3",
+     "label": "For the model of LST_Day_1km_-39d",
+     "value": "precip_total_semana_-42d"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-4",
+     "label": "For the model of LST_Day_1km_-53d",
+     "value": "precip_total_semana_-56d"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-5",
+     "label": "For the model of LST_Day_1km_+17d",
+     "value": "precip_total_semana_+14d"
+    },
+    {
+     "choose": "reg-follow-precip_total_semana_0d-6",
+     "label": "For the model of LST_Day_1km_+31d",
+     "value": "precip_total_semana_+28d"
     },
     {
      "choose": "reg-strata",
@@ -5004,157 +2585,25 @@
     },
     {
      "add": "table_output",
-     "as": "slead4"
+     "as": "s16"
     },
     {
      "connect": {
-      "from": "mlead4",
-      "to": "slead4",
+      "from": "m16",
+      "to": "s16",
       "port": "table"
      }
     },
     {
-     "select": "slead4"
+     "select": "s16"
     },
     {
      "fill": "table-label",
      "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C, 4 weeks after"
+     "value": "2010–2025: every model's estimates, by shift"
     },
     {
-     "note": "The seven estimates in one figure, as in the 2024 workflow."
-    },
-    {
-     "add": "append_rows",
-     "as": "lags16"
-    },
-    {
-     "select": "lags16"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "click": "#append-add-table",
-     "label": "Add a table"
-    },
-    {
-     "connect": {
-      "from": "m0",
-      "to": "lags16",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "m2",
-      "to": "lags16",
-      "port": "records_2"
-     }
-    },
-    {
-     "connect": {
-      "from": "m4",
-      "to": "lags16",
-      "port": "records_3"
-     }
-    },
-    {
-     "connect": {
-      "from": "m6",
-      "to": "lags16",
-      "port": "records_4"
-     }
-    },
-    {
-     "connect": {
-      "from": "m8",
-      "to": "lags16",
-      "port": "records_5"
-     }
-    },
-    {
-     "connect": {
-      "from": "mlead2",
-      "to": "lags16",
-      "port": "records_6"
-     }
-    },
-    {
-     "connect": {
-      "from": "mlead4",
-      "to": "lags16",
-      "port": "records_7"
-     }
-    },
-    {
-     "select": "lags16"
-    },
-    {
-     "click": "label:has(#append-name-source)",
-     "label": "Name the source of each row"
-    },
-    {
-     "fill": "append-source",
-     "label": "Column naming the source",
-     "value": "lag"
-    },
-    {
-     "fill": "append-first",
-     "label": "Label for rows of table 1",
-     "value": "0"
-    },
-    {
-     "fill": "append-second",
-     "label": "Label for rows of table 2",
-     "value": "2"
-    },
-    {
-     "fill": "append-label-3",
-     "label": "Label for rows of table 3",
-     "value": "4"
-    },
-    {
-     "fill": "append-label-4",
-     "label": "Label for rows of table 4",
-     "value": "6"
-    },
-    {
-     "fill": "append-label-5",
-     "label": "Label for rows of table 5",
-     "value": "8"
-    },
-    {
-     "fill": "append-label-6",
-     "label": "Label for rows of table 6",
-     "value": "-2"
-    },
-    {
-     "fill": "append-label-7",
-     "label": "Label for rows of table 7",
-     "value": "-4"
-    },
-    {
-     "click": "label:has(#append-numbers)",
-     "label": "The labels are numbers"
-    },
-    {
-     "fill": "append-numbers-unit",
-     "label": "Their unit",
-     "value": "weeks before"
+     "note": "Keep the temperature's rows, whose role is exposure."
     },
     {
      "add": "select_rows",
@@ -5162,7 +2611,7 @@
     },
     {
      "connect": {
-      "from": "lags16",
+      "from": "m16",
       "to": "exposure16",
       "port": "records"
      }
@@ -5173,11 +2622,11 @@
     {
      "choose": "select-key",
      "label": "Key column to choose by",
-     "value": "term"
+     "value": "role"
     },
     {
-     "click": "label:has(> input[data-select-value=\"LST_Day_1km\"])",
-     "label": "LST_Day_1km"
+     "click": "label:has(> input[data-select-value=\"exposure\"])",
+     "label": "exposure"
     },
     {
      "add": "chart_output",
@@ -5196,7 +2645,7 @@
     {
      "choose": "chart-key-column",
      "label": "Category column",
-     "value": "lag"
+     "value": "shift_days"
     },
     {
      "fill": "output-label",
@@ -5211,12 +2660,12 @@
     {
      "fill": "chart-subtitle",
      "label": "Subtitle / context",
-     "value": "Seven Poisson models, one per lag, each comparing weeks within a municipality, month and year, adjusted for that week's rainfall; each point is its own model. Leads (negative) cannot be causal."
+     "value": "Seven Poisson models, one per shift, each comparing weeks within a municipality, month and year, adjusted for the rainfall at its own lag; each point is its own model. Shifts after the week (positive) cannot be causal."
     },
     {
      "fill": "chart-x-axis",
      "label": "Horizontal axis label",
-     "value": "Weeks before the week of cases (negative: after, a falsification test)"
+     "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
     },
     {
      "fill": "chart-y-axis",
