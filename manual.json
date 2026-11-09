@@ -574,10 +574,21 @@
      "select": "incidence"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Rate with a denominator"
+    },
+    {
      "choose": "rate-source",
      "label": "Records arrive as",
      "value": "table",
-     "shown": "a table, one row per measure"
+     "shown": "a table",
+     "dialog": "Rate with a denominator"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Rate with a denominator"
     },
     {
      "connect": {
@@ -587,51 +598,73 @@
      }
     },
     {
-     "fill": "rate-measure",
+     "select": "incidence"
+    },
+    {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Rate with a denominator"
+    },
+    {
+     "choose": "rate-measure",
      "label": "Key column holding the measure names",
-     "value": "variable"
+     "value": "variable",
+     "dialog": "Rate with a denominator"
     },
     {
      "fill": "rate-numerator",
-     "label": "Numerator attribute (what is counted)",
-     "value": "casos"
+     "label": "Numerator (what is counted)",
+     "value": "casos",
+     "dialog": "Rate with a denominator"
     },
     {
      "fill": "rate-denominator",
-     "label": "Denominator attribute (units at risk)",
-     "value": "pop"
+     "label": "Denominator (units at risk)",
+     "value": "pop",
+     "dialog": "Rate with a denominator"
     },
     {
      "choose": "rate-unit",
      "label": "The denominator counts",
-     "value": "people"
+     "value": "people",
+     "dialog": "Rate with a denominator"
     },
     {
      "choose": "rate-kind",
      "label": "Kind",
      "value": "ratio",
-     "shown": "ratio — events per unit, may exceed one"
+     "shown": "ratio — events per unit, may exceed one",
+     "dialog": "Rate with a denominator"
     },
     {
      "choose": "rate-multiplier",
      "label": "Per",
      "value": "100000",
-     "shown": "100,000"
+     "shown": "100,000",
+     "dialog": "Rate with a denominator"
     },
     {
-     "fill": "rate-group",
-     "label": "Group by attribute (optional)",
-     "value": "municipio"
+     "choose": "rate-group",
+     "label": "Group by (optional)",
+     "value": "municipio",
+     "dialog": "Rate with a denominator"
     },
     {
      "fill": "rate-period",
      "label": "Period the numerator covers",
-     "value": "epidemiological year 2024, weeks 2 to 52"
+     "value": "epidemiological year 2024, weeks 2 to 52",
+     "dialog": "Rate with a denominator"
     },
     {
      "fill": "rate-vintage",
      "label": "Vintage of the denominator",
-     "value": "pop as InfoDengue reports it for 2024; the year of the estimate is not stated in the dataset"
+     "value": "pop as InfoDengue reports it for 2024; the year of the estimate is not stated in the dataset",
+     "dialog": "Rate with a denominator"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Rate with a denominator"
     },
     {
      "note": "The 92 municipalities, from geoBoundaries (IBGE, CC BY 3.0 IGO). Seven of their names are also municipalities in other states, so those are listed with where they lie: choose the ones near 22° S."
@@ -1428,7 +1461,7 @@
     },
     {
      "choose": "relate-on",
-     "label": "Matched on",
+     "label": "Matched on, in the first table",
      "value": "municipio",
      "dialog": "Relate a column from another table"
     },
@@ -2342,7 +2375,7 @@
     },
     {
      "choose": "relate-on",
-     "label": "Matched on",
+     "label": "Matched on, in the first table",
      "value": "municipio",
      "dialog": "Relate a column from another table"
     },
@@ -2492,7 +2525,7 @@
     },
     {
      "choose": "relate-on",
-     "label": "Matched on",
+     "label": "Matched on, in the first table",
      "value": "municipio",
      "dialog": "Relate a column from another table"
     },
