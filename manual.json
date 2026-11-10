@@ -221,6 +221,11 @@
      "value": "The 2024 epidemic curve"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Chart"
+    },
+    {
      "fill": "chart-title",
      "label": "Chart title",
      "value": "Notified dengue cases by week, Rio de Janeiro state, 2024"
@@ -239,6 +244,11 @@
      "fill": "chart-source-note",
      "label": "Source / method note",
      "value": "InfoDengue counts via DATASET_MULTIMODAL_V8 (Sánchez-Marqués and Sánchez, Zenodo, doi:10.5281/zenodo.22029053, CC BY 4.0), summed over the 92 municipalities."
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Chart"
     },
     {
      "run": true
@@ -1739,14 +1749,29 @@
      "select": "lagChart"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Chart"
+    },
+    {
      "choose": "chart-key-column",
      "label": "Category column",
      "value": "shift_days"
     },
     {
-     "fill": "output-label",
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Chart"
+    },
+    {
+     "fill": "chart-label",
      "label": "Results tab name",
      "value": "Rate ratio per °C at each lag"
+    },
+    {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Chart"
     },
     {
      "fill": "chart-title",
@@ -1767,6 +1792,11 @@
      "fill": "chart-y-axis",
      "label": "Vertical axis label",
      "value": "Rate ratio per 1 °C"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Chart"
     },
     {
      "run": true
@@ -2854,14 +2884,29 @@
      "select": "chart16"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Chart"
+    },
+    {
      "choose": "chart-key-column",
      "label": "Category column",
      "value": "shift_days"
     },
     {
-     "fill": "output-label",
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Chart"
+    },
+    {
+     "fill": "chart-label",
      "label": "Results tab name",
      "value": "2010–2025: rate ratio per °C at each lag"
+    },
+    {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Chart"
     },
     {
      "fill": "chart-title",
@@ -2882,6 +2927,11 @@
      "fill": "chart-y-axis",
      "label": "Vertical axis label",
      "value": "Rate ratio per 1 °C"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Chart"
     },
     {
      "run": true
