@@ -1026,9 +1026,19 @@
      "select": "sample"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Sample satellite files at points or over areas"
+    },
+    {
      "fill": "satellite-place-column",
      "label": "Name of the place column",
      "value": "municipio"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Sample satellite files at points or over areas"
     },
     {
      "add": "table_output",
@@ -1345,9 +1355,19 @@
      "select": "sample"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Sample satellite files at points or over areas"
+    },
+    {
      "fill": "satellite-place-column",
      "label": "Name of the place column",
      "value": "municipio"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Sample satellite files at points or over areas"
     },
     {
      "note": "Terra only: the mid-morning satellite, one measurement throughout. Aqua's rows would put two values on each period."
@@ -2243,9 +2263,19 @@
      "select": "sample16"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Sample satellite files at points or over areas"
+    },
+    {
      "fill": "satellite-place-column",
      "label": "Name of the place column",
      "value": "municipio"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Sample satellite files at points or over areas"
     },
     {
      "add": "select_rows",
