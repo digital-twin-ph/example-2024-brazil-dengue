@@ -1015,7 +1015,7 @@
      "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
     },
     {
-     "add": "sample_satellite_files_at_points",
+     "add": "sample_raster",
      "as": "sample"
     },
     {
@@ -1038,7 +1038,7 @@
     {
      "click": "#configure-step",
      "label": "Configure…",
-     "opens": "Sample satellite files at points or over areas"
+     "opens": "Sample a raster at points or over areas"
     },
     {
      "fill": "satellite-place-column",
@@ -1048,7 +1048,7 @@
     {
      "click": "#config-apply",
      "label": "Apply",
-     "dialog": "Sample satellite files at points or over areas"
+     "dialog": "Sample a raster at points or over areas"
     },
     {
      "add": "table_output",
@@ -1344,7 +1344,7 @@
      "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
     },
     {
-     "add": "sample_satellite_files_at_points",
+     "add": "sample_raster",
      "as": "sample"
     },
     {
@@ -1367,7 +1367,7 @@
     {
      "click": "#configure-step",
      "label": "Configure…",
-     "opens": "Sample satellite files at points or over areas"
+     "opens": "Sample a raster at points or over areas"
     },
     {
      "fill": "satellite-place-column",
@@ -1377,7 +1377,7 @@
     {
      "click": "#config-apply",
      "label": "Apply",
-     "dialog": "Sample satellite files at points or over areas"
+     "dialog": "Sample a raster at points or over areas"
     },
     {
      "note": "Terra only: the mid-morning satellite, one measurement throughout. Aqua's rows would put two values on each period."
@@ -2272,7 +2272,7 @@
      "dialog": "Search a satellite catalog"
     },
     {
-     "add": "sample_satellite_files_at_points",
+     "add": "sample_raster",
      "as": "sample16"
     },
     {
@@ -2295,7 +2295,7 @@
     {
      "click": "#configure-step",
      "label": "Configure…",
-     "opens": "Sample satellite files at points or over areas"
+     "opens": "Sample a raster at points or over areas"
     },
     {
      "fill": "satellite-place-column",
@@ -2305,7 +2305,7 @@
     {
      "click": "#config-apply",
      "label": "Apply",
-     "dialog": "Sample satellite files at points or over areas"
+     "dialog": "Sample a raster at points or over areas"
     },
     {
      "add": "select_rows",
