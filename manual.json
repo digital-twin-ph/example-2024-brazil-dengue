@@ -173,10 +173,21 @@
      "select": "state"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Cases by period"
+    },
+    {
      "choose": "series-input",
      "label": "Records arrive as",
      "value": "table",
-     "shown": "a table, each row a count"
+     "shown": "a table, each row a count",
+     "dialog": "Cases by period"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Cases by period"
     },
     {
      "connect": {
@@ -189,9 +200,15 @@
      "select": "state"
     },
     {
+     "click": "#configure-step",
+     "label": "Configure…",
+     "opens": "Cases by period"
+    },
+    {
      "fill": "series-date",
-     "label": "Event date attribute",
-     "value": "data_iniSE"
+     "label": "Date column",
+     "value": "data_iniSE",
+     "dialog": "Cases by period"
     },
     {
      "note": "The source does not say whether a week is the week of symptom onset or of notification, so the kind of date is left unstated, and the curve says so."
@@ -199,13 +216,20 @@
     {
      "choose": "series-kind",
      "label": "Which date is it?",
-     "value": "other"
+     "value": "other",
+     "dialog": "Cases by period"
     },
     {
      "choose": "series-period",
      "label": "Period",
      "value": "week-sunday",
-     "shown": "week, starting Sunday (epidemiological week)"
+     "shown": "week, starting Sunday (epidemiological week)",
+     "dialog": "Cases by period"
+    },
+    {
+     "click": "#config-apply",
+     "label": "Apply",
+     "dialog": "Cases by period"
     },
     {
      "click": "#add-series-chart",
