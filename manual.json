@@ -57,7 +57,7 @@
         {
           "fill": "table-url",
           "label": "URL of a CSV, Stata file or zip",
-          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/9b1581c8e0178dab243059f28bea93189e2b987f/data/dengue-rj-2024.csv",
           "dialog": "Tabular data"
         },
         {
@@ -319,7 +319,7 @@
         {
           "fill": "table-url",
           "label": "URL of a CSV, Stata file or zip",
-          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/9b1581c8e0178dab243059f28bea93189e2b987f/data/dengue-rj-2024.csv",
           "dialog": "Tabular data"
         },
         {
@@ -1138,7 +1138,7 @@
         {
           "fill": "table-url",
           "label": "URL of a CSV, Stata file or zip",
-          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/9b1581c8e0178dab243059f28bea93189e2b987f/data/dengue-rj-2024.csv",
           "dialog": "Tabular data"
         },
         {
@@ -1890,7 +1890,7 @@
         {
           "fill": "table-url",
           "label": "URL of a CSV, Stata file or zip",
-          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/afc8dd2c2e7475a67a962be26773ade88fe44da2/data/dengue-rj-2010-2025.csv",
           "dialog": "Tabular data"
         },
         {
@@ -2053,7 +2053,7 @@
         {
           "fill": "table-url",
           "label": "URL of a CSV, Stata file or zip",
-          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/afc8dd2c2e7475a67a962be26773ade88fe44da2/data/dengue-rj-2010-2025.csv",
           "dialog": "Tabular data"
         },
         {
