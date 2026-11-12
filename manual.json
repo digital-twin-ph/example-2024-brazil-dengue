@@ -1,2970 +1,3017 @@
 {
- "schema": "fieldwork/worked-example-manual/1",
- "example": "urn:fieldwork:example:brazil-dengue-rj-2024",
- "intro": "Each workflow reads the weekly table from this example's repository, at a fixed commit. Start from an empty canvas: Project, then New project.",
- "workflows": [
-  {
-   "name": "How did the 2024 epidemic unfold across the state?",
-   "steps": [
+  "schema": "fieldwork/worked-example-manual/1",
+  "example": "urn:fieldwork:example:brazil-dengue-rj-2024",
+  "intro": "Each workflow reads the weekly table from this example's repository, at a fixed commit. Start from an empty canvas: Project, then New project.",
+  "workflows": [
     {
-     "click": "#new-project",
-     "label": "New project",
-     "opens": "New project"
+      "name": "How did the 2024 epidemic unfold across the state?",
+      "steps": [
+        {
+          "click": "#new-project",
+          "label": "New project",
+          "opens": "New project"
+        },
+        {
+          "fill": "project-name-input",
+          "label": "Name",
+          "value": "Dengue in Rio de Janeiro state, 2024",
+          "dialog": "New project"
+        },
+        {
+          "fill": "project-subject-input",
+          "label": "Subject",
+          "value": "Weekly notified cases, 92 municipalities",
+          "dialog": "New project"
+        },
+        {
+          "click": "#project-create",
+          "label": "Create project",
+          "dialog": "New project"
+        },
+        {
+          "fill": "workflow-name-edit",
+          "view": "project",
+          "label": "This workflow’s name — the question it answers",
+          "value": "How did the 2024 epidemic unfold across the state?"
+        },
+        {
+          "note": "The table: weekly notified cases per municipality, from this example's repository, an extract of DATASET_MULTIMODAL_V8 (CC BY 4.0). The project keeps where it came from and its digest."
+        },
+        {
+          "add": "table_input",
+          "as": "weekly"
+        },
+        {
+          "select": "weekly"
+        },
+        {
+          "click": "#open-table",
+          "label": "Configure…",
+          "opens": "Tabular data"
+        },
+        {
+          "click": "#table-remote summary",
+          "label": "Or fetch from a URL",
+          "dialog": "Tabular data"
+        },
+        {
+          "fill": "table-url",
+          "label": "URL of a CSV, Stata file or zip",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-fetch",
+          "label": "Fetch",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-shape",
+          "label": "Shape of the file",
+          "value": "long",
+          "shown": "Long · one row per observation, one value column",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-value",
+          "label": "Value column",
+          "value": "casos",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-keys-choose",
+          "label": "Choose key columns…",
+          "dialog": "Tabular data",
+          "opens": "Key columns"
+        },
+        {
+          "fill": "table-keys-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "data_iniSE, SE, codigo_ibge, municipio",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-keep",
+          "label": "Keep these",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-done",
+          "label": "Done",
+          "dialog": "Key columns"
+        },
+        {
+          "fill": "table-unit",
+          "label": "Unit of the value (entered by you)",
+          "value": "notified cases/week",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-save",
+          "label": "Apply",
+          "dialog": "Tabular data"
+        },
+        {
+          "note": "The file has the week starting 29 December 2024 twice for every municipality. It is week 1 of 2025, so the next step leaves it out."
+        },
+        {
+          "note": "Epidemiological year 2024 runs from Sunday 31 December 2023 to Saturday 28 December 2024. Week 1, starting 31 December 2023, is not in the file."
+        },
+        {
+          "add": "select_rows",
+          "as": "year"
+        },
+        {
+          "connect": {
+            "from": "weekly",
+            "to": "year",
+            "port": "records"
+          }
+        },
+        {
+          "select": "year"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "data_iniSE"
+        },
+        {
+          "choose": "select-mode",
+          "label": "Keep",
+          "value": "range",
+          "shown": "A range of dates"
+        },
+        {
+          "fill": "select-from",
+          "label": "From",
+          "value": "2023-12-31"
+        },
+        {
+          "fill": "select-to",
+          "label": "To",
+          "value": "2024-12-28"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "One number a week: the state's cases, counted over its municipalities by the Sunday each epidemiological week starts."
+        },
+        {
+          "add": "case_series",
+          "as": "state"
+        },
+        {
+          "select": "state"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Cases by period"
+        },
+        {
+          "choose": "series-input",
+          "label": "Records arrive as",
+          "value": "table",
+          "shown": "a table, each row a count",
+          "dialog": "Cases by period"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Cases by period"
+        },
+        {
+          "connect": {
+            "from": "year",
+            "to": "state",
+            "port": "cases"
+          }
+        },
+        {
+          "select": "state"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Cases by period"
+        },
+        {
+          "fill": "series-date",
+          "label": "Date column",
+          "value": "data_iniSE",
+          "dialog": "Cases by period"
+        },
+        {
+          "note": "The source does not say whether a week is the week of symptom onset or of notification, so the kind of date is left unstated, and the curve says so."
+        },
+        {
+          "choose": "series-kind",
+          "label": "Which date is it?",
+          "value": "other",
+          "dialog": "Cases by period"
+        },
+        {
+          "choose": "series-period",
+          "label": "Period",
+          "value": "week-sunday",
+          "shown": "week, starting Sunday (epidemiological week)",
+          "dialog": "Cases by period"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Cases by period"
+        },
+        {
+          "click": "#add-series-chart",
+          "label": "Add epidemic curve",
+          "as": "curve"
+        },
+        {
+          "select": "curve"
+        },
+        {
+          "fill": "chart-label",
+          "label": "Results tab name",
+          "value": "The 2024 epidemic curve"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Chart"
+        },
+        {
+          "fill": "chart-title",
+          "label": "Chart title",
+          "value": "Notified dengue cases by week, Rio de Janeiro state, 2024"
+        },
+        {
+          "fill": "chart-subtitle",
+          "label": "Subtitle / context",
+          "value": "Epidemiological weeks 2 to 52, by the Sunday each week starts; week 1 is not in the source. Notified cases as InfoDengue reports them, not confirmed infections."
+        },
+        {
+          "fill": "chart-x-axis",
+          "label": "Horizontal axis label",
+          "value": "Week starting"
+        },
+        {
+          "fill": "chart-source-note",
+          "label": "Source / method note",
+          "value": "InfoDengue counts via DATASET_MULTIMODAL_V8 (Sánchez-Marqués and Sánchez, Zenodo, doi:10.5281/zenodo.22029053, CC BY 4.0), summed over the 92 municipalities."
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Chart"
+        },
+        {
+          "run": true
+        },
+        {
+          "see": "51 weekly bars, rising from January to a peak in the first months of the year",
+          "check": "Rio de Janeiro state"
+        }
+      ]
     },
     {
-     "fill": "project-name-input",
-     "label": "Name",
-     "value": "Dengue in Rio de Janeiro state, 2024",
-     "dialog": "New project"
+      "name": "Where was incidence highest?",
+      "steps": [
+        {
+          "click": "#add-workflow",
+          "label": "Add workflow"
+        },
+        {
+          "fill": "workflow-name-edit",
+          "view": "project",
+          "label": "This workflow’s name — the question it answers",
+          "value": "Where was incidence highest?"
+        },
+        {
+          "note": "The same file, read wide: cases and population become rows of one variable column, so a rate can divide one by the other. The dialog notes that 92 rows repeat a municipality and week, the doubled week; read as wide they are kept, and reported in Data quality as duplicate records."
+        },
+        {
+          "add": "table_input",
+          "as": "wide"
+        },
+        {
+          "select": "wide"
+        },
+        {
+          "click": "#open-table",
+          "label": "Configure…",
+          "opens": "Tabular data"
+        },
+        {
+          "click": "#table-remote summary",
+          "label": "Or fetch from a URL",
+          "dialog": "Tabular data"
+        },
+        {
+          "fill": "table-url",
+          "label": "URL of a CSV, Stata file or zip",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-fetch",
+          "label": "Fetch",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-shape",
+          "label": "Shape of the file",
+          "value": "wide",
+          "shown": "Wide · one row per subject, a column per variable",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-keys-choose",
+          "label": "Choose key columns…",
+          "dialog": "Tabular data",
+          "opens": "Key columns"
+        },
+        {
+          "fill": "table-keys-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "data_iniSE, municipio",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-keep",
+          "label": "Keep these",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-done",
+          "label": "Done",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-values-choose",
+          "label": "Choose value columns…",
+          "dialog": "Tabular data",
+          "opens": "Value columns"
+        },
+        {
+          "fill": "table-values-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "casos, pop",
+          "dialog": "Value columns"
+        },
+        {
+          "click": "#table-values-keep",
+          "label": "Keep these",
+          "dialog": "Value columns"
+        },
+        {
+          "click": "#table-values-done",
+          "label": "Done",
+          "dialog": "Value columns"
+        },
+        {
+          "fill": "table-measure-key",
+          "label": "Name for the column holding the variable names",
+          "value": "variable",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-save",
+          "label": "Apply",
+          "dialog": "Tabular data"
+        },
+        {
+          "note": "Epidemiological year 2024 again, which leaves out the doubled week."
+        },
+        {
+          "add": "select_rows",
+          "as": "year"
+        },
+        {
+          "connect": {
+            "from": "wide",
+            "to": "year",
+            "port": "records"
+          }
+        },
+        {
+          "select": "year"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "data_iniSE"
+        },
+        {
+          "choose": "select-mode",
+          "label": "Keep",
+          "value": "range",
+          "shown": "A range of dates"
+        },
+        {
+          "fill": "select-from",
+          "label": "From",
+          "value": "2023-12-31"
+        },
+        {
+          "fill": "select-to",
+          "label": "To",
+          "value": "2024-12-28"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "Cases add up over the weeks; population does not. So each is totalled separately, cases summed and each municipality's population, the same every week, taken once as its maximum, and the two stacked again."
+        },
+        {
+          "add": "select_rows",
+          "as": "cases"
+        },
+        {
+          "connect": {
+            "from": "year",
+            "to": "cases",
+            "port": "records"
+          }
+        },
+        {
+          "select": "cases"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "variable"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"casos\"])",
+          "label": "casos"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "add": "group_table",
+          "as": "casesTotal"
+        },
+        {
+          "connect": {
+            "from": "cases",
+            "to": "casesTotal",
+            "port": "records"
+          }
+        },
+        {
+          "select": "casesTotal"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Total within groups"
+        },
+        {
+          "tick": "group-keep",
+          "label": "Key columns to keep",
+          "values": [
+            "municipio",
+            "variable"
+          ],
+          "dialog": "Total within groups"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Total within groups"
+        },
+        {
+          "add": "select_rows",
+          "as": "people"
+        },
+        {
+          "connect": {
+            "from": "year",
+            "to": "people",
+            "port": "records"
+          }
+        },
+        {
+          "select": "people"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "variable"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"pop\"])",
+          "label": "pop"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "add": "group_table",
+          "as": "population"
+        },
+        {
+          "connect": {
+            "from": "people",
+            "to": "population",
+            "port": "records"
+          }
+        },
+        {
+          "select": "population"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Total within groups"
+        },
+        {
+          "tick": "group-keep",
+          "label": "Key columns to keep",
+          "values": [
+            "municipio",
+            "variable"
+          ],
+          "dialog": "Total within groups"
+        },
+        {
+          "choose": "group-aggregate",
+          "label": "Aggregate",
+          "value": "maximum",
+          "shown": "Maximum",
+          "dialog": "Total within groups"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Total within groups"
+        },
+        {
+          "add": "append_rows",
+          "as": "both"
+        },
+        {
+          "connect": {
+            "from": "casesTotal",
+            "to": "both",
+            "port": "records"
+          }
+        },
+        {
+          "connect": {
+            "from": "population",
+            "to": "both",
+            "port": "records_2"
+          }
+        },
+        {
+          "note": "Notified cases per 100,000 residents in 2024. A ratio, not a proportion: a notification is an event, and one person can be notified twice."
+        },
+        {
+          "add": "rate",
+          "as": "incidence"
+        },
+        {
+          "select": "incidence"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-source",
+          "label": "Records arrive as",
+          "value": "table",
+          "shown": "a table",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "connect": {
+            "from": "both",
+            "to": "incidence",
+            "port": "records"
+          }
+        },
+        {
+          "select": "incidence"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-measure",
+          "label": "Key column holding the measure names",
+          "value": "variable",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "fill": "rate-numerator",
+          "label": "Numerator (what is counted)",
+          "value": "casos",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "fill": "rate-denominator",
+          "label": "Denominator (units at risk)",
+          "value": "pop",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-unit",
+          "label": "The denominator counts",
+          "value": "people",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-kind",
+          "label": "Kind",
+          "value": "ratio",
+          "shown": "ratio — events per unit, may exceed one",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-multiplier",
+          "label": "Per",
+          "value": "100000",
+          "shown": "100,000",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "choose": "rate-group",
+          "label": "Group by (optional)",
+          "value": "municipio",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "fill": "rate-period",
+          "label": "Period the numerator covers",
+          "value": "epidemiological year 2024, weeks 2 to 52",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "fill": "rate-vintage",
+          "label": "Vintage of the denominator",
+          "value": "pop as InfoDengue reports it for 2024; the year of the estimate is not stated in the dataset",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Rate with a denominator"
+        },
+        {
+          "note": "The 92 municipalities, from geoBoundaries (IBGE, CC BY 3.0 IGO). Seven of their names are also municipalities in other states, so those are listed with where they lie: choose the ones near 22° S."
+        },
+        {
+          "add": "study_area",
+          "as": "state"
+        },
+        {
+          "select": "state"
+        },
+        {
+          "click": "#edit-study-area",
+          "label": "Select area on map",
+          "opens": "Choose your study area"
+        },
+        {
+          "click": "#area-boundary-source summary",
+          "label": "Use an administrative boundary",
+          "dialog": "Choose your study area"
+        },
+        {
+          "fill": "area-iso",
+          "label": "Country",
+          "value": "Brazil",
+          "dialog": "Choose your study area"
+        },
+        {
+          "note": "Level stays at ADM2, the municipalities."
+        },
+        {
+          "click": "#area-boundary-check",
+          "label": "Check this level",
+          "dialog": "Choose your study area"
+        },
+        {
+          "pick": "area-boundary-pick",
+          "label": "Units",
+          "values": [
+            "Angra dos Reis",
+            "Aperibé",
+            "Araruama",
+            "Areal",
+            "Armação dos Búzios",
+            "Arraial do Cabo",
+            "Barra do Piraí",
+            "Barra Mansa",
+            "Belford Roxo",
+            "Bom Jardim · 22.19° S, 42.34° W",
+            "Bom Jesus do Itabapoana",
+            "Cabo Frio",
+            "Cachoeiras de Macacu",
+            "Cambuci",
+            "Carapebus",
+            "Comendador Levy Gasparian",
+            "Campos dos Goytacazes",
+            "Cantagalo · 21.87° S, 42.34° W",
+            "Cardoso Moreira",
+            "Carmo",
+            "Casimiro de Abreu",
+            "Conceição de Macabu",
+            "Cordeiro",
+            "Duas Barras",
+            "Duque de Caxias",
+            "Engenheiro Paulo de Frontin",
+            "Guapimirim",
+            "Iguaba Grande",
+            "Itaboraí",
+            "Itaguaí",
+            "Italva",
+            "Itaocara",
+            "Itaperuna",
+            "Itatiaia",
+            "Japeri",
+            "Laje do Muriaé",
+            "Macaé",
+            "Macuco",
+            "Magé",
+            "Mangaratiba",
+            "Maricá",
+            "Mendes",
+            "Mesquita · 22.80° S, 43.45° W",
+            "Miguel Pereira",
+            "Miracema",
+            "Natividade · 21.04° S, 41.94° W",
+            "Nilópolis",
+            "Niterói",
+            "Nova Friburgo",
+            "Nova Iguaçu",
+            "Paracambi",
+            "Paraíba do Sul",
+            "Paraty",
+            "Paty do Alferes",
+            "Petrópolis",
+            "Pinheiral",
+            "Piraí",
+            "Porciúncula",
+            "Porto Real",
+            "Quatis",
+            "Queimados",
+            "Quissamã",
+            "Resende",
+            "Rio Bonito",
+            "Rio Claro · 22.79° S, 44.08° W",
+            "Rio das Flores",
+            "Rio das Ostras",
+            "Rio de Janeiro",
+            "Santa Maria Madalena",
+            "Santo Antônio de Pádua",
+            "São Francisco de Itabapoana",
+            "São Fidélis",
+            "São Gonçalo",
+            "São João da Barra",
+            "São João de Meriti",
+            "São José de Ubá",
+            "São José do Vale do Rio Preto",
+            "São Pedro da Aldeia",
+            "São Sebastião do Alto",
+            "Sapucaia · 22.03° S, 42.82° W",
+            "Saquarema",
+            "Seropédica",
+            "Silva Jardim",
+            "Sumidouro",
+            "Tanguá",
+            "Teresópolis",
+            "Trajano de Moraes",
+            "Três Rios",
+            "Valença · 22.25° S, 43.88° W",
+            "Varre-Sai",
+            "Vassouras",
+            "Volta Redonda"
+          ],
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-boundary-use",
+          "label": "Use the selected units",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-apply",
+          "label": "Apply study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "add": "join_table_to_area",
+          "as": "joined"
+        },
+        {
+          "connect": {
+            "from": "incidence",
+            "to": "joined",
+            "port": "records"
+          }
+        },
+        {
+          "connect": {
+            "from": "state",
+            "to": "joined",
+            "port": "area"
+          }
+        },
+        {
+          "select": "joined"
+        },
+        {
+          "note": "Rate names each row by its group, here the municipality, in a column called group: match on that."
+        },
+        {
+          "choose": "join-key",
+          "label": "Column naming each part",
+          "value": "group"
+        },
+        {
+          "add": "map_output",
+          "as": "map"
+        },
+        {
+          "select": "map"
+        },
+        {
+          "choose": "map-add-layer",
+          "label": "Add a layer",
+          "value": "Values on the study area · polygons"
+        },
+        {
+          "fill": "map-label",
+          "label": "Results tab name",
+          "value": "Dengue incidence by municipality, 2024"
+        },
+        {
+          "run": true
+        },
+        {
+          "see": "the 92 municipalities shaded by notified cases per 100,000 in 2024",
+          "check": "per 100,000"
+        }
+      ]
     },
     {
-     "fill": "project-subject-input",
-     "label": "Subject",
-     "value": "Weekly notified cases, 92 municipalities",
-     "dialog": "New project"
+      "name": "How hot was the ground in each municipality?",
+      "steps": [
+        {
+          "click": "#add-workflow",
+          "label": "Add workflow"
+        },
+        {
+          "fill": "workflow-name-edit",
+          "view": "project",
+          "label": "This workflow’s name — the question it answers",
+          "value": "How hot was the ground in each municipality?"
+        },
+        {
+          "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
+        },
+        {
+          "add": "study_area",
+          "as": "state"
+        },
+        {
+          "select": "state"
+        },
+        {
+          "click": "#edit-study-area",
+          "label": "Select area on map",
+          "opens": "Choose your study area"
+        },
+        {
+          "click": "#area-project-source summary",
+          "label": "Use a study area from this project",
+          "dialog": "Choose your study area"
+        },
+        {
+          "choose": "area-project-pick",
+          "label": "Study area",
+          "value": "0",
+          "shown": "Where was incidence highest?",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-project-use",
+          "label": "Use this study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-apply",
+          "label": "Apply study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "note": "The satellite: MODIS land surface temperature, 8-day composites at 1 km, on Planetary Computer with no account. It is the temperature of the ground's surface where the sky was clear, not the air's."
+        },
+        {
+          "add": "find_satellite_products",
+          "as": "product"
+        },
+        {
+          "select": "product"
+        },
+        {
+          "click": "#satellite-find",
+          "label": "Find satellite products",
+          "opens": "Find satellite products"
+        },
+        {
+          "fill": "sat-question",
+          "label": "Research topic or measurement",
+          "value": "land surface temperature",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-find",
+          "label": "Find data pathways",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
+          "label": "Choose this product",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-close",
+          "label": "Done",
+          "dialog": "Find satellite products"
+        },
+        {
+          "note": "The files: every 8-day period of 2024 over the state, from both MODIS satellites. The search takes the state's extent from the study area."
+        },
+        {
+          "add": "search_satellite_catalog",
+          "as": "search"
+        },
+        {
+          "connect": {
+            "from": "product",
+            "to": "search",
+            "port": "product"
+          }
+        },
+        {
+          "connect": {
+            "from": "state",
+            "to": "search",
+            "port": "area"
+          }
+        },
+        {
+          "select": "search"
+        },
+        {
+          "click": "#catalog-search-open",
+          "label": "Search the catalog",
+          "opens": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-from",
+          "label": "From",
+          "value": "2024-01-01",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-until",
+          "label": "Until",
+          "value": "2024-12-31",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-search",
+          "label": "Search",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-close",
+          "label": "Done",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
+        },
+        {
+          "add": "sample_raster",
+          "as": "sample"
+        },
+        {
+          "connect": {
+            "from": "state",
+            "to": "sample",
+            "port": "area"
+          }
+        },
+        {
+          "connect": {
+            "from": "search",
+            "to": "sample",
+            "port": "files"
+          }
+        },
+        {
+          "select": "sample"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Sample a raster at points or over areas"
+        },
+        {
+          "fill": "satellite-place-column",
+          "label": "Name of the place column",
+          "value": "municipio"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Sample a raster at points or over areas"
+        },
+        {
+          "add": "table_output",
+          "as": "shown"
+        },
+        {
+          "connect": {
+            "from": "sample",
+            "to": "shown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "shown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Land surface temperature by municipality, 8-day, 2024"
+        },
+        {
+          "run": true
+        },
+        {
+          "see": "one row per municipality per 8-day period per satellite: the mean of the cells that passed, how many cells it rests on, how many days were clear, and the gap where there is no value",
+          "check": "municipio"
+        }
+      ]
     },
     {
-     "click": "#project-create",
-     "label": "Create project",
-     "dialog": "New project"
+      "name": "Did warmer ground weeks earlier go with more cases?",
+      "steps": [
+        {
+          "click": "#add-workflow",
+          "label": "Add workflow"
+        },
+        {
+          "fill": "workflow-name-edit",
+          "view": "project",
+          "label": "This workflow’s name — the question it answers",
+          "value": "Did warmer ground weeks earlier go with more cases?"
+        },
+        {
+          "note": "Weekly cases per municipality, with the calendar month the week starts in, for the month strata."
+        },
+        {
+          "add": "table_input",
+          "as": "weekly"
+        },
+        {
+          "select": "weekly"
+        },
+        {
+          "click": "#open-table",
+          "label": "Configure…",
+          "opens": "Tabular data"
+        },
+        {
+          "click": "#table-remote summary",
+          "label": "Or fetch from a URL",
+          "dialog": "Tabular data"
+        },
+        {
+          "fill": "table-url",
+          "label": "URL of a CSV, Stata file or zip",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-fetch",
+          "label": "Fetch",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-shape",
+          "label": "Shape of the file",
+          "value": "long",
+          "shown": "Long · one row per observation, one value column",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-value",
+          "label": "Value column",
+          "value": "casos",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-keys-choose",
+          "label": "Choose key columns…",
+          "dialog": "Tabular data",
+          "opens": "Key columns"
+        },
+        {
+          "fill": "table-keys-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "municipio, data_iniSE, mes",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-keep",
+          "label": "Keep these",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-done",
+          "label": "Done",
+          "dialog": "Key columns"
+        },
+        {
+          "fill": "table-unit",
+          "label": "Unit of the value (entered by you)",
+          "value": "notified cases/week",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-save",
+          "label": "Apply",
+          "dialog": "Tabular data"
+        },
+        {
+          "note": "Epidemiological year 2024, which leaves out the doubled week."
+        },
+        {
+          "add": "select_rows",
+          "as": "year"
+        },
+        {
+          "connect": {
+            "from": "weekly",
+            "to": "year",
+            "port": "records"
+          }
+        },
+        {
+          "select": "year"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "data_iniSE"
+        },
+        {
+          "choose": "select-mode",
+          "label": "Keep",
+          "value": "range",
+          "shown": "A range of dates"
+        },
+        {
+          "fill": "select-from",
+          "label": "From",
+          "value": "2023-12-31"
+        },
+        {
+          "fill": "select-to",
+          "label": "To",
+          "value": "2024-12-28"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
+        },
+        {
+          "add": "study_area",
+          "as": "state"
+        },
+        {
+          "select": "state"
+        },
+        {
+          "click": "#edit-study-area",
+          "label": "Select area on map",
+          "opens": "Choose your study area"
+        },
+        {
+          "click": "#area-project-source summary",
+          "label": "Use a study area from this project",
+          "dialog": "Choose your study area"
+        },
+        {
+          "choose": "area-project-pick",
+          "label": "Study area",
+          "value": "0",
+          "shown": "Where was incidence highest?",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-project-use",
+          "label": "Use this study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-apply",
+          "label": "Apply study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "note": "The satellite: MODIS land surface temperature, 8-day composites at 1 km, on Planetary Computer with no account. It is the temperature of the ground's surface where the sky was clear, not the air's."
+        },
+        {
+          "add": "find_satellite_products",
+          "as": "product"
+        },
+        {
+          "select": "product"
+        },
+        {
+          "click": "#satellite-find",
+          "label": "Find satellite products",
+          "opens": "Find satellite products"
+        },
+        {
+          "fill": "sat-question",
+          "label": "Research topic or measurement",
+          "value": "land surface temperature",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-find",
+          "label": "Find data pathways",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
+          "label": "Choose this product",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-close",
+          "label": "Done",
+          "dialog": "Find satellite products"
+        },
+        {
+          "note": "The files: every 8-day period of 2024 over the state, from both MODIS satellites. The search takes the state's extent from the study area."
+        },
+        {
+          "add": "search_satellite_catalog",
+          "as": "search"
+        },
+        {
+          "connect": {
+            "from": "product",
+            "to": "search",
+            "port": "product"
+          }
+        },
+        {
+          "connect": {
+            "from": "state",
+            "to": "search",
+            "port": "area"
+          }
+        },
+        {
+          "select": "search"
+        },
+        {
+          "click": "#catalog-search-open",
+          "label": "Search the catalog",
+          "opens": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-from",
+          "label": "From",
+          "value": "2024-01-01",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-until",
+          "label": "Until",
+          "value": "2024-12-31",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-search",
+          "label": "Search",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-close",
+          "label": "Done",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
+        },
+        {
+          "add": "sample_raster",
+          "as": "sample"
+        },
+        {
+          "connect": {
+            "from": "state",
+            "to": "sample",
+            "port": "area"
+          }
+        },
+        {
+          "connect": {
+            "from": "search",
+            "to": "sample",
+            "port": "files"
+          }
+        },
+        {
+          "select": "sample"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Sample a raster at points or over areas"
+        },
+        {
+          "fill": "satellite-place-column",
+          "label": "Name of the place column",
+          "value": "municipio"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Sample a raster at points or over areas"
+        },
+        {
+          "note": "Terra only: the mid-morning satellite, one measurement throughout. Aqua's rows would put two values on each period."
+        },
+        {
+          "add": "select_rows",
+          "as": "terra"
+        },
+        {
+          "connect": {
+            "from": "sample",
+            "to": "terra",
+            "port": "records"
+          }
+        },
+        {
+          "select": "terra"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "platform"
+        },
+        {
+          "fill": "select-values",
+          "label": "Values to keep, one per line",
+          "value": "terra"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "add": "table_output",
+          "as": "terraShown"
+        },
+        {
+          "connect": {
+            "from": "terra",
+            "to": "terraShown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "terraShown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Terra daytime land surface temperature by municipality, 2024"
+        },
+        {
+          "add": "table_output",
+          "as": "weeksShown"
+        },
+        {
+          "connect": {
+            "from": "year",
+            "to": "weeksShown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "weeksShown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Weekly cases by municipality, 2024"
+        },
+        {
+          "note": "Run once now: the joins below are decided against the tables this run makes."
+        },
+        {
+          "run": true
+        },
+        {
+          "note": "One Relate brings the temperature at every lag, one column per shift: each week's Wednesday, matched to the Terra period containing it. A shift of +3 days takes the week's Sunday to its Wednesday (0 weeks before); -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier. +17 and +31 days are 2 and 4 weeks AFTER, a falsification test: later weather cannot cause earlier cases, so an association there as strong as the lags' says the season, not the temperature, is behind them."
+        },
+        {
+          "add": "relate_table",
+          "as": "lags"
+        },
+        {
+          "connect": {
+            "from": "year",
+            "to": "lags",
+            "port": "records"
+          }
+        },
+        {
+          "connect": {
+            "from": "terra",
+            "to": "lags",
+            "port": "related"
+          }
+        },
+        {
+          "select": "lags"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-on",
+          "label": "Matched on, in the first table",
+          "value": "municipio",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-bring",
+          "label": "Bring across",
+          "value": "LST_Day_1km",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-date",
+          "label": "Date, in the first table",
+          "value": "data_iniSE",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-start",
+          "label": "Period start, in the second",
+          "value": "period_start",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-end",
+          "label": "Period end, in the second",
+          "value": "period_end",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-0",
+          "label": "Shift 1",
+          "value": "3",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-1",
+          "label": "Shift 2",
+          "value": "-11",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-2",
+          "label": "Shift 3",
+          "value": "-25",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-3",
+          "label": "Shift 4",
+          "value": "-39",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-4",
+          "label": "Shift 5",
+          "value": "-53",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-5",
+          "label": "Shift 6",
+          "value": "17",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-6",
+          "label": "Shift 7",
+          "value": "31",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "Every week is kept. A week whose period at a shift has no clear-sky value has that shift's column empty, counted in the evidence, and the model for that shift leaves it out. The satellite search ends with 2024, so the last weeks of the year have no value at the leads."
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "One Regression fits the same model once per shift column: each on its own weeks, adjusted for the municipality and the calendar month."
+        },
+        {
+          "add": "regression",
+          "as": "models"
+        },
+        {
+          "connect": {
+            "from": "lags",
+            "to": "models",
+            "port": "records"
+          }
+        },
+        {
+          "select": "models"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Regression"
+        },
+        {
+          "choose": "reg-family",
+          "label": "Model",
+          "value": "poisson",
+          "shown": "Poisson regression · rate ratios",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-outcome",
+          "label": "Outcome",
+          "value": "casos",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-exposure",
+          "label": "Exposure",
+          "value": "LST_Day_1km_+3d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-exposure-as",
+          "label": "Exposure is",
+          "value": "numeric",
+          "shown": "Numeric",
+          "dialog": "Regression"
+        },
+        {
+          "tick": "reg-exposures",
+          "label": "Also fit, one model each, with",
+          "values": [
+            "LST_Day_1km_-11d",
+            "LST_Day_1km_-25d",
+            "LST_Day_1km_-39d",
+            "LST_Day_1km_-53d",
+            "LST_Day_1km_+17d",
+            "LST_Day_1km_+31d"
+          ],
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-adjust-add",
+          "label": "Add a variable",
+          "value": "mes",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-kind-mes",
+          "label": "mes as",
+          "value": "categorical",
+          "shown": "Categorical",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-strata",
+          "label": "Strata, as fixed effects",
+          "value": "municipio",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-errors",
+          "label": "Intervals",
+          "value": "overdispersed",
+          "dialog": "Regression"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Regression"
+        },
+        {
+          "add": "table_output",
+          "as": "shown"
+        },
+        {
+          "connect": {
+            "from": "models",
+            "to": "shown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "shown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Every model's estimates, by shift"
+        },
+        {
+          "note": "Each model also reports the months; keep the temperature's rows, whose role is exposure."
+        },
+        {
+          "add": "select_rows",
+          "as": "exposureOnly"
+        },
+        {
+          "connect": {
+            "from": "models",
+            "to": "exposureOnly",
+            "port": "records"
+          }
+        },
+        {
+          "select": "exposureOnly"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "role"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"exposure\"])",
+          "label": "exposure"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "A lag-response plot: each shift's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. The shift is a number of days, so the figure places each model at its distance."
+        },
+        {
+          "add": "chart_output",
+          "as": "lagChart"
+        },
+        {
+          "connect": {
+            "from": "exposureOnly",
+            "to": "lagChart",
+            "port": "records"
+          }
+        },
+        {
+          "select": "lagChart"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Chart"
+        },
+        {
+          "choose": "chart-key-column",
+          "label": "Category column",
+          "value": "shift_days"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Chart"
+        },
+        {
+          "fill": "chart-label",
+          "label": "Results tab name",
+          "value": "Rate ratio per °C at each lag"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Chart"
+        },
+        {
+          "fill": "chart-title",
+          "label": "Chart title",
+          "value": "Dengue cases and land surface temperature weeks earlier, Rio de Janeiro state, 2024"
+        },
+        {
+          "fill": "chart-subtitle",
+          "label": "Subtitle / context",
+          "value": "Seven Poisson models, one per shift, each adjusted for municipality and month; each point is its own model. Shifts after the week (positive) cannot be causal."
+        },
+        {
+          "fill": "chart-x-axis",
+          "label": "Horizontal axis label",
+          "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
+        },
+        {
+          "fill": "chart-y-axis",
+          "label": "Vertical axis label",
+          "value": "Rate ratio per 1 °C"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Chart"
+        },
+        {
+          "run": true
+        },
+        {
+          "see": "seven models in one table, one per shift: the rate ratio of weekly cases per 1 °C of land surface temperature at that shift, adjusted for the municipality and the calendar month",
+          "check": "Every model's estimates, by shift"
+        },
+        {
+          "see": "the lag-response plot: seven points with their 95% intervals, the two leads right of the others, on a log scale, the dashed line at 1 marking no association",
+          "check": "Rate ratio per °C at each lag"
+        }
+      ]
     },
     {
-     "fill": "workflow-name-edit",
-     "view": "project",
-     "label": "This workflow’s name — the question it answers",
-     "value": "How did the 2024 epidemic unfold across the state?"
-    },
-    {
-     "note": "The table: weekly notified cases per municipality, from this example's repository, an extract of DATASET_MULTIMODAL_V8 (CC BY 4.0). The project keeps where it came from and its digest."
-    },
-    {
-     "add": "table_input",
-     "as": "weekly"
-    },
-    {
-     "select": "weekly"
-    },
-    {
-     "click": "#open-table",
-     "label": "Configure…",
-     "opens": "Tabular data"
-    },
-    {
-     "click": "#table-remote summary",
-     "label": "Or fetch from a URL",
-     "dialog": "Tabular data"
-    },
-    {
-     "fill": "table-url",
-     "label": "URL of a CSV, Stata file or zip",
-     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-fetch",
-     "label": "Fetch",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-shape",
-     "label": "Shape of the file",
-     "value": "long",
-     "shown": "Long · one row per observation, one value column",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-value",
-     "label": "Value column",
-     "value": "casos",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-keys-choose",
-     "label": "Choose key columns…",
-     "dialog": "Tabular data",
-     "opens": "Key columns"
-    },
-    {
-     "fill": "table-keys-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "data_iniSE, SE, codigo_ibge, municipio",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-keep",
-     "label": "Keep these",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-done",
-     "label": "Done",
-     "dialog": "Key columns"
-    },
-    {
-     "fill": "table-unit",
-     "label": "Unit of the value (entered by you)",
-     "value": "notified cases/week",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-save",
-     "label": "Apply",
-     "dialog": "Tabular data"
-    },
-    {
-     "note": "The file has the week starting 29 December 2024 twice for every municipality. It is week 1 of 2025, so the next step leaves it out."
-    },
-    {
-     "note": "Epidemiological year 2024 runs from Sunday 31 December 2023 to Saturday 28 December 2024. Week 1, starting 31 December 2023, is not in the file."
-    },
-    {
-     "add": "select_rows",
-     "as": "year"
-    },
-    {
-     "connect": {
-      "from": "weekly",
-      "to": "year",
-      "port": "records"
-     }
-    },
-    {
-     "select": "year"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "data_iniSE"
-    },
-    {
-     "choose": "select-mode",
-     "label": "Keep",
-     "value": "range",
-     "shown": "A range of dates"
-    },
-    {
-     "fill": "select-from",
-     "label": "From",
-     "value": "2023-12-31"
-    },
-    {
-     "fill": "select-to",
-     "label": "To",
-     "value": "2024-12-28"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "One number a week: the state's cases, counted over its municipalities by the Sunday each epidemiological week starts."
-    },
-    {
-     "add": "case_series",
-     "as": "state"
-    },
-    {
-     "select": "state"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Cases by period"
-    },
-    {
-     "choose": "series-input",
-     "label": "Records arrive as",
-     "value": "table",
-     "shown": "a table, each row a count",
-     "dialog": "Cases by period"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Cases by period"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "state",
-      "port": "cases"
-     }
-    },
-    {
-     "select": "state"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Cases by period"
-    },
-    {
-     "fill": "series-date",
-     "label": "Date column",
-     "value": "data_iniSE",
-     "dialog": "Cases by period"
-    },
-    {
-     "note": "The source does not say whether a week is the week of symptom onset or of notification, so the kind of date is left unstated, and the curve says so."
-    },
-    {
-     "choose": "series-kind",
-     "label": "Which date is it?",
-     "value": "other",
-     "dialog": "Cases by period"
-    },
-    {
-     "choose": "series-period",
-     "label": "Period",
-     "value": "week-sunday",
-     "shown": "week, starting Sunday (epidemiological week)",
-     "dialog": "Cases by period"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Cases by period"
-    },
-    {
-     "click": "#add-series-chart",
-     "label": "Add epidemic curve",
-     "as": "curve"
-    },
-    {
-     "select": "curve"
-    },
-    {
-     "fill": "chart-label",
-     "label": "Results tab name",
-     "value": "The 2024 epidemic curve"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Chart"
-    },
-    {
-     "fill": "chart-title",
-     "label": "Chart title",
-     "value": "Notified dengue cases by week, Rio de Janeiro state, 2024"
-    },
-    {
-     "fill": "chart-subtitle",
-     "label": "Subtitle / context",
-     "value": "Epidemiological weeks 2 to 52, by the Sunday each week starts; week 1 is not in the source. Notified cases as InfoDengue reports them, not confirmed infections."
-    },
-    {
-     "fill": "chart-x-axis",
-     "label": "Horizontal axis label",
-     "value": "Week starting"
-    },
-    {
-     "fill": "chart-source-note",
-     "label": "Source / method note",
-     "value": "InfoDengue counts via DATASET_MULTIMODAL_V8 (Sánchez-Marqués and Sánchez, Zenodo, doi:10.5281/zenodo.22029053, CC BY 4.0), summed over the 92 municipalities."
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Chart"
-    },
-    {
-     "run": true
-    },
-    {
-     "see": "51 weekly bars, rising from January to a peak in the first months of the year",
-     "check": "Rio de Janeiro state"
+      "name": "Across sixteen years, did warmer ground weeks earlier go with more cases?",
+      "steps": [
+        {
+          "click": "#add-workflow",
+          "label": "Add workflow"
+        },
+        {
+          "fill": "workflow-name-edit",
+          "view": "project",
+          "label": "This workflow’s name — the question it answers",
+          "value": "Across sixteen years, did warmer ground weeks earlier go with more cases?"
+        },
+        {
+          "note": "Weekly cases per municipality, 2010 to 2025, with the month and the epidemiological year of each week: together with the municipality they are the strata, so weeks are compared only within one municipality, month and year."
+        },
+        {
+          "add": "table_input",
+          "as": "weekly16"
+        },
+        {
+          "select": "weekly16"
+        },
+        {
+          "click": "#open-table",
+          "label": "Configure…",
+          "opens": "Tabular data"
+        },
+        {
+          "click": "#table-remote summary",
+          "label": "Or fetch from a URL",
+          "dialog": "Tabular data"
+        },
+        {
+          "fill": "table-url",
+          "label": "URL of a CSV, Stata file or zip",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-fetch",
+          "label": "Fetch",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-shape",
+          "label": "Shape of the file",
+          "value": "long",
+          "shown": "Long · one row per observation, one value column",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-value",
+          "label": "Value column",
+          "value": "casos",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-keys-choose",
+          "label": "Choose key columns…",
+          "dialog": "Tabular data",
+          "opens": "Key columns"
+        },
+        {
+          "fill": "table-keys-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "municipio, data_iniSE, mes, anio",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-keep",
+          "label": "Keep these",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-done",
+          "label": "Done",
+          "dialog": "Key columns"
+        },
+        {
+          "fill": "table-unit",
+          "label": "Unit of the value (entered by you)",
+          "value": "notified cases/week",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-save",
+          "label": "Apply",
+          "dialog": "Tabular data"
+        },
+        {
+          "note": "Twelve weeks at years' edges appear twice for every municipality, the two rows disagreeing on rainfall; the file cannot say which is right. They are left out, here and from the rainfall below."
+        },
+        {
+          "add": "select_rows",
+          "as": "cases16"
+        },
+        {
+          "connect": {
+            "from": "weekly16",
+            "to": "cases16",
+            "port": "records"
+          }
+        },
+        {
+          "select": "cases16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "data_iniSE"
+        },
+        {
+          "choose": "select-mode",
+          "label": "Keep",
+          "value": "leave-out",
+          "shown": "Every value except those I tick"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
+          "label": "2010-12-26"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
+          "label": "2011-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
+          "label": "2012-12-30"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
+          "label": "2013-12-29"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
+          "label": "2015-01-04"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
+          "label": "2016-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
+          "label": "2018-12-30"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
+          "label": "2019-12-29"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
+          "label": "2020-12-27"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
+          "label": "2021-12-26"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
+          "label": "2022-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
+          "label": "2024-12-29"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "Weekly rainfall, the dataset's own column: CHIRPS at the one grid cell nearest each municipality's point, summed Monday to Sunday, a missing day counted as 0. Not read over the municipality: CHIRPS's server does not let a web page read its files."
+        },
+        {
+          "add": "table_input",
+          "as": "rain16"
+        },
+        {
+          "select": "rain16"
+        },
+        {
+          "click": "#open-table",
+          "label": "Configure…",
+          "opens": "Tabular data"
+        },
+        {
+          "click": "#table-remote summary",
+          "label": "Or fetch from a URL",
+          "dialog": "Tabular data"
+        },
+        {
+          "fill": "table-url",
+          "label": "URL of a CSV, Stata file or zip",
+          "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-fetch",
+          "label": "Fetch",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-shape",
+          "label": "Shape of the file",
+          "value": "long",
+          "shown": "Long · one row per observation, one value column",
+          "dialog": "Tabular data"
+        },
+        {
+          "choose": "table-value",
+          "label": "Value column",
+          "value": "precip_total_semana",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-keys-choose",
+          "label": "Choose key columns…",
+          "dialog": "Tabular data",
+          "opens": "Key columns"
+        },
+        {
+          "fill": "table-keys-paste",
+          "label": "Columns to keep, pasted or typed",
+          "value": "municipio, data_iniSE",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-keep",
+          "label": "Keep these",
+          "dialog": "Key columns"
+        },
+        {
+          "click": "#table-keys-done",
+          "label": "Done",
+          "dialog": "Key columns"
+        },
+        {
+          "fill": "table-unit",
+          "label": "Unit of the value (entered by you)",
+          "value": "mm/week",
+          "dialog": "Tabular data"
+        },
+        {
+          "click": "#table-save",
+          "label": "Apply",
+          "dialog": "Tabular data"
+        },
+        {
+          "note": "The same twelve weeks left out of the rainfall."
+        },
+        {
+          "add": "select_rows",
+          "as": "rainKept"
+        },
+        {
+          "connect": {
+            "from": "rain16",
+            "to": "rainKept",
+            "port": "records"
+          }
+        },
+        {
+          "select": "rainKept"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "data_iniSE"
+        },
+        {
+          "choose": "select-mode",
+          "label": "Keep",
+          "value": "leave-out",
+          "shown": "Every value except those I tick"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
+          "label": "2010-12-26"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
+          "label": "2011-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
+          "label": "2012-12-30"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
+          "label": "2013-12-29"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
+          "label": "2015-01-04"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
+          "label": "2016-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
+          "label": "2018-12-30"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
+          "label": "2019-12-29"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
+          "label": "2020-12-27"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
+          "label": "2021-12-26"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
+          "label": "2022-12-25"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
+          "label": "2024-12-29"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "note": "The 92 municipalities, from this project's first study area."
+        },
+        {
+          "add": "study_area",
+          "as": "state16"
+        },
+        {
+          "select": "state16"
+        },
+        {
+          "click": "#edit-study-area",
+          "label": "Select area on map",
+          "opens": "Choose your study area"
+        },
+        {
+          "click": "#area-project-source summary",
+          "label": "Use a study area from this project",
+          "dialog": "Choose your study area"
+        },
+        {
+          "choose": "area-project-pick",
+          "label": "Study area",
+          "value": "0",
+          "shown": "Where was incidence highest?",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-project-use",
+          "label": "Use this study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "click": "#area-apply",
+          "label": "Apply study area",
+          "dialog": "Choose your study area"
+        },
+        {
+          "note": "MODIS land surface temperature, every 8-day period from 2010 to 2025: about 2,900 files from both satellites."
+        },
+        {
+          "add": "find_satellite_products",
+          "as": "product16"
+        },
+        {
+          "select": "product16"
+        },
+        {
+          "click": "#satellite-find",
+          "label": "Find satellite products",
+          "opens": "Find satellite products"
+        },
+        {
+          "fill": "sat-question",
+          "label": "Research topic or measurement",
+          "value": "land surface temperature",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-find",
+          "label": "Find data pathways",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
+          "label": "Choose this product",
+          "dialog": "Find satellite products"
+        },
+        {
+          "click": "#sat-close",
+          "label": "Done",
+          "dialog": "Find satellite products"
+        },
+        {
+          "add": "search_satellite_catalog",
+          "as": "search16"
+        },
+        {
+          "connect": {
+            "from": "product16",
+            "to": "search16",
+            "port": "product"
+          }
+        },
+        {
+          "connect": {
+            "from": "state16",
+            "to": "search16",
+            "port": "area"
+          }
+        },
+        {
+          "select": "search16"
+        },
+        {
+          "click": "#catalog-search-open",
+          "label": "Search the catalog",
+          "opens": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-from",
+          "label": "From",
+          "value": "2010-01-01",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "fill": "cat-until",
+          "label": "Until",
+          "value": "2025-12-31",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-search",
+          "label": "Search",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "click": "#cat-close",
+          "label": "Done",
+          "dialog": "Search a satellite catalog"
+        },
+        {
+          "add": "sample_raster",
+          "as": "sample16"
+        },
+        {
+          "connect": {
+            "from": "state16",
+            "to": "sample16",
+            "port": "area"
+          }
+        },
+        {
+          "connect": {
+            "from": "search16",
+            "to": "sample16",
+            "port": "files"
+          }
+        },
+        {
+          "select": "sample16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Sample a raster at points or over areas"
+        },
+        {
+          "fill": "satellite-place-column",
+          "label": "Name of the place column",
+          "value": "municipio"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Sample a raster at points or over areas"
+        },
+        {
+          "add": "select_rows",
+          "as": "terra16"
+        },
+        {
+          "connect": {
+            "from": "sample16",
+            "to": "terra16",
+            "port": "records"
+          }
+        },
+        {
+          "select": "terra16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "platform"
+        },
+        {
+          "fill": "select-values",
+          "label": "Values to keep, one per line",
+          "value": "terra"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "add": "table_output",
+          "as": "rain16Shown"
+        },
+        {
+          "connect": {
+            "from": "rainKept",
+            "to": "rain16Shown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "rain16Shown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Weekly rainfall by municipality, 2010–2025 (dataset's CHIRPS column)"
+        },
+        {
+          "add": "table_output",
+          "as": "cases16Shown"
+        },
+        {
+          "connect": {
+            "from": "cases16",
+            "to": "cases16Shown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "cases16Shown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Weekly cases by municipality, 2010–2025"
+        },
+        {
+          "add": "table_output",
+          "as": "terra16Shown"
+        },
+        {
+          "connect": {
+            "from": "terra16",
+            "to": "terra16Shown",
+            "port": "table"
+          }
+        },
+        {
+          "select": "terra16Shown"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "Terra daytime land surface temperature by municipality, 2010–2025"
+        },
+        {
+          "note": "Run once now: the joins below are decided against the tables this run makes. The satellite files are read once; the run after the joins does not read them again."
+        },
+        {
+          "run": true
+        },
+        {
+          "note": "One Relate brings the temperature at every lag, one column per shift: the Terra period containing each week's Wednesday. +3 days is 0 weeks before; -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier; +17 and +31 days are 2 and 4 weeks after, the leads: later weather cannot cause earlier cases, so they test the design."
+        },
+        {
+          "add": "relate_table",
+          "as": "temps16"
+        },
+        {
+          "connect": {
+            "from": "cases16",
+            "to": "temps16",
+            "port": "records"
+          }
+        },
+        {
+          "connect": {
+            "from": "terra16",
+            "to": "temps16",
+            "port": "related"
+          }
+        },
+        {
+          "select": "temps16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-on",
+          "label": "Matched on, in the first table",
+          "value": "municipio",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-bring",
+          "label": "Bring across",
+          "value": "LST_Day_1km",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-date",
+          "label": "Date, in the first table",
+          "value": "data_iniSE",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-start",
+          "label": "Period start, in the second",
+          "value": "period_start",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-end",
+          "label": "Period end, in the second",
+          "value": "period_end",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-0",
+          "label": "Shift 1",
+          "value": "3",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-1",
+          "label": "Shift 2",
+          "value": "-11",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-2",
+          "label": "Shift 3",
+          "value": "-25",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-3",
+          "label": "Shift 4",
+          "value": "-39",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-4",
+          "label": "Shift 5",
+          "value": "-53",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-5",
+          "label": "Shift 6",
+          "value": "17",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-6",
+          "label": "Shift 7",
+          "value": "31",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "Every week is kept. A week whose period at a shift has no clear-sky value, or lies outside 2010-2025, has that shift's column empty, counted in the evidence, and the model for that shift leaves it out."
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "Run again: the rainfall join below is decided against the table the temperature join makes. The satellite files are not read again."
+        },
+        {
+          "run": true
+        },
+        {
+          "note": "A second Relate brings the rainfall at the same lags, from the dataset's weekly totals: 0, -14, -28, -42 and -56 days, and +14 and +28 for the leads. The week's own start is both the date and the period."
+        },
+        {
+          "add": "relate_table",
+          "as": "rain16"
+        },
+        {
+          "connect": {
+            "from": "temps16",
+            "to": "rain16",
+            "port": "records"
+          }
+        },
+        {
+          "connect": {
+            "from": "rainKept",
+            "to": "rain16",
+            "port": "related"
+          }
+        },
+        {
+          "select": "rain16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-on",
+          "label": "Matched on, in the first table",
+          "value": "municipio",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-bring",
+          "label": "Bring across",
+          "value": "precip_total_semana",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-date",
+          "label": "Date, in the first table",
+          "value": "data_iniSE",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-start",
+          "label": "Period start, in the second",
+          "value": "data_iniSE",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "choose": "relate-within-end",
+          "label": "Period end, in the second",
+          "value": "data_iniSE",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-0",
+          "label": "Shift 1",
+          "value": "0",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-1",
+          "label": "Shift 2",
+          "value": "-14",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-2",
+          "label": "Shift 3",
+          "value": "-28",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-3",
+          "label": "Shift 4",
+          "value": "-42",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-4",
+          "label": "Shift 5",
+          "value": "-56",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-5",
+          "label": "Shift 6",
+          "value": "14",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "click": "#relate-shift-add",
+          "label": "+ Add a shift",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "fill": "relate-shift-6",
+          "label": "Shift 7",
+          "value": "28",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "Every week has its own rainfall, so nothing is empty at a shift inside 2010-2025."
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Relate a column from another table"
+        },
+        {
+          "note": "One Regression fits the same model once per temperature column, each on its own weeks, comparing weeks within a municipality, month and year, and each adjusted for the rainfall at its own lag."
+        },
+        {
+          "add": "regression",
+          "as": "m16"
+        },
+        {
+          "connect": {
+            "from": "rain16",
+            "to": "m16",
+            "port": "records"
+          }
+        },
+        {
+          "select": "m16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Regression"
+        },
+        {
+          "choose": "reg-family",
+          "label": "Model",
+          "value": "poisson",
+          "shown": "Poisson regression · rate ratios",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-outcome",
+          "label": "Outcome",
+          "value": "casos",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-exposure",
+          "label": "Exposure",
+          "value": "LST_Day_1km_+3d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-exposure-as",
+          "label": "Exposure is",
+          "value": "numeric",
+          "shown": "Numeric",
+          "dialog": "Regression"
+        },
+        {
+          "tick": "reg-exposures",
+          "label": "Also fit, one model each, with",
+          "values": [
+            "LST_Day_1km_-11d",
+            "LST_Day_1km_-25d",
+            "LST_Day_1km_-39d",
+            "LST_Day_1km_-53d",
+            "LST_Day_1km_+17d",
+            "LST_Day_1km_+31d"
+          ],
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-adjust-add",
+          "label": "Add a variable",
+          "value": "precip_total_semana_0d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-kind-precip_total_semana_0d",
+          "label": "precip_total_semana_0d as",
+          "value": "spline",
+          "shown": "Spline, 4 df",
+          "dialog": "Regression"
+        },
+        {
+          "click": "label:has(> input[data-reg-follow=\"precip_total_semana_0d\"])",
+          "label": "precip_total_semana_0d follows the shift: each model is adjusted for its own column",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-1",
+          "label": "For the model of LST_Day_1km_-11d",
+          "value": "precip_total_semana_-14d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-2",
+          "label": "For the model of LST_Day_1km_-25d",
+          "value": "precip_total_semana_-28d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-3",
+          "label": "For the model of LST_Day_1km_-39d",
+          "value": "precip_total_semana_-42d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-4",
+          "label": "For the model of LST_Day_1km_-53d",
+          "value": "precip_total_semana_-56d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-5",
+          "label": "For the model of LST_Day_1km_+17d",
+          "value": "precip_total_semana_+14d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-follow-precip_total_semana_0d-6",
+          "label": "For the model of LST_Day_1km_+31d",
+          "value": "precip_total_semana_+28d",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-strata",
+          "label": "Strata, as fixed effects",
+          "value": "municipio",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-strata-2",
+          "label": "Together with",
+          "value": "anio",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-strata-3",
+          "label": "Together with",
+          "value": "mes",
+          "dialog": "Regression"
+        },
+        {
+          "choose": "reg-errors",
+          "label": "Intervals",
+          "value": "overdispersed",
+          "dialog": "Regression"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Regression"
+        },
+        {
+          "add": "table_output",
+          "as": "s16"
+        },
+        {
+          "connect": {
+            "from": "m16",
+            "to": "s16",
+            "port": "table"
+          }
+        },
+        {
+          "select": "s16"
+        },
+        {
+          "fill": "table-label",
+          "label": "Results tab name",
+          "value": "2010–2025: every model's estimates, by shift"
+        },
+        {
+          "note": "Keep the temperature's rows, whose role is exposure."
+        },
+        {
+          "add": "select_rows",
+          "as": "exposure16"
+        },
+        {
+          "connect": {
+            "from": "m16",
+            "to": "exposure16",
+            "port": "records"
+          }
+        },
+        {
+          "select": "exposure16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Select rows by value"
+        },
+        {
+          "choose": "select-key",
+          "label": "Key column to choose by",
+          "value": "role"
+        },
+        {
+          "click": "label:has(> input[data-select-value=\"exposure\"])",
+          "label": "exposure"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Select rows by value"
+        },
+        {
+          "add": "chart_output",
+          "as": "chart16"
+        },
+        {
+          "connect": {
+            "from": "exposure16",
+            "to": "chart16",
+            "port": "records"
+          }
+        },
+        {
+          "select": "chart16"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Chart"
+        },
+        {
+          "choose": "chart-key-column",
+          "label": "Category column",
+          "value": "shift_days"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Chart"
+        },
+        {
+          "fill": "chart-label",
+          "label": "Results tab name",
+          "value": "2010–2025: rate ratio per °C at each lag"
+        },
+        {
+          "click": "#configure-step",
+          "label": "Configure…",
+          "opens": "Chart"
+        },
+        {
+          "fill": "chart-title",
+          "label": "Chart title",
+          "value": "Dengue cases and land surface temperature, Rio de Janeiro state, 2010–2025"
+        },
+        {
+          "fill": "chart-subtitle",
+          "label": "Subtitle / context",
+          "value": "Seven Poisson models, one per shift, each comparing weeks within a municipality, month and year, adjusted for the rainfall at its own lag; each point is its own model. Shifts after the week (positive) cannot be causal."
+        },
+        {
+          "fill": "chart-x-axis",
+          "label": "Horizontal axis label",
+          "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
+        },
+        {
+          "fill": "chart-y-axis",
+          "label": "Vertical axis label",
+          "value": "Rate ratio per 1 °C"
+        },
+        {
+          "click": "#config-apply",
+          "label": "Apply",
+          "dialog": "Chart"
+        },
+        {
+          "run": true
+        },
+        {
+          "see": "seven models over sixteen years, weeks compared within a municipality, month and year, and the lag-response plot with its two leads",
+          "check": "2010–2025: rate ratio per °C at each lag"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "name": "Where was incidence highest?",
-   "steps": [
-    {
-     "click": "#add-workflow",
-     "label": "Add workflow"
-    },
-    {
-     "fill": "workflow-name-edit",
-     "view": "project",
-     "label": "This workflow’s name — the question it answers",
-     "value": "Where was incidence highest?"
-    },
-    {
-     "note": "The same file, read wide: cases and population become rows of one variable column, so a rate can divide one by the other. The dialog notes that 92 rows repeat a municipality and week, the doubled week; read as wide they are kept, and reported in Data quality as duplicate records."
-    },
-    {
-     "add": "table_input",
-     "as": "wide"
-    },
-    {
-     "select": "wide"
-    },
-    {
-     "click": "#open-table",
-     "label": "Configure…",
-     "opens": "Tabular data"
-    },
-    {
-     "click": "#table-remote summary",
-     "label": "Or fetch from a URL",
-     "dialog": "Tabular data"
-    },
-    {
-     "fill": "table-url",
-     "label": "URL of a CSV, Stata file or zip",
-     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-fetch",
-     "label": "Fetch",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-shape",
-     "label": "Shape of the file",
-     "value": "wide",
-     "shown": "Wide · one row per subject, a column per variable",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-keys-choose",
-     "label": "Choose key columns…",
-     "dialog": "Tabular data",
-     "opens": "Key columns"
-    },
-    {
-     "fill": "table-keys-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "data_iniSE, municipio",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-keep",
-     "label": "Keep these",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-done",
-     "label": "Done",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-values-choose",
-     "label": "Choose value columns…",
-     "dialog": "Tabular data",
-     "opens": "Value columns"
-    },
-    {
-     "fill": "table-values-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "casos, pop",
-     "dialog": "Value columns"
-    },
-    {
-     "click": "#table-values-keep",
-     "label": "Keep these",
-     "dialog": "Value columns"
-    },
-    {
-     "click": "#table-values-done",
-     "label": "Done",
-     "dialog": "Value columns"
-    },
-    {
-     "fill": "table-measure-key",
-     "label": "Name for the column holding the variable names",
-     "value": "variable",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-save",
-     "label": "Apply",
-     "dialog": "Tabular data"
-    },
-    {
-     "note": "Epidemiological year 2024 again, which leaves out the doubled week."
-    },
-    {
-     "add": "select_rows",
-     "as": "year"
-    },
-    {
-     "connect": {
-      "from": "wide",
-      "to": "year",
-      "port": "records"
-     }
-    },
-    {
-     "select": "year"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "data_iniSE"
-    },
-    {
-     "choose": "select-mode",
-     "label": "Keep",
-     "value": "range",
-     "shown": "A range of dates"
-    },
-    {
-     "fill": "select-from",
-     "label": "From",
-     "value": "2023-12-31"
-    },
-    {
-     "fill": "select-to",
-     "label": "To",
-     "value": "2024-12-28"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "Cases add up over the weeks; population does not. So each is totalled separately, cases summed and each municipality's population, the same every week, taken once as its maximum, and the two stacked again."
-    },
-    {
-     "add": "select_rows",
-     "as": "cases"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "cases",
-      "port": "records"
-     }
-    },
-    {
-     "select": "cases"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "variable"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"casos\"])",
-     "label": "casos"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "add": "group_table",
-     "as": "casesTotal"
-    },
-    {
-     "connect": {
-      "from": "cases",
-      "to": "casesTotal",
-      "port": "records"
-     }
-    },
-    {
-     "select": "casesTotal"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Total within groups"
-    },
-    {
-     "tick": "group-keep",
-     "label": "Key columns to keep",
-     "values": [
-      "municipio",
-      "variable"
-     ],
-     "dialog": "Total within groups"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Total within groups"
-    },
-    {
-     "add": "select_rows",
-     "as": "people"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "people",
-      "port": "records"
-     }
-    },
-    {
-     "select": "people"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "variable"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"pop\"])",
-     "label": "pop"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "add": "group_table",
-     "as": "population"
-    },
-    {
-     "connect": {
-      "from": "people",
-      "to": "population",
-      "port": "records"
-     }
-    },
-    {
-     "select": "population"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Total within groups"
-    },
-    {
-     "tick": "group-keep",
-     "label": "Key columns to keep",
-     "values": [
-      "municipio",
-      "variable"
-     ],
-     "dialog": "Total within groups"
-    },
-    {
-     "choose": "group-aggregate",
-     "label": "Aggregate",
-     "value": "maximum",
-     "shown": "Maximum",
-     "dialog": "Total within groups"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Total within groups"
-    },
-    {
-     "add": "append_rows",
-     "as": "both"
-    },
-    {
-     "connect": {
-      "from": "casesTotal",
-      "to": "both",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "population",
-      "to": "both",
-      "port": "records_2"
-     }
-    },
-    {
-     "note": "Notified cases per 100,000 residents in 2024. A ratio, not a proportion: a notification is an event, and one person can be notified twice."
-    },
-    {
-     "add": "rate",
-     "as": "incidence"
-    },
-    {
-     "select": "incidence"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-source",
-     "label": "Records arrive as",
-     "value": "table",
-     "shown": "a table",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "connect": {
-      "from": "both",
-      "to": "incidence",
-      "port": "records"
-     }
-    },
-    {
-     "select": "incidence"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-measure",
-     "label": "Key column holding the measure names",
-     "value": "variable",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "fill": "rate-numerator",
-     "label": "Numerator (what is counted)",
-     "value": "casos",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "fill": "rate-denominator",
-     "label": "Denominator (units at risk)",
-     "value": "pop",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-unit",
-     "label": "The denominator counts",
-     "value": "people",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-kind",
-     "label": "Kind",
-     "value": "ratio",
-     "shown": "ratio — events per unit, may exceed one",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-multiplier",
-     "label": "Per",
-     "value": "100000",
-     "shown": "100,000",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "choose": "rate-group",
-     "label": "Group by (optional)",
-     "value": "municipio",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "fill": "rate-period",
-     "label": "Period the numerator covers",
-     "value": "epidemiological year 2024, weeks 2 to 52",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "fill": "rate-vintage",
-     "label": "Vintage of the denominator",
-     "value": "pop as InfoDengue reports it for 2024; the year of the estimate is not stated in the dataset",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Rate with a denominator"
-    },
-    {
-     "note": "The 92 municipalities, from geoBoundaries (IBGE, CC BY 3.0 IGO). Seven of their names are also municipalities in other states, so those are listed with where they lie: choose the ones near 22° S."
-    },
-    {
-     "add": "study_area",
-     "as": "state"
-    },
-    {
-     "select": "state"
-    },
-    {
-     "click": "#edit-study-area",
-     "label": "Select area on map",
-     "opens": "Choose your study area"
-    },
-    {
-     "click": "#area-boundary-source summary",
-     "label": "Use an administrative boundary",
-     "dialog": "Choose your study area"
-    },
-    {
-     "fill": "area-iso",
-     "label": "Country",
-     "value": "Brazil",
-     "dialog": "Choose your study area"
-    },
-    {
-     "note": "Level stays at ADM2, the municipalities."
-    },
-    {
-     "click": "#area-boundary-check",
-     "label": "Check this level",
-     "dialog": "Choose your study area"
-    },
-    {
-     "pick": "area-boundary-pick",
-     "label": "Units",
-     "values": [
-      "Angra dos Reis",
-      "Aperibé",
-      "Araruama",
-      "Areal",
-      "Armação dos Búzios",
-      "Arraial do Cabo",
-      "Barra do Piraí",
-      "Barra Mansa",
-      "Belford Roxo",
-      "Bom Jardim · 22.19° S, 42.34° W",
-      "Bom Jesus do Itabapoana",
-      "Cabo Frio",
-      "Cachoeiras de Macacu",
-      "Cambuci",
-      "Carapebus",
-      "Comendador Levy Gasparian",
-      "Campos dos Goytacazes",
-      "Cantagalo · 21.87° S, 42.34° W",
-      "Cardoso Moreira",
-      "Carmo",
-      "Casimiro de Abreu",
-      "Conceição de Macabu",
-      "Cordeiro",
-      "Duas Barras",
-      "Duque de Caxias",
-      "Engenheiro Paulo de Frontin",
-      "Guapimirim",
-      "Iguaba Grande",
-      "Itaboraí",
-      "Itaguaí",
-      "Italva",
-      "Itaocara",
-      "Itaperuna",
-      "Itatiaia",
-      "Japeri",
-      "Laje do Muriaé",
-      "Macaé",
-      "Macuco",
-      "Magé",
-      "Mangaratiba",
-      "Maricá",
-      "Mendes",
-      "Mesquita · 22.80° S, 43.45° W",
-      "Miguel Pereira",
-      "Miracema",
-      "Natividade · 21.04° S, 41.94° W",
-      "Nilópolis",
-      "Niterói",
-      "Nova Friburgo",
-      "Nova Iguaçu",
-      "Paracambi",
-      "Paraíba do Sul",
-      "Paraty",
-      "Paty do Alferes",
-      "Petrópolis",
-      "Pinheiral",
-      "Piraí",
-      "Porciúncula",
-      "Porto Real",
-      "Quatis",
-      "Queimados",
-      "Quissamã",
-      "Resende",
-      "Rio Bonito",
-      "Rio Claro · 22.79° S, 44.08° W",
-      "Rio das Flores",
-      "Rio das Ostras",
-      "Rio de Janeiro",
-      "Santa Maria Madalena",
-      "Santo Antônio de Pádua",
-      "São Francisco de Itabapoana",
-      "São Fidélis",
-      "São Gonçalo",
-      "São João da Barra",
-      "São João de Meriti",
-      "São José de Ubá",
-      "São José do Vale do Rio Preto",
-      "São Pedro da Aldeia",
-      "São Sebastião do Alto",
-      "Sapucaia · 22.03° S, 42.82° W",
-      "Saquarema",
-      "Seropédica",
-      "Silva Jardim",
-      "Sumidouro",
-      "Tanguá",
-      "Teresópolis",
-      "Trajano de Moraes",
-      "Três Rios",
-      "Valença · 22.25° S, 43.88° W",
-      "Varre-Sai",
-      "Vassouras",
-      "Volta Redonda"
-     ],
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-boundary-use",
-     "label": "Use the selected units",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-apply",
-     "label": "Apply study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "add": "join_table_to_area",
-     "as": "joined"
-    },
-    {
-     "connect": {
-      "from": "incidence",
-      "to": "joined",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "state",
-      "to": "joined",
-      "port": "area"
-     }
-    },
-    {
-     "select": "joined"
-    },
-    {
-     "note": "Rate names each row by its group, here the municipality, in a column called group: match on that."
-    },
-    {
-     "choose": "join-key",
-     "label": "Column naming each part",
-     "value": "group"
-    },
-    {
-     "add": "map_output",
-     "as": "map"
-    },
-    {
-     "select": "map"
-    },
-    {
-     "choose": "map-add-layer",
-     "label": "Add a layer",
-     "value": "Values on the study area · polygons"
-    },
-    {
-     "fill": "map-label",
-     "label": "Results tab name",
-     "value": "Dengue incidence by municipality, 2024"
-    },
-    {
-     "run": true
-    },
-    {
-     "see": "the 92 municipalities shaded by notified cases per 100,000 in 2024",
-     "check": "per 100,000"
-    }
-   ]
-  },
-  {
-   "name": "How hot was the ground in each municipality?",
-   "steps": [
-    {
-     "click": "#add-workflow",
-     "label": "Add workflow"
-    },
-    {
-     "fill": "workflow-name-edit",
-     "view": "project",
-     "label": "This workflow’s name — the question it answers",
-     "value": "How hot was the ground in each municipality?"
-    },
-    {
-     "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
-    },
-    {
-     "add": "study_area",
-     "as": "state"
-    },
-    {
-     "select": "state"
-    },
-    {
-     "click": "#edit-study-area",
-     "label": "Select area on map",
-     "opens": "Choose your study area"
-    },
-    {
-     "click": "#area-project-source summary",
-     "label": "Use a study area from this project",
-     "dialog": "Choose your study area"
-    },
-    {
-     "choose": "area-project-pick",
-     "label": "Study area",
-     "value": "0",
-     "shown": "Where was incidence highest?",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-project-use",
-     "label": "Use this study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-apply",
-     "label": "Apply study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "note": "The satellite: MODIS land surface temperature, 8-day composites at 1 km, on Planetary Computer with no account. It is the temperature of the ground's surface where the sky was clear, not the air's."
-    },
-    {
-     "add": "find_satellite_products",
-     "as": "product"
-    },
-    {
-     "select": "product"
-    },
-    {
-     "click": "#satellite-find",
-     "label": "Find satellite products",
-     "opens": "Find satellite products"
-    },
-    {
-     "fill": "sat-question",
-     "label": "Research topic or measurement",
-     "value": "land surface temperature",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-find",
-     "label": "Find data pathways",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
-     "label": "Choose this product",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-close",
-     "label": "Done",
-     "dialog": "Find satellite products"
-    },
-    {
-     "note": "The files: every 8-day period of 2024 over the state, from both MODIS satellites. The search takes the state's extent from the study area."
-    },
-    {
-     "add": "search_satellite_catalog",
-     "as": "search"
-    },
-    {
-     "connect": {
-      "from": "product",
-      "to": "search",
-      "port": "product"
-     }
-    },
-    {
-     "connect": {
-      "from": "state",
-      "to": "search",
-      "port": "area"
-     }
-    },
-    {
-     "select": "search"
-    },
-    {
-     "click": "#catalog-search-open",
-     "label": "Search the catalog",
-     "opens": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-from",
-     "label": "From",
-     "value": "2024-01-01",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-until",
-     "label": "Until",
-     "value": "2024-12-31",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-search",
-     "label": "Search",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-close",
-     "label": "Done",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
-    },
-    {
-     "add": "sample_raster",
-     "as": "sample"
-    },
-    {
-     "connect": {
-      "from": "state",
-      "to": "sample",
-      "port": "area"
-     }
-    },
-    {
-     "connect": {
-      "from": "search",
-      "to": "sample",
-      "port": "files"
-     }
-    },
-    {
-     "select": "sample"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Sample a raster at points or over areas"
-    },
-    {
-     "fill": "satellite-place-column",
-     "label": "Name of the place column",
-     "value": "municipio"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Sample a raster at points or over areas"
-    },
-    {
-     "add": "table_output",
-     "as": "shown"
-    },
-    {
-     "connect": {
-      "from": "sample",
-      "to": "shown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Land surface temperature by municipality, 8-day, 2024"
-    },
-    {
-     "run": true
-    },
-    {
-     "see": "one row per municipality per 8-day period per satellite: the mean of the cells that passed, how many cells it rests on, how many days were clear, and the gap where there is no value",
-     "check": "municipio"
-    }
-   ]
-  },
-  {
-   "name": "Did warmer ground weeks earlier go with more cases?",
-   "steps": [
-    {
-     "click": "#add-workflow",
-     "label": "Add workflow"
-    },
-    {
-     "fill": "workflow-name-edit",
-     "view": "project",
-     "label": "This workflow’s name — the question it answers",
-     "value": "Did warmer ground weeks earlier go with more cases?"
-    },
-    {
-     "note": "Weekly cases per municipality, with the calendar month the week starts in, for the month strata."
-    },
-    {
-     "add": "table_input",
-     "as": "weekly"
-    },
-    {
-     "select": "weekly"
-    },
-    {
-     "click": "#open-table",
-     "label": "Configure…",
-     "opens": "Tabular data"
-    },
-    {
-     "click": "#table-remote summary",
-     "label": "Or fetch from a URL",
-     "dialog": "Tabular data"
-    },
-    {
-     "fill": "table-url",
-     "label": "URL of a CSV, Stata file or zip",
-     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/f568d1a88a3e6c9101b43bf671768fc6fb53c143/data/dengue-rj-2024.csv",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-fetch",
-     "label": "Fetch",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-shape",
-     "label": "Shape of the file",
-     "value": "long",
-     "shown": "Long · one row per observation, one value column",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-value",
-     "label": "Value column",
-     "value": "casos",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-keys-choose",
-     "label": "Choose key columns…",
-     "dialog": "Tabular data",
-     "opens": "Key columns"
-    },
-    {
-     "fill": "table-keys-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "municipio, data_iniSE, mes",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-keep",
-     "label": "Keep these",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-done",
-     "label": "Done",
-     "dialog": "Key columns"
-    },
-    {
-     "fill": "table-unit",
-     "label": "Unit of the value (entered by you)",
-     "value": "notified cases/week",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-save",
-     "label": "Apply",
-     "dialog": "Tabular data"
-    },
-    {
-     "note": "Epidemiological year 2024, which leaves out the doubled week."
-    },
-    {
-     "add": "select_rows",
-     "as": "year"
-    },
-    {
-     "connect": {
-      "from": "weekly",
-      "to": "year",
-      "port": "records"
-     }
-    },
-    {
-     "select": "year"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "data_iniSE"
-    },
-    {
-     "choose": "select-mode",
-     "label": "Keep",
-     "value": "range",
-     "shown": "A range of dates"
-    },
-    {
-     "fill": "select-from",
-     "label": "From",
-     "value": "2023-12-31"
-    },
-    {
-     "fill": "select-to",
-     "label": "To",
-     "value": "2024-12-28"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "The 92 municipalities: the study area the incidence workflow already picked, taken from this project rather than picked again."
-    },
-    {
-     "add": "study_area",
-     "as": "state"
-    },
-    {
-     "select": "state"
-    },
-    {
-     "click": "#edit-study-area",
-     "label": "Select area on map",
-     "opens": "Choose your study area"
-    },
-    {
-     "click": "#area-project-source summary",
-     "label": "Use a study area from this project",
-     "dialog": "Choose your study area"
-    },
-    {
-     "choose": "area-project-pick",
-     "label": "Study area",
-     "value": "0",
-     "shown": "Where was incidence highest?",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-project-use",
-     "label": "Use this study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-apply",
-     "label": "Apply study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "note": "The satellite: MODIS land surface temperature, 8-day composites at 1 km, on Planetary Computer with no account. It is the temperature of the ground's surface where the sky was clear, not the air's."
-    },
-    {
-     "add": "find_satellite_products",
-     "as": "product"
-    },
-    {
-     "select": "product"
-    },
-    {
-     "click": "#satellite-find",
-     "label": "Find satellite products",
-     "opens": "Find satellite products"
-    },
-    {
-     "fill": "sat-question",
-     "label": "Research topic or measurement",
-     "value": "land surface temperature",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-find",
-     "label": "Find data pathways",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
-     "label": "Choose this product",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-close",
-     "label": "Done",
-     "dialog": "Find satellite products"
-    },
-    {
-     "note": "The files: every 8-day period of 2024 over the state, from both MODIS satellites. The search takes the state's extent from the study area."
-    },
-    {
-     "add": "search_satellite_catalog",
-     "as": "search"
-    },
-    {
-     "connect": {
-      "from": "product",
-      "to": "search",
-      "port": "product"
-     }
-    },
-    {
-     "connect": {
-      "from": "state",
-      "to": "search",
-      "port": "area"
-     }
-    },
-    {
-     "select": "search"
-    },
-    {
-     "click": "#catalog-search-open",
-     "label": "Search the catalog",
-     "opens": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-from",
-     "label": "From",
-     "value": "2024-01-01",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-until",
-     "label": "Until",
-     "value": "2024-12-31",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-search",
-     "label": "Search",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-close",
-     "label": "Done",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "note": "Read over each municipality: the cells whose centre is in it, of those that passed the quality rule. Name the place column municipio, as the case table does, so the two can be related."
-    },
-    {
-     "add": "sample_raster",
-     "as": "sample"
-    },
-    {
-     "connect": {
-      "from": "state",
-      "to": "sample",
-      "port": "area"
-     }
-    },
-    {
-     "connect": {
-      "from": "search",
-      "to": "sample",
-      "port": "files"
-     }
-    },
-    {
-     "select": "sample"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Sample a raster at points or over areas"
-    },
-    {
-     "fill": "satellite-place-column",
-     "label": "Name of the place column",
-     "value": "municipio"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Sample a raster at points or over areas"
-    },
-    {
-     "note": "Terra only: the mid-morning satellite, one measurement throughout. Aqua's rows would put two values on each period."
-    },
-    {
-     "add": "select_rows",
-     "as": "terra"
-    },
-    {
-     "connect": {
-      "from": "sample",
-      "to": "terra",
-      "port": "records"
-     }
-    },
-    {
-     "select": "terra"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "platform"
-    },
-    {
-     "fill": "select-values",
-     "label": "Values to keep, one per line",
-     "value": "terra"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "add": "table_output",
-     "as": "terraShown"
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "terraShown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "terraShown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Terra daytime land surface temperature by municipality, 2024"
-    },
-    {
-     "add": "table_output",
-     "as": "weeksShown"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "weeksShown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "weeksShown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Weekly cases by municipality, 2024"
-    },
-    {
-     "note": "Run once now: the joins below are decided against the tables this run makes."
-    },
-    {
-     "run": true
-    },
-    {
-     "note": "One Relate brings the temperature at every lag, one column per shift: each week's Wednesday, matched to the Terra period containing it. A shift of +3 days takes the week's Sunday to its Wednesday (0 weeks before); -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier. +17 and +31 days are 2 and 4 weeks AFTER, a falsification test: later weather cannot cause earlier cases, so an association there as strong as the lags' says the season, not the temperature, is behind them."
-    },
-    {
-     "add": "relate_table",
-     "as": "lags"
-    },
-    {
-     "connect": {
-      "from": "year",
-      "to": "lags",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra",
-      "to": "lags",
-      "port": "related"
-     }
-    },
-    {
-     "select": "lags"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on, in the first table",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
-     "value": "3",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-1",
-     "label": "Shift 2",
-     "value": "-11",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-2",
-     "label": "Shift 3",
-     "value": "-25",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-3",
-     "label": "Shift 4",
-     "value": "-39",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-4",
-     "label": "Shift 5",
-     "value": "-53",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-5",
-     "label": "Shift 6",
-     "value": "17",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-6",
-     "label": "Shift 7",
-     "value": "31",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "Every week is kept. A week whose period at a shift has no clear-sky value has that shift's column empty, counted in the evidence, and the model for that shift leaves it out. The satellite search ends with 2024, so the last weeks of the year have no value at the leads."
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "One Regression fits the same model once per shift column: each on its own weeks, adjusted for the municipality and the calendar month."
-    },
-    {
-     "add": "regression",
-     "as": "models"
-    },
-    {
-     "connect": {
-      "from": "lags",
-      "to": "models",
-      "port": "records"
-     }
-    },
-    {
-     "select": "models"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km_+3d"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "tick": "reg-exposures",
-     "label": "Also fit, one model each, with",
-     "values": [
-      "LST_Day_1km_-11d",
-      "LST_Day_1km_-25d",
-      "LST_Day_1km_-39d",
-      "LST_Day_1km_-53d",
-      "LST_Day_1km_+17d",
-      "LST_Day_1km_+31d"
-     ]
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-kind-mes",
-     "label": "mes as",
-     "value": "categorical",
-     "shown": "Categorical"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "shown"
-    },
-    {
-     "connect": {
-      "from": "models",
-      "to": "shown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "shown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Every model's estimates, by shift"
-    },
-    {
-     "note": "Each model also reports the months; keep the temperature's rows, whose role is exposure."
-    },
-    {
-     "add": "select_rows",
-     "as": "exposureOnly"
-    },
-    {
-     "connect": {
-      "from": "models",
-      "to": "exposureOnly",
-      "port": "records"
-     }
-    },
-    {
-     "select": "exposureOnly"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "role"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"exposure\"])",
-     "label": "exposure"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "A lag-response plot: each shift's rate ratio with its 95% interval, on a log scale, with a dashed line at 1 for no association. The shift is a number of days, so the figure places each model at its distance."
-    },
-    {
-     "add": "chart_output",
-     "as": "lagChart"
-    },
-    {
-     "connect": {
-      "from": "exposureOnly",
-      "to": "lagChart",
-      "port": "records"
-     }
-    },
-    {
-     "select": "lagChart"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Chart"
-    },
-    {
-     "choose": "chart-key-column",
-     "label": "Category column",
-     "value": "shift_days"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Chart"
-    },
-    {
-     "fill": "chart-label",
-     "label": "Results tab name",
-     "value": "Rate ratio per °C at each lag"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Chart"
-    },
-    {
-     "fill": "chart-title",
-     "label": "Chart title",
-     "value": "Dengue cases and land surface temperature weeks earlier, Rio de Janeiro state, 2024"
-    },
-    {
-     "fill": "chart-subtitle",
-     "label": "Subtitle / context",
-     "value": "Seven Poisson models, one per shift, each adjusted for municipality and month; each point is its own model. Shifts after the week (positive) cannot be causal."
-    },
-    {
-     "fill": "chart-x-axis",
-     "label": "Horizontal axis label",
-     "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
-    },
-    {
-     "fill": "chart-y-axis",
-     "label": "Vertical axis label",
-     "value": "Rate ratio per 1 °C"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Chart"
-    },
-    {
-     "run": true
-    },
-    {
-     "see": "seven models in one table, one per shift: the rate ratio of weekly cases per 1 °C of land surface temperature at that shift, adjusted for the municipality and the calendar month",
-     "check": "Every model's estimates, by shift"
-    },
-    {
-     "see": "the lag-response plot: seven points with their 95% intervals, the two leads right of the others, on a log scale, the dashed line at 1 marking no association",
-     "check": "Rate ratio per °C at each lag"
-    }
-   ]
-  },
-  {
-   "name": "Across sixteen years, did warmer ground weeks earlier go with more cases?",
-   "steps": [
-    {
-     "click": "#add-workflow",
-     "label": "Add workflow"
-    },
-    {
-     "fill": "workflow-name-edit",
-     "view": "project",
-     "label": "This workflow’s name — the question it answers",
-     "value": "Across sixteen years, did warmer ground weeks earlier go with more cases?"
-    },
-    {
-     "note": "Weekly cases per municipality, 2010 to 2025, with the month and the epidemiological year of each week: together with the municipality they are the strata, so weeks are compared only within one municipality, month and year."
-    },
-    {
-     "add": "table_input",
-     "as": "weekly16"
-    },
-    {
-     "select": "weekly16"
-    },
-    {
-     "click": "#open-table",
-     "label": "Configure…",
-     "opens": "Tabular data"
-    },
-    {
-     "click": "#table-remote summary",
-     "label": "Or fetch from a URL",
-     "dialog": "Tabular data"
-    },
-    {
-     "fill": "table-url",
-     "label": "URL of a CSV, Stata file or zip",
-     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-fetch",
-     "label": "Fetch",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-shape",
-     "label": "Shape of the file",
-     "value": "long",
-     "shown": "Long · one row per observation, one value column",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-value",
-     "label": "Value column",
-     "value": "casos",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-keys-choose",
-     "label": "Choose key columns…",
-     "dialog": "Tabular data",
-     "opens": "Key columns"
-    },
-    {
-     "fill": "table-keys-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "municipio, data_iniSE, mes, anio",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-keep",
-     "label": "Keep these",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-done",
-     "label": "Done",
-     "dialog": "Key columns"
-    },
-    {
-     "fill": "table-unit",
-     "label": "Unit of the value (entered by you)",
-     "value": "notified cases/week",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-save",
-     "label": "Apply",
-     "dialog": "Tabular data"
-    },
-    {
-     "note": "Twelve weeks at years' edges appear twice for every municipality, the two rows disagreeing on rainfall; the file cannot say which is right. They are left out, here and from the rainfall below."
-    },
-    {
-     "add": "select_rows",
-     "as": "cases16"
-    },
-    {
-     "connect": {
-      "from": "weekly16",
-      "to": "cases16",
-      "port": "records"
-     }
-    },
-    {
-     "select": "cases16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "data_iniSE"
-    },
-    {
-     "choose": "select-mode",
-     "label": "Keep",
-     "value": "leave-out",
-     "shown": "Every value except those I tick"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
-     "label": "2010-12-26"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
-     "label": "2011-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
-     "label": "2012-12-30"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
-     "label": "2013-12-29"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
-     "label": "2015-01-04"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
-     "label": "2016-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
-     "label": "2018-12-30"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
-     "label": "2019-12-29"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
-     "label": "2020-12-27"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
-     "label": "2021-12-26"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
-     "label": "2022-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
-     "label": "2024-12-29"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "Weekly rainfall, the dataset's own column: CHIRPS at the one grid cell nearest each municipality's point, summed Monday to Sunday, a missing day counted as 0. Not read over the municipality: CHIRPS's server does not let a web page read its files."
-    },
-    {
-     "add": "table_input",
-     "as": "rain16"
-    },
-    {
-     "select": "rain16"
-    },
-    {
-     "click": "#open-table",
-     "label": "Configure…",
-     "opens": "Tabular data"
-    },
-    {
-     "click": "#table-remote summary",
-     "label": "Or fetch from a URL",
-     "dialog": "Tabular data"
-    },
-    {
-     "fill": "table-url",
-     "label": "URL of a CSV, Stata file or zip",
-     "value": "https://raw.githubusercontent.com/digital-twin-ph/example-2024-brazil-dengue/be9805e9d726c54c3a84c8240606b8bd1e941ed7/data/dengue-rj-2010-2025.csv",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-fetch",
-     "label": "Fetch",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-shape",
-     "label": "Shape of the file",
-     "value": "long",
-     "shown": "Long · one row per observation, one value column",
-     "dialog": "Tabular data"
-    },
-    {
-     "choose": "table-value",
-     "label": "Value column",
-     "value": "precip_total_semana",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-keys-choose",
-     "label": "Choose key columns…",
-     "dialog": "Tabular data",
-     "opens": "Key columns"
-    },
-    {
-     "fill": "table-keys-paste",
-     "label": "Columns to keep, pasted or typed",
-     "value": "municipio, data_iniSE",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-keep",
-     "label": "Keep these",
-     "dialog": "Key columns"
-    },
-    {
-     "click": "#table-keys-done",
-     "label": "Done",
-     "dialog": "Key columns"
-    },
-    {
-     "fill": "table-unit",
-     "label": "Unit of the value (entered by you)",
-     "value": "mm/week",
-     "dialog": "Tabular data"
-    },
-    {
-     "click": "#table-save",
-     "label": "Apply",
-     "dialog": "Tabular data"
-    },
-    {
-     "note": "The same twelve weeks left out of the rainfall."
-    },
-    {
-     "add": "select_rows",
-     "as": "rainKept"
-    },
-    {
-     "connect": {
-      "from": "rain16",
-      "to": "rainKept",
-      "port": "records"
-     }
-    },
-    {
-     "select": "rainKept"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "data_iniSE"
-    },
-    {
-     "choose": "select-mode",
-     "label": "Keep",
-     "value": "leave-out",
-     "shown": "Every value except those I tick"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2010-12-26\"])",
-     "label": "2010-12-26"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2011-12-25\"])",
-     "label": "2011-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2012-12-30\"])",
-     "label": "2012-12-30"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2013-12-29\"])",
-     "label": "2013-12-29"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2015-01-04\"])",
-     "label": "2015-01-04"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2016-12-25\"])",
-     "label": "2016-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2018-12-30\"])",
-     "label": "2018-12-30"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2019-12-29\"])",
-     "label": "2019-12-29"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2020-12-27\"])",
-     "label": "2020-12-27"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2021-12-26\"])",
-     "label": "2021-12-26"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2022-12-25\"])",
-     "label": "2022-12-25"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"2024-12-29\"])",
-     "label": "2024-12-29"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "note": "The 92 municipalities, from this project's first study area."
-    },
-    {
-     "add": "study_area",
-     "as": "state16"
-    },
-    {
-     "select": "state16"
-    },
-    {
-     "click": "#edit-study-area",
-     "label": "Select area on map",
-     "opens": "Choose your study area"
-    },
-    {
-     "click": "#area-project-source summary",
-     "label": "Use a study area from this project",
-     "dialog": "Choose your study area"
-    },
-    {
-     "choose": "area-project-pick",
-     "label": "Study area",
-     "value": "0",
-     "shown": "Where was incidence highest?",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-project-use",
-     "label": "Use this study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "click": "#area-apply",
-     "label": "Apply study area",
-     "dialog": "Choose your study area"
-    },
-    {
-     "note": "MODIS land surface temperature, every 8-day period from 2010 to 2025: about 2,900 files from both satellites."
-    },
-    {
-     "add": "find_satellite_products",
-     "as": "product16"
-    },
-    {
-     "select": "product16"
-    },
-    {
-     "click": "#satellite-find",
-     "label": "Find satellite products",
-     "opens": "Find satellite products"
-    },
-    {
-     "fill": "sat-question",
-     "label": "Research topic or measurement",
-     "value": "land surface temperature",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-find",
-     "label": "Find data pathways",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "[data-sat-choose=\"pc-modis-lst-8day\"]",
-     "label": "Choose this product",
-     "dialog": "Find satellite products"
-    },
-    {
-     "click": "#sat-close",
-     "label": "Done",
-     "dialog": "Find satellite products"
-    },
-    {
-     "add": "search_satellite_catalog",
-     "as": "search16"
-    },
-    {
-     "connect": {
-      "from": "product16",
-      "to": "search16",
-      "port": "product"
-     }
-    },
-    {
-     "connect": {
-      "from": "state16",
-      "to": "search16",
-      "port": "area"
-     }
-    },
-    {
-     "select": "search16"
-    },
-    {
-     "click": "#catalog-search-open",
-     "label": "Search the catalog",
-     "opens": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-from",
-     "label": "From",
-     "value": "2010-01-01",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "fill": "cat-until",
-     "label": "Until",
-     "value": "2025-12-31",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-search",
-     "label": "Search",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "click": "#cat-close",
-     "label": "Done",
-     "dialog": "Search a satellite catalog"
-    },
-    {
-     "add": "sample_raster",
-     "as": "sample16"
-    },
-    {
-     "connect": {
-      "from": "state16",
-      "to": "sample16",
-      "port": "area"
-     }
-    },
-    {
-     "connect": {
-      "from": "search16",
-      "to": "sample16",
-      "port": "files"
-     }
-    },
-    {
-     "select": "sample16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Sample a raster at points or over areas"
-    },
-    {
-     "fill": "satellite-place-column",
-     "label": "Name of the place column",
-     "value": "municipio"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Sample a raster at points or over areas"
-    },
-    {
-     "add": "select_rows",
-     "as": "terra16"
-    },
-    {
-     "connect": {
-      "from": "sample16",
-      "to": "terra16",
-      "port": "records"
-     }
-    },
-    {
-     "select": "terra16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "platform"
-    },
-    {
-     "fill": "select-values",
-     "label": "Values to keep, one per line",
-     "value": "terra"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "add": "table_output",
-     "as": "rain16Shown"
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "rain16Shown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "rain16Shown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Weekly rainfall by municipality, 2010–2025 (dataset's CHIRPS column)"
-    },
-    {
-     "add": "table_output",
-     "as": "cases16Shown"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "cases16Shown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "cases16Shown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Weekly cases by municipality, 2010–2025"
-    },
-    {
-     "add": "table_output",
-     "as": "terra16Shown"
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "terra16Shown",
-      "port": "table"
-     }
-    },
-    {
-     "select": "terra16Shown"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "Terra daytime land surface temperature by municipality, 2010–2025"
-    },
-    {
-     "note": "Run once now: the joins below are decided against the tables this run makes. The satellite files are read once; the run after the joins does not read them again."
-    },
-    {
-     "run": true
-    },
-    {
-     "note": "One Relate brings the temperature at every lag, one column per shift: the Terra period containing each week's Wednesday. +3 days is 0 weeks before; -11, -25, -39 and -53 days are 2, 4, 6 and 8 weeks earlier; +17 and +31 days are 2 and 4 weeks after, the leads: later weather cannot cause earlier cases, so they test the design."
-    },
-    {
-     "add": "relate_table",
-     "as": "temps16"
-    },
-    {
-     "connect": {
-      "from": "cases16",
-      "to": "temps16",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "terra16",
-      "to": "temps16",
-      "port": "related"
-     }
-    },
-    {
-     "select": "temps16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on, in the first table",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "LST_Day_1km",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "period_start",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "period_end",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
-     "value": "3",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-1",
-     "label": "Shift 2",
-     "value": "-11",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-2",
-     "label": "Shift 3",
-     "value": "-25",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-3",
-     "label": "Shift 4",
-     "value": "-39",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-4",
-     "label": "Shift 5",
-     "value": "-53",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-5",
-     "label": "Shift 6",
-     "value": "17",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-6",
-     "label": "Shift 7",
-     "value": "31",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "Every week is kept. A week whose period at a shift has no clear-sky value, or lies outside 2010-2025, has that shift's column empty, counted in the evidence, and the model for that shift leaves it out."
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "Run again: the rainfall join below is decided against the table the temperature join makes. The satellite files are not read again."
-    },
-    {
-     "run": true
-    },
-    {
-     "note": "A second Relate brings the rainfall at the same lags, from the dataset's weekly totals: 0, -14, -28, -42 and -56 days, and +14 and +28 for the leads. The week's own start is both the date and the period."
-    },
-    {
-     "add": "relate_table",
-     "as": "rain16"
-    },
-    {
-     "connect": {
-      "from": "temps16",
-      "to": "rain16",
-      "port": "records"
-     }
-    },
-    {
-     "connect": {
-      "from": "rainKept",
-      "to": "rain16",
-      "port": "related"
-     }
-    },
-    {
-     "select": "rain16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-on",
-     "label": "Matched on, in the first table",
-     "value": "municipio",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-bring",
-     "label": "Bring across",
-     "value": "precip_total_semana",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-date",
-     "label": "Date, in the first table",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-start",
-     "label": "Period start, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "choose": "relate-within-end",
-     "label": "Period end, in the second",
-     "value": "data_iniSE",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-0",
-     "label": "Shift 1",
-     "value": "0",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-1",
-     "label": "Shift 2",
-     "value": "-14",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-2",
-     "label": "Shift 3",
-     "value": "-28",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-3",
-     "label": "Shift 4",
-     "value": "-42",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-4",
-     "label": "Shift 5",
-     "value": "-56",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-5",
-     "label": "Shift 6",
-     "value": "14",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "click": "#relate-shift-add",
-     "label": "+ Add a shift",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "fill": "relate-shift-6",
-     "label": "Shift 7",
-     "value": "28",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "Every week has its own rainfall, so nothing is empty at a shift inside 2010-2025."
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Relate a column from another table"
-    },
-    {
-     "note": "One Regression fits the same model once per temperature column, each on its own weeks, comparing weeks within a municipality, month and year, and each adjusted for the rainfall at its own lag."
-    },
-    {
-     "add": "regression",
-     "as": "m16"
-    },
-    {
-     "connect": {
-      "from": "rain16",
-      "to": "m16",
-      "port": "records"
-     }
-    },
-    {
-     "select": "m16"
-    },
-    {
-     "choose": "reg-family",
-     "label": "Model",
-     "value": "poisson",
-     "shown": "Poisson regression · rate ratios"
-    },
-    {
-     "choose": "reg-outcome",
-     "label": "Outcome",
-     "value": "casos"
-    },
-    {
-     "choose": "reg-exposure",
-     "label": "Exposure",
-     "value": "LST_Day_1km_+3d"
-    },
-    {
-     "choose": "reg-exposure-as",
-     "label": "Exposure is",
-     "value": "numeric",
-     "shown": "Numeric"
-    },
-    {
-     "tick": "reg-exposures",
-     "label": "Also fit, one model each, with",
-     "values": [
-      "LST_Day_1km_-11d",
-      "LST_Day_1km_-25d",
-      "LST_Day_1km_-39d",
-      "LST_Day_1km_-53d",
-      "LST_Day_1km_+17d",
-      "LST_Day_1km_+31d"
-     ]
-    },
-    {
-     "choose": "reg-adjust-add",
-     "label": "Add a variable",
-     "value": "precip_total_semana_0d"
-    },
-    {
-     "choose": "reg-kind-precip_total_semana_0d",
-     "label": "precip_total_semana_0d as",
-     "value": "spline",
-     "shown": "Spline, 4 df"
-    },
-    {
-     "click": "label:has(> input[data-reg-follow=\"precip_total_semana_0d\"])",
-     "label": "precip_total_semana_0d follows the shift: each model is adjusted for its own column"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-1",
-     "label": "For the model of LST_Day_1km_-11d",
-     "value": "precip_total_semana_-14d"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-2",
-     "label": "For the model of LST_Day_1km_-25d",
-     "value": "precip_total_semana_-28d"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-3",
-     "label": "For the model of LST_Day_1km_-39d",
-     "value": "precip_total_semana_-42d"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-4",
-     "label": "For the model of LST_Day_1km_-53d",
-     "value": "precip_total_semana_-56d"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-5",
-     "label": "For the model of LST_Day_1km_+17d",
-     "value": "precip_total_semana_+14d"
-    },
-    {
-     "choose": "reg-follow-precip_total_semana_0d-6",
-     "label": "For the model of LST_Day_1km_+31d",
-     "value": "precip_total_semana_+28d"
-    },
-    {
-     "choose": "reg-strata",
-     "label": "Strata, as fixed effects",
-     "value": "municipio"
-    },
-    {
-     "choose": "reg-strata-2",
-     "label": "Together with",
-     "value": "anio"
-    },
-    {
-     "choose": "reg-strata-3",
-     "label": "Together with",
-     "value": "mes"
-    },
-    {
-     "choose": "reg-errors",
-     "label": "Intervals",
-     "value": "overdispersed"
-    },
-    {
-     "add": "table_output",
-     "as": "s16"
-    },
-    {
-     "connect": {
-      "from": "m16",
-      "to": "s16",
-      "port": "table"
-     }
-    },
-    {
-     "select": "s16"
-    },
-    {
-     "fill": "table-label",
-     "label": "Results tab name",
-     "value": "2010–2025: every model's estimates, by shift"
-    },
-    {
-     "note": "Keep the temperature's rows, whose role is exposure."
-    },
-    {
-     "add": "select_rows",
-     "as": "exposure16"
-    },
-    {
-     "connect": {
-      "from": "m16",
-      "to": "exposure16",
-      "port": "records"
-     }
-    },
-    {
-     "select": "exposure16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Select rows by value"
-    },
-    {
-     "choose": "select-key",
-     "label": "Key column to choose by",
-     "value": "role"
-    },
-    {
-     "click": "label:has(> input[data-select-value=\"exposure\"])",
-     "label": "exposure"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Select rows by value"
-    },
-    {
-     "add": "chart_output",
-     "as": "chart16"
-    },
-    {
-     "connect": {
-      "from": "exposure16",
-      "to": "chart16",
-      "port": "records"
-     }
-    },
-    {
-     "select": "chart16"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Chart"
-    },
-    {
-     "choose": "chart-key-column",
-     "label": "Category column",
-     "value": "shift_days"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Chart"
-    },
-    {
-     "fill": "chart-label",
-     "label": "Results tab name",
-     "value": "2010–2025: rate ratio per °C at each lag"
-    },
-    {
-     "click": "#configure-step",
-     "label": "Configure…",
-     "opens": "Chart"
-    },
-    {
-     "fill": "chart-title",
-     "label": "Chart title",
-     "value": "Dengue cases and land surface temperature, Rio de Janeiro state, 2010–2025"
-    },
-    {
-     "fill": "chart-subtitle",
-     "label": "Subtitle / context",
-     "value": "Seven Poisson models, one per shift, each comparing weeks within a municipality, month and year, adjusted for the rainfall at its own lag; each point is its own model. Shifts after the week (positive) cannot be causal."
-    },
-    {
-     "fill": "chart-x-axis",
-     "label": "Horizontal axis label",
-     "value": "Days the temperature is shifted from the week's Sunday (negative: earlier; positive: after, a falsification test)"
-    },
-    {
-     "fill": "chart-y-axis",
-     "label": "Vertical axis label",
-     "value": "Rate ratio per 1 °C"
-    },
-    {
-     "click": "#config-apply",
-     "label": "Apply",
-     "dialog": "Chart"
-    },
-    {
-     "run": true
-    },
-    {
-     "see": "seven models over sixteen years, weeks compared within a municipality, month and year, and the lag-response plot with its two leads",
-     "check": "2010–2025: rate ratio per °C at each lag"
-    }
-   ]
-  }
- ]
+  ]
 }
