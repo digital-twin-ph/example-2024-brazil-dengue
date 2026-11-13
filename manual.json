@@ -45,7 +45,7 @@
           "select": "weekly"
         },
         {
-          "click": "#open-table",
+          "click": "#configure-step",
           "label": "Configure…",
           "opens": "Tabular data"
         },
@@ -307,7 +307,7 @@
           "select": "wide"
         },
         {
-          "click": "#open-table",
+          "click": "#configure-step",
           "label": "Configure…",
           "opens": "Tabular data"
         },
@@ -1126,7 +1126,7 @@
           "select": "weekly"
         },
         {
-          "click": "#open-table",
+          "click": "#configure-step",
           "label": "Configure…",
           "opens": "Tabular data"
         },
@@ -1878,7 +1878,7 @@
           "select": "weekly16"
         },
         {
-          "click": "#open-table",
+          "click": "#configure-step",
           "label": "Configure…",
           "opens": "Tabular data"
         },
@@ -2041,7 +2041,7 @@
           "select": "rain16"
         },
         {
-          "click": "#open-table",
+          "click": "#configure-step",
           "label": "Configure…",
           "opens": "Tabular data"
         },
